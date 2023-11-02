@@ -1,5 +1,7 @@
 from flask import *
 import re
+from DAO import DAO
+import hashlib
 
 auth = Blueprint("auth", __name__, template_folder="templates")
 
@@ -16,17 +18,21 @@ def login_post():
 
     # checagem de login aqui
 
+    bd = DAO("pessoa")
+
+    checkCount = bd.checkLogin(DAO, email, senha)
+
     # se não logar...
-    if ...:
+    if checkCount == 0:
         flash("Senha ou Email incorretos, tente novamente!")
         return redirect(url_for("auth.login"))
 
     # se logar...
 
     session["loggedin"] = True
-    session["id"] = cursor["id"]
-    session["nome"] = cursor["nome"]
-    session["email"] = cursor["email"]
+    session["id"] = DAO.selectFromWhere(bd, "email", email, "id_pessoa")[0]
+    session["nome"] = DAO.selectFromWhere(bd, "email", email, "nome")[0]
+    session["email"] = email
 
     return redirect(url_for("main.home"))
 
@@ -44,8 +50,12 @@ def registro_post():
 
     # check de existência
 
+    bd = DAO("pessoa")
+
+    checkCount = bd.selectCount("email", email)
+
     # se falhar...
-    if ...:
+    if checkCount >= 1:
         flash("Email já cadastrado")
         return redirect(url_for("auth.registro"))
     elif not re.match(r"[^@]+@[^@]+\.[^@]+", email):
@@ -61,6 +71,12 @@ def registro_post():
     # se não...
     else:
         # adicionar ao banco
+        objBD = bd.tabela
+        objBD.email = email
+        objBD.senha = hashlib.sha1(str.encode(senha)).hexdigest
+        objBD.nome = nome
+
+        bd.create(objBD)
 
         flash("Cadastrado com sucesso!")
         return redirect(url_for("auth.login"))
