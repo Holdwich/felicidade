@@ -17,29 +17,27 @@
                          <h2>login</h2>
                               <div class="inputbox">
                                    <ion-icon name="mail-outline"></ion-icon>
-                                   <input type="text"  required>
+                                   <input type="text" id="name_input" required>
                                    <label for="">Email</label>
                                    
                               </div>
                               <div class="inputbox">
                                    <ion-icon name="lock-closed-outline"></ion-icon>
-                                   <input type="password" required>
+                                   <input type="password" id="password_input" required>
                                    <label for="password">Senha</label>
                               </div>
                               <div class="forget">
-                                   <label for="">
-                                        <input type="checkbox" id="smt"> 
+                                   <label for="habi">
+                                        <input type="checkbox" id="habi"> 
                                         <label for="smt"> Eu li e aceito os</label>
-                                        <!--&nbsp;&nbsp;-->
                                         <a href="#">Termos de Uso</a>
                                    </label>
                                    
                               </div>
-                              <button>Login</button>
+                              <button onclick="Enviar()">Login</button>
                               <div class="register">
                                    <p>Não tem uma conta ?
-                                        &nbsp;
-                                        <a href="#">Criar conta</a>
+                                        <a href="CriarUsuario.html">Criar conta</a>
                                    </p>
                               </div>
                     </form>
@@ -48,5 +46,23 @@
      </main>
      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+     <script>
+        const nomes_login = [];
+
+        const Enviar = () => {
+            const nameInputValue = document.getElementById("name_input").value;
+            const passwordInputValue = document.getElementById("password_input").value;
+            const Aceitar = document.getElementById("habi").checked;
+            if (!Aceitar) {
+                alert("Você deve aceitar os termos de uso antes de prosseguir.");
+            }
+            else if (nameInputValue && passwordInputValue) {
+                nomes_login.push({ Nome: nameInputValue, Senha: passwordInputValue });
+                console.log(nomes_login);
+            } else {
+                alert("Preencha os campos de nome e senha antes de enviar.");
+            }
+        }
+     </script>
 </body>
 </html>
