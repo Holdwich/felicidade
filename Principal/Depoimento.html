@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="image/iconceub.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Hind:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <title>Formulário</title>
+    <style>
+        .inputbox {
+            display: flex;
+            align-items: center;
+        }
+
+        .inputbox ion-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .inputbox textarea {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="" method="post">
+                    <h2>Insira seu Depoimento</h2>
+                    <div class="inputbox">
+                        <ion-icon name="create-outline"></ion-icon>
+                        <textarea id="depoimento_input" name="depoimento" rows="4" required placeholder="Seu Depoimento"></textarea>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="attach-outline"></ion-icon>
+                        <input type="file" id="anexar_arquivo" name="anexo" accept="image/*,video/*">
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const depoimentos = [];
+
+        const Enviar = () => {
+            const depoimentoInputValue = document.getElementById("depoimento_input").value;
+
+            if (depoimentoInputValue) {
+                depoimentos.push({ Depoimento: depoimentoInputValue });
+                console.log(depoimentos);
+            } else {
+                alert("Preencha o campo de depoimento antes de enviar.");
+            }
+        }
+    </script>
+</body>
+</html>
