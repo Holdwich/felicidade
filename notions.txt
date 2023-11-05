@@ -1,3 +1,2 @@
-minhas anotações
-jgdskjgç
-teste
+dia 05/11 as 02:46 am 
+iniciei meu trabalho relacionado ao back, fiz algumas rotas relacionadas ao login e alguns testes para ver se é possivel gerar as criações de logins
