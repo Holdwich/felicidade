@@ -12,15 +12,50 @@
         .inputbox {
             display: flex;
             align-items: center;
+            
         }
-
-        .inputbox ion-icon {
+        textarea{
+            background-color: transparent;
+            border: none;
+        }
+        #depoimento_input {
+            margin-top: 0px;
+            font-size: 18px;
+            color:azure;
+        }
+        #icon1 ion-icon {
             margin-right: 10px;
-            font-size: 20px;
-        }
+            font-size: 30px;
+            right: 0%;
+            top: 50px;
 
+        }
+        #icon2 ion-icon {
+            margin-right: 10px;
+            font-size: 30px;
+            top: -10%;
+
+        }
+        #depoimento_input::placeholder {
+            font-size: 16px;
+            color:azure;
+        }
         .inputbox textarea {
             width: 100%;
+        }
+        #select_box{
+            margin: 0px auto 25px;
+            font-size: 16px;
+            border-radius: 15px;
+            padding-left: 10px;
+            padding-top: 5px;
+            /* background-color: transparent;
+            color: white; */
+
+            width: 100%;
+        }
+        #anexar_arquivo {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -29,12 +64,28 @@
         <div class="form-box">
             <div class="form-value">
                 <form action="" method="post">
-                    <h2>Insira seu Depoimento</h2>
-                    <div class="inputbox">
+                    <h2 >Insira Seu Depoimento</h2>
+                    <div class="inputbox" id="icon1">
                         <ion-icon name="create-outline"></ion-icon>
-                        <textarea id="depoimento_input" name="depoimento" rows="4" required placeholder="Seu Depoimento"></textarea>
+                        <textarea id="depoimento_input" name="depoimento" rows="3" required placeholder="Seu Depoimento"></textarea>
                     </div>
                     <div class="inputbox">
+                        <select name="" id="select_box">
+                            <option value="Acidente de Transito">Acidente de Transito</option>
+                            <option value="Assédio">Assédio</option>
+                            <option value="Desaparecimento de Pessoa">Desaparecimento de Pessoa</option>
+                            <option value="Extravio / Perda">Extravio / Perda</option>
+                            <option value="Fraudes e Apropriaçoes">Fraudes e Apropriaçoes</option>
+                            <option value="Furtos">Furtos</option>
+                            <option value="Lesão Corporal">Lesão Corporal</option>
+                            <option value="Brigas ou Ameaças">Brigas ou Ameaças</option>
+                            <option value="Manutenção de Equipamentos Eletrônicos">Manutenção de Equipamentos Eletrônicos</option>
+                            <option value="Danos às Instalações">Danos às Instalações</option>
+                            <option value="Problema de infraestrutura">Problema de infraestrutura</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="inputbox" id="icon2">
                         <ion-icon name="attach-outline"></ion-icon>
                         <input type="file" id="anexar_arquivo" name="anexo" accept="image/*,video/*">
                     </div>
