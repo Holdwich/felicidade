@@ -19,10 +19,11 @@
 }
 
 #text-servicos {
+    margin-top: 8px;
     margin-left: 10px; 
     font-size: 40px;
     color: #FAF9FA;
-    font-family: Inter;
+    font-family: sans-serif;
 }
 #title{
     color: #FAF9FA;
@@ -39,7 +40,8 @@
     height: auto;
 }
 #buttons {
-    margin-left: 50%;
+    position: absolute;
+    margin-left: 65%;
     display: flex;
     justify-content: space-between; 
     background-color: #44044C; 
