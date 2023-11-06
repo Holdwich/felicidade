@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="image/iconceub.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Hind:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="depoimento.css">
+    <title>Formulário</title>
+
+
+</head>
+<body>
+    <main>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="" method="post">
+                    <h2>Depoimento</h2>
+                    <div class="inputbox" id="icon1">
+                        <ion-icon name="create-outline"></ion-icon>
+                        <textarea id="depoimento_input" name="depoimento" rows="3" required placeholder="Insira seu depoimento"></textarea>
+                    </div>
+                    <button class="popup" onclick="pop()"> Deseja dicas para depoimento?
+                        <span class="popuptext" id="myPopup">Insira localização, bloco, número sala, etc</span>
+                    </button>
+                    <div class="inputbox">
+                        <select name="" id="select_box">
+                            <option value="Acidente de Transito">Acidente de Transito</option>
+                            <option value="Assédio">Assédio</option>
+                            <option value="Desaparecimento de Pessoa">Desaparecimento de Pessoa</option>
+                            <option value="Extravio / Perda">Extravio / Perda</option>
+                            <option value="Fraudes e Apropriaçoes">Fraudes e Apropriaçoes</option>
+                            <option value="Furtos">Furtos</option>
+                            <option value="Lesão Corporal">Lesão Corporal</option>
+                            <option value="Brigas ou Ameaças">Brigas ou Ameaças</option>
+                            <option value="Manutenção de Equipamentos Eletrônicos">Manutenção de Equipamentos Eletrônicos</option>
+                            <option value="Danos às Instalações">Danos às Instalações</option>
+                            <option value="Problema de infraestrutura">Problema de infraestrutura</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="inputbox" id="icon2">
+                        <ion-icon name="attach-outline"></ion-icon>
+                        <input type="file" id="anexar_arquivo" name="anexo" accept="image/*,video/*">
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const Depoimentos = [];
+        const Enviar = () => {
+            const depoimentoInputValue = document.getElementById("depoimento_input").value;
+
+            if (depoimentoInputValue) {
+                Depoimentos.push({ Depoimento: depoimentoInputValue });
+                console.log(Depoimentos);
+            } else {
+                alert("Preencha o campo de depoimento antes de enviar.");
+            }
+        }
+        function pop() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+}
+    </script>
+</body>
+</html>
