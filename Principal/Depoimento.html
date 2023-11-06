@@ -16,11 +16,14 @@
         <div class="form-box">
             <div class="form-value">
                 <form action="" method="post">
-                    <h2 >Insira Seu Depoimento</h2>
+                    <h2>Depoimento</h2>
                     <div class="inputbox" id="icon1">
                         <ion-icon name="create-outline"></ion-icon>
-                        <textarea id="depoimento_input" name="depoimento" rows="3" required placeholder="Seu Depoimento"></textarea>
+                        <textarea id="depoimento_input" name="depoimento" rows="3" required placeholder="Insira seu depoimento"></textarea>
                     </div>
+                    <button class="popup" onclick="pop()"> Deseja dicas para depoimento?
+                        <span class="popuptext" id="myPopup">Insira localização, bloco, número sala, etc</span>
+                    </button>
                     <div class="inputbox">
                         <select name="" id="select_box">
                             <option value="Acidente de Transito">Acidente de Transito</option>
@@ -46,6 +49,7 @@
             </div>
         </div>
     </main>
+    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
@@ -61,6 +65,10 @@
                 alert("Preencha o campo de depoimento antes de enviar.");
             }
         }
+        function pop() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+}
     </script>
 </body>
 </html>
