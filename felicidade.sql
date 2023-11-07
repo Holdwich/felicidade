@@ -55,8 +55,8 @@ CREATE TABLE tb_ocorrencia (
 
 CREATE TABLE tb_midia (
     id_midia INT AUTO_INCREMENT PRIMARY KEY,
-    id_ocorrencia_fk INT NOT NULL,
-    midia_descrição text NOT NULL,
+    id_ocorrencia_fk INT,
+    midia_descrição text,
     midia longblob,
     FOREIGN KEY (id_ocorrencia_fk) REFERENCES ocorrencia(id_ocorrencia)
 );
