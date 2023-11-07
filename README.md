@@ -22,7 +22,7 @@ Projeto final de Programação Web:
   - Designer
 
 - Amélia Fernandes
-  - Desenvolvedor (Controller)
+  - Desenvolvedor
   - Gerente de Projeto
 
 - Igor de Melo
