@@ -1,8 +1,8 @@
 dia 06/11 as 10:30 am
 atividade:front-end
 --------tarefas-------
-1 - Paginas do user ...
-2 - pagina do funcionario x
+1 - Paginas do user ✓
+2 - pagina do funcionario ...
 3 - arrumar o depoimento x
 4 - pagina secundaria do funcionario x
 ---------------------------------------|
