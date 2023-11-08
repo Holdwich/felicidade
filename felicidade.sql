@@ -251,6 +251,14 @@ INSERT INTO tb_sub_lugar (id_lugar_fk, sub_lugar_nome) VALUES (3, 'Sala 3325');
 INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES ("3","Banheiro masculino 3 pavimento");
 INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES ("3","Banheiro feminino 3 pavimento");
 
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Sala 4001");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Sala 4002");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Sala 4101");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Sala 4102");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Sala 4201");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Sala 4202");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Ginasio Quadra");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("4","Ginasio Arquibancada");
 
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("5", "Sala 5000");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("5", "Sala 5001");
@@ -262,6 +270,16 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("5", "Sala 5101");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("5", "Sala 5200");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("5", "Sala 5201");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("5", "Sala 5202: Equipamento");
+
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro masculino subsolo");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro feminino subsolo");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro masculino terreo");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro feminino terreo");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro feminino 1 pavimento");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro feminino 1 pavimento");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro feminino 2 pavimento");
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("6", "Banheiro feminino 2 pavimento");
+
 
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("7", "Sala de emergência");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("7", "Sala de monitoramento");
@@ -345,6 +363,36 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("10", "DCE");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("10", "Area de lazer");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("10", "Quadra esportiva 1");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("10", "Quadra esportiva 2");
+
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Marketing Ceub");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12028: Laboratorio de multimedia");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12022: Laboratorio estudio de radio");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12026: Sala dos professores");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12025: Coord. comunicação social");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12020: Laboratorio jornal esquina");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12019: Laboratorio de informatica");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12018: Laboratorio de informatica");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12017: Laboratorio de informatica");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12016: Laboratorio de informatica");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12015: Laboratorio de informatica");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","12014: Laboratorio de informatica");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12003");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12004");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12005");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12006");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12007");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12008");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12009");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12010");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12011");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12012");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12013");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12021");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12023");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12024");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Sala 12027");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Banheiro masculino");
+INSERT INTO tb_sub_lugar(id_lugar_fk,sub_lugar_nome) VALUES("12","Banheiro feminino");
 
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("15", "Acesso A, B , Q , R");
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES ("15", "Acesso C");
