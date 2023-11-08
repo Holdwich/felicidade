@@ -3,16 +3,15 @@ CREATE database felicidade;
 use felicidade;
 
 CREATE TABLE tb_pessoa (
-    id_pessoa INT AUTO_INCREMENT PRIMARY KEY,
-    permissao BOOLEAN NOT NULL,
-    CPF varchar(11) NOT NULL UNIQUE,
+    pessoa_id_pessoa INT AUTO_INCREMENT PRIMARY KEY,
+    pessoa_permissao BOOLEAN NOT NULL,
+    pessoa_CPF varchar(11) NOT NULL UNIQUE,
     pessoa_nome VARCHAR(150) NOT NULL,
-    data_nasc date NOT NULL,
-    email VARCHAR(90) NOT NULL,
-    senha VARCHAR(90) NOT NULL,
-    telefone varchar(11) NOT NULL,
-    endereço varchar(150),
-    CEP varchar(8) NOT NULL
+    pessoa_data_nasc date NOT NULL,
+    pessoa_email VARCHAR(90) NOT NULL,
+    pessoa_senha VARCHAR(90) NOT NULL,
+    pessoa_telefone varchar(11) NOT NULL,
+    pessoa_RA int unique
 );
 
 CREATE TABLE tb_setor (
@@ -50,7 +49,7 @@ CREATE TABLE tb_ocorrencia (
     ocorrencia_status BOOLEAN NOT NULL,
     FOREIGN KEY (id_tipo_ocorrencia_fk) REFERENCES tb_tipo_ocorrencia (id_tipo_ocorrencia),
     foreign key (id_sub_lugar_fk) REFERENCES tb_sub_lugar (id_sub_lugar),
-    FOREIGN KEY (id_pessoa_fk) REFERENCES tb_pessoa(id_pessoa)
+    FOREIGN KEY (id_pessoa_fk) REFERENCES tb_pessoa(pessoa_id_pessoa)
 );
 
 CREATE TABLE tb_midia (
