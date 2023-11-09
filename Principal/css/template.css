@@ -1,0 +1,139 @@
+body{
+    margin: 0px;
+    /* background-color: rgb(201, 198, 198) */
+    background: linear-gradient(#44044C 10%, #A486A6 ,#A486A6 80%, #44044C );
+}
+
+#conteiner_principal{
+    width: 1300px;
+    margin: 0px auto 0px;
+    /* background-color: blue; */
+
+}
+#header{
+    width: 100%;
+    height: 100px;
+    /* background-color: yellow; */
+}
+#user-bar1{
+    width: 100%;
+    height: 100px;
+    /* background-color: #44044C; */
+    align-items: center;
+    display: flex; 
+}
+/* ceub icon */
+#image-ceub{
+    width: 7%;
+    margin-left: 35px;
+    margin-top: 10px;
+    height: auto;
+}
+#text-servicos {
+    margin-top: 8px;
+    margin-left: 10px; 
+    font-size: xx-large;
+    color: #FAF9FA;
+    font-family: sans-serif;
+}
+
+.links{
+    position: relative;
+    left: 85%;
+    top: 6px;
+    margin-left: 10px; 
+    font-size: x-large;
+    color: #FAF9FA;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+.links:hover {
+
+    color: rgb(227, 177, 239) ;
+    text-decoration: underline ;
+}
+#left{
+    width: 15%;
+    height: 1000px;
+    background-color: red;
+    float: left;
+}
+#nomeDoUsuario{
+    height: 10%;
+    background-color: aqua;
+    font-size: large;
+    color: #2b082b;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+}
+li a{
+    margin-top: 5px;
+    font-size: large;
+    color: #FAF9FA;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+li a:hover {
+
+    color: rgb(227, 177, 239) ;
+    text-decoration: underline ;
+}
+#content{
+    width: 85%;
+    height: 1000px;
+    background-color: pink;
+    float: left;
+}
+#quadros_denuncias{
+    background-color: #023f3e;
+    margin-top: 315px;
+    margin-left: 70px;
+    display: flex;
+}
+#quadros_denuncias2{
+    margin-top: 30px;
+    margin-left: 70px;
+    display: flex;
+}
+
+#quadro_denuncia{
+    background-color: transparent;
+     border: 2px solid rgba(255, 255, 255, 0.5);
+     border-radius: 20px;
+     background-color: rgba(68, 4, 76, 0.188);
+     backdrop-filter: blur(20px);
+    width: 350px;
+    height: 360px;
+    margin-right: 100px;
+    margin-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #right{
+    width: 20%;
+    height: 500px;
+    background-color: green;
+    float: left;
+} */
+#footer{
+    width: 100%;
+    height: 100px;
+    background-color: navy;
+    /* float: left; */
+    clear: both;
+}
