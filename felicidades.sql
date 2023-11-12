@@ -392,24 +392,8 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
     (11, '12022: Laboratorio estudio de radio'),
     (11, '12026: Sala dos professores'),
     (11, '12025: Coord. comunicacao social'),
-    (11, '12020: Laboratorio jornal esquina'),
-    (11, '12019: Laboratorio de informatica'),
-    (11, '12018: Laboratorio de informatica'),
-    (11, '12017: Laboratorio de informatica'),
-    (11, '12016: Laboratorio de informatica'),
-    (11, '12015: Laboratorio de informatica'),
-    (11, '12014: Laboratorio de informatica'),
-    (11, 'Sala 12003'),
-    (11, 'Sala 12004'),
-    (11, 'Sala 12005'),
-    (11, 'Sala 12006'),
-    (11, 'Sala 12007'),
-    (11, 'Sala 12008'),
-    (11, 'Sala 12009'),
-    (11, 'Sala 12010'),
-    (11, 'Sala 12011'),
-    (11, 'Sala 12012'),
-    (11, 'Sala 12013'),
+    (11, '12014-12020: Laboratorio jornal esquina'),
+    (11, 'Sala 12003-12013'),
     (11, 'Sala 12021'),
     (11, 'Sala 12023'),
     (11, 'Sala 12024'),
@@ -417,6 +401,9 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
     (11, 'Banheiro masculino'),
     (11, 'Banheiro feminino'),
     (11, 'Posto Medico');
+
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
+	(12, 'Piscina');
 
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
 	(13, 'Ricardo sushi'),
@@ -482,6 +469,10 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
     (16,'Banheiro feminino 2 pavimento');
 
 INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES 
+	(17, 'Cancelas'),
+	(17, 'Estacionamento infinito');
+
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES 
     (18, 'Lateral Acesso E'),
     (18, 'Lateral Acesso C'),
     (18, 'Lateral Acesso B'),
@@ -495,6 +486,9 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
     (19, 'Estacionamento pelo acesso E'),
     (19, 'Estacionamento pelo acesso O'),
     (19, 'Estacionamento subsolo bloco 2');
+
+INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES 
+	(20, 'Area verde');
 
 SELECT sl.*,l.lugar_nome
 FROM tb_sub_lugar sl
