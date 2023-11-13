@@ -96,6 +96,66 @@
                             <option value="NEAD">NEAD</option>
                         </select>
                     </div>
+                    <div id="opcoesBloco2" style="display: none;">
+                        <label for="opcoes_sala_bloco2"></label>
+                        <select id="opcoes_sala_bloco2" name="sala_bloco2">
+                            <option value="Bloco 2 subsolo">Bloco 2 subsolo</option>
+                            <option value="2301-2338">2301-2338</option>
+                            <option value="Seminario">Seminário</option>
+                            <option value="2302: assessoria de extensão e integração comunitaria">2302: assessoria de extensão e integração comunitária</option>
+                            <option value="2311: assessoria de pós-graduação e pesquisa agência de mobilidade acadêmica">2311: assessoria de pós-graduação e pesquisa agência de mobilidade acadêmica</option>
+                            <option value="2325: NAD">2325: NAD</option>
+                            <option value="2330: medicina do trabalho">2330: medicina do trabalho</option>
+                            <option value="2335: NAD">2335: NAD</option>
+                            <option value="Sala de achados e perdidos">Sala de achados e perdidos</option>
+                            <option value="Hub de inovação">Hub de inovação</option>
+                            <option value="Sala de reprografia">Sala de reprografia</option>
+                            <option value="Corredores">Corredores</option>
+                            <option value="Banheiro térreo masc entrada">Banheiro térreo masc entrada</option>
+                            <option value="Banheiro térreo fem entrada">Banheiro térreo fem entrada</option>
+                            <option value="Banheiro térreo masc fundo">Banheiro térreo masc fundo</option>
+                            <option value="Banheiro térreo fem fundo">Banheiro térreo fem fundo</option>
+                            <option value="Elevador de acessibilidades">Elevador de acessibilidades</option>
+                            <option value="Estacionamento subsolo 1">Estacionamento subsolo 1</option>
+                            <option value="Sesmt subsolo 1">Sesmt subsolo 1</option>
+                            <option value="Banheiro masc subsolo 1">Banheiro masc subsolo 1</option>
+                            <option value="Banheiro fem subsolo 1">Banheiro fem subsolo 1</option>
+                            <option value="Divisão de infraestrutura">Divisão de infraestrutura</option>
+                            <option value="Supervisão geral de campus">Supervisão geral de campus</option>
+                            <option value="Estacionamento subsolo 2">Estacionamento subsolo 2</option>
+                        </select>
+                    </div>
+                    <div id="opcoesBloco3" style="display: none;">
+                        <label for="opcoes_sala_bloco3"></label>
+                        <select id="opcoes_sala_bloco3" name="sala_bloco3">
+                            <option value="Multiespaco">Multiespaco</option>
+                            <option value="Auditorio">Auditorio</option>
+                            <option value="Elevador">Elevador</option>
+                            <option value="Area lazer terreo">Area lazer terreo</option>
+                            <option value="Banheiro masculino terreo">Banheiro masculino terreo</option>
+                            <option value="Banheiro feminino terreo">Banheiro feminino terreo</option>
+                            <option value="ICPD- Inst. Ceub de Pesquisa e Desenv.">ICPD- Inst. Ceub de Pesquisa e Desenv.</option>
+                            <option value="Secretaria de Apoio da Pos - Grad.">Secretaria de Apoio da Pos - Grad.</option>
+                            <option value="Coord. FAJS Direito / Rel. Internacionais">Coord. FAJS Direito / Rel. Internacionais</option>
+                            <option value="Nucleo de Pratica Juridica - NPJ">Nucleo de Pratica Juridica - NPJ</option>
+                            <option value="NPJ - atendimento a comunidade">NPJ - atendimento a comunidade</option>
+                            <option value="Nucleo de Pesquisa">Nucleo de Pesquisa</option>
+                            <option value="Sala 3001-3009">Sala 3001-3009</option>
+                            <option value="Sala 3010: Sala dos professores">Sala 3010: Sala dos professores</option>
+                            <option value="Sala 3011-3020">Sala 3011-3020</option>
+                            <option value="Sala 3101-3118">Sala 3101-3118</option>
+                            <option value="Banheiro masculino 1 pavimento">Banheiro masculino 1 pavimento</option>
+                            <option value="Banheiro feminino 1 pavimento">Banheiro feminino 1 pavimento</option>
+                            <option value="Sala 3201-3224">Sala 3201-3224</option>
+                            <option value="Area de lazer 1 pavimento">Area de lazer 1 pavimento</option>
+                            <option value="Banheiro masculino 2 pavimento">Banheiro masculino 2 pavimento</option>
+                            <option value="Banheiro feminino 2 pavimento">Banheiro feminino 2 pavimento</option>
+                            <option value="Sala 3301-3325">Sala 3301-3325</option>
+                            <option value="Banheiro masculino 3 pavimento">Banheiro masculino 3 pavimento</option>
+                            <option value="Banheiro feminino 3 pavimento">Banheiro feminino 3 pavimento</option>
+                        </select>
+                    </div>
+                    
                     <div class="inputbox" id="icon2">
                         <ion-icon name="attach-outline"></ion-icon>
                         <input type="file" id="anexar_arquivo" name="anexo" accept="image/*,video/*">
@@ -130,10 +190,23 @@
             if (selectedValue === "Bloco 1") {
                 alert("Escolheu Bloco 1");
                 document.getElementById("opcoesBloco1").style.display = "block"; // Mostra as opções do Bloco 1
-            } else {
-                document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1 para outras escolhas
-            }
-        }
+                document.getElementById("opcoesBloco2").style.display = "none"; // Oculta as opções do Bloco 2
+    }   else if (selectedValue === "Bloco 2") {
+            alert("Escolheu Bloco 2");
+            document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
+            document.getElementById("opcoesBloco2").style.display = "block"; // Mostra as opções do Bloco 2
+    } 
+    else if(selectedValue=== "Bloco 3"){
+        document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
+        document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
+        document.getElementById("opcoesBloco3").style.display = "block"; // Mostra as opções do Bloco 2
+    }
+    else {
+        document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
+        document.getElementById("opcoesBloco2").style.display = "none"; // Oculta as opções do Bloco 2
+        document.getElementById("opcoesBloco3").style.display = "none"; // Oculta as opções do Bloco 2
+    }
+}
 
         document.getElementById("select_box1").addEventListener("change", function() {
             if (this.value !== "Bloco 1") {
