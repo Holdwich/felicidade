@@ -260,7 +260,7 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
     (6, 'Sala 6101-6117'),
     (6, 'Banheiro feminino 1 pavimento'),
     (6, 'Banheiro feminino 1 pavimento'),
-    (6, 'Sala 6201-6212')
+    (6, 'Sala 6201-6212'),
     (6, 'Banheiro feminino 2 pavimento'),
     (6, 'Banheiro feminino 2 pavimento');
 
@@ -349,7 +349,7 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
     (9, '9402: Laboratório de Morfofuncional 3'),
     (9, '9401: Laboratório de Habilidades Alimentares'),
     (9, 'Banheiro Masculino 1 Subsolo'),
-    (9, 'Banheiro Feminino 1 Subsolo');
+    (9, 'Banheiro Feminino 1 Subsolo'),
     (9, '9001: Laboratório de Informática'),
     (9, '9007: Orientação de Monografia'),
     (9, '9008: Sala de Aplicação de Testes Psicológicos'),
