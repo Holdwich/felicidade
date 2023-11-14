@@ -1,0 +1,141 @@
+body{
+    background-color: rgb(201, 198, 198)
+}
+#user-bar {
+    position: absolute;
+    top: 101px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #44044C;
+}
+#user-bar1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #44044C;
+    align-items: center;
+    display: flex; 
+}
+
+#text-servicos {
+    margin-top: 8px;
+    margin-left: 10px; 
+    font-size: 40px;
+    color: #FAF9FA;
+    font-family: sans-serif;
+}
+#title{
+    color: #FAF9FA;
+    text-align: center;
+    margin-top: 63px;
+    font-size: 45px;
+    font-family: Inter;
+}
+
+#image-ceub{
+    width: 100px;
+    margin-left: 35px;
+    margin-top: 10px;
+    height: auto;
+}
+#buttons {
+    position: absolute;
+    margin-left: 65%;
+    display: flex;
+    justify-content: space-between; 
+    background-color: #44044C; 
+    padding: 20px; 
+}
+
+#buttons button {
+    flex: 1; 
+    padding: 17px 27px;
+    background-color: #44044C; 
+    color: #FAF9FA;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+#buttons button:hover {
+    background-color: #e7048a; 
+}
+
+#quadros_denuncias{
+    margin-top: 315px;
+    margin-left: 70px;
+    display: flex;
+}
+#quadros_denuncias2{
+    margin-top: 30px;
+    margin-left: 70px;
+    display: flex;
+}
+
+#quadro_denuncia{
+    border-radius: 7px;
+    background-color: #44044C;
+    width: 350px;
+    height: 360px;
+    margin-right: 100px;
+    margin-left: 40px;
+}
+img{
+    border-radius: 7px;
+    width: 330px;
+    margin-top: 10px;
+    margin-left: 9.4px;
+}
+#text_quadrados{
+    font-size: 30px;
+    color: #e7048a;
+    margin-top: 0;
+    font-family: Poppins;
+    margin-left: 10px;
+}
+
+#buttons_quadrados {
+    display: flex;
+    background-color: #e7048a;
+    color: #fff;
+    padding: 20px;
+    margin-top: -10px;
+    margin-left: 10px;
+    border-radius: 7px;
+    flex: 1;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#buttons_quadrados:hover {
+    background-color: #551c3d;
+}
+
+#foto_briga{
+    height: 220px;
+}
+
+
+#final-bar {
+    color: #fff;
+    position: absolute;
+    top: 1470px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background-color: #44044C;
+}
+
+#text_final{
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+
+
+
