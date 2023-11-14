@@ -5,9 +5,9 @@ def insert_image(file_path, image_name):
     try:
         connection = connect(
             host='localhost',
-            database='teste',
-            user='root',
-            password='Gatitcha1'
+            database='banco',
+            user='user',
+            password='password'
         )
 
         if connection.is_connected():
