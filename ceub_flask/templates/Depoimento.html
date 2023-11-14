@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="../static/iconceub.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Hind:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/depoimento.css">
+    <title>Formulário</title>
+</head>
+<body>
+    <main>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="" method="post">
+                    <h2>Depoimento</h2>
+                    <div class="inputbox" id="icon1">
+                        <ion-icon name="create-outline"></ion-icon>
+                        <textarea id="depoimento_input" name="depoimento" rows="3" required placeholder="Insira seu depoimento"></textarea>
+                    </div>
+                    <!-- LEMBRETE COM DICAS PARA DEPOIMENTO -->
+                    <button class="popup" onclick="pop()"> Deseja dicas para depoimento?
+                        <span class="popuptext" id="myPopup">Insira localização, bloco, número sala, etc</span>
+                    </button>
+                    <div class="inputbox">
+                        <select name="" id="select_box">
+                            <option value="Acidente de Trânsito">Acidente de Trânsito</option>
+                            <option value="Assédio">Assédio</option>
+                            <option value="Desaparecimento de Pessoa">Desaparecimento de Pessoa</option>
+                            <option value="Extravio / Perda">Extravio / Perda</option>
+                            <option value="Fraudes e Apropriações">Fraudes e Apropriações</option>
+                            <option value="Furtos">Furtos</option>
+                            <option value="Lesão Corporal">Lesão Corporal</option>
+                            <option value="Brigas ou Ameaças">Brigas ou Ameaças</option>
+                            <option value="Manutenção de Equipamentos Eletrônicos">Manutenção de Equipamentos Eletrônicos</option>
+                            <option value="Danos às Instalações">Danos às Instalações</option>
+                            <option value="Problema de Infraestrutura">Problema de Infraestrutura</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <select id="select_box1" name="blocos" onchange="Escolha()">
+                        <option value="Bloco 1" id="Bl1">Bloco 1</option>
+                        <option value="Bloco 2" id="Bl2">Bloco 2</option>
+                        <option value="Bloco 3" id="Bl3">Bloco 3</option>
+                        <option value="Bloco 4" id="Bl4">Bloco 4</option>
+                        <option value="Bloco 5" id="Bl5">Bloco 5</option>
+                        <option value="Bloco 6" id="Bl6">Bloco 6</option>
+                        <option value="Bloco 7" id="Bl7">Bloco 7</option>
+                        <option value="Bloco 8" id="Bl8">Bloco 8</option>
+                        <option value="Bloco 9" id="Bl9">Bloco 9</option>
+                        <option value="Bloco 10" id="Bl10">Bloco 10</option>
+                        <option value="Bloco 12" id="Bl12">Bloco 12</option>
+                    </select>
+
+                    <div id="opcoesBloco1" style="display: none;">
+                        <label for="opcoes_sala_bloco1"></label>
+                        <select id="opcoes_sala_bloco1" name="sala_bloco1">
+                            <option value="Externo">Externo</option>
+                            <option value="Estacionamento">Estacionamento</option>
+                            <option value="Elevador">Elevador</option>
+                            <option value="Corredores térreo">Corredores térreo</option>
+                            <option value="Banheiro terreo masc perto 1001">Banheiro terreo masc perto 1001</option>
+                            <option value="Banheiro terreo fem perto 1001">Banheiro terreo fem perto 1001</option>
+                            <option value="Banheiro terreo masc perto 1019">Banheiro terreo masc perto 1019</option>
+                            <option value="Banheiro terreo fem perto 1019">Banheiro terreo fem perto 1019</option>
+                            <option value="Par de banheiro de acessibilidade perto 1019">Par de banheiro de acessibilidade perto 1019</option>
+                            <option value="1001: laboratorio de informatica">1001: laboratorio de informatica</option>
+                            <option value="1002">1002</option>
+                            <option value="1003">1003</option>
+                            <option value="1004">1004</option>
+                            <option value="1005">1005</option>
+                            <option value="1006">1006</option>
+                            <option value="1007">1007</option>
+                            <option value="1015">1015</option>
+                            <option value="1016: Laboratorio de informatica">1016: Laboratorio de informatica</option>
+                            <option value="1017: Laboratorio de informatica">1017: Laboratorio de informatica</option>
+                            <option value="1018: Laboratorio de informatica">1018: Laboratorio de informatica</option>
+                            <option value="1019">1019</option>
+                            <option value="1025: gerencia de atendimentos e registros academicos">1025: gerencia de atendimentos e registros academicos</option>
+                            <option value="1102-1110">1102-1110</option>
+                            <option value="Banheiro 1 andar masc">Banheiro 1 andar masc</option>
+                            <option value="Banheiro 1 andar fem">Banheiro 1 andar fem</option>
+                            <option value="Departamento de TI">Departamento de TI</option>
+                            <option value="Atendimento comercial">Atendimento comercial</option>
+                            <option value="CEUB EAD">CEUB EAD</option>
+                            <option value="FATECS">FATECS</option>
+                            <option value="Lanchonete">Lanchonete</option>
+                            <option value="Auditorio">Auditorio</option>
+                            <option value="Central de atendimento">Central de atendimento</option>
+                            <option value="Tesouraria">Tesouraria</option>
+                            <option value="Schooltilha">Schooltilha</option>
+                            <option value="Ouvidoria">Ouvidoria</option>
+                            <option value="Reitoria">Reitoria</option>
+                            <option value="RH">RH</option>
+                            <option value="NEAD">NEAD</option>
+                        </select>
+                    </div>
+                    <div id="opcoesBloco2" style="display: none;">
+                        <label for="opcoes_sala_bloco2"></label>
+                        <select id="opcoes_sala_bloco2" name="sala_bloco2">
+                            <option value="Bloco 2 subsolo">Bloco 2 subsolo</option>
+                            <option value="2301-2338">2301-2338</option>
+                            <option value="Seminario">Seminário</option>
+                            <option value="2302: assessoria de extensão e integração comunitaria">2302: assessoria de extensão e integração comunitária</option>
+                            <option value="2311: assessoria de pós-graduação e pesquisa agência de mobilidade acadêmica">2311: assessoria de pós-graduação e pesquisa agência de mobilidade acadêmica</option>
+                            <option value="2325: NAD">2325: NAD</option>
+                            <option value="2330: medicina do trabalho">2330: medicina do trabalho</option>
+                            <option value="2335: NAD">2335: NAD</option>
+                            <option value="Sala de achados e perdidos">Sala de achados e perdidos</option>
+                            <option value="Hub de inovação">Hub de inovação</option>
+                            <option value="Sala de reprografia">Sala de reprografia</option>
+                            <option value="Corredores">Corredores</option>
+                            <option value="Banheiro térreo masc entrada">Banheiro térreo masc entrada</option>
+                            <option value="Banheiro térreo fem entrada">Banheiro térreo fem entrada</option>
+                            <option value="Banheiro térreo masc fundo">Banheiro térreo masc fundo</option>
+                            <option value="Banheiro térreo fem fundo">Banheiro térreo fem fundo</option>
+                            <option value="Elevador de acessibilidades">Elevador de acessibilidades</option>
+                            <option value="Estacionamento subsolo 1">Estacionamento subsolo 1</option>
+                            <option value="Sesmt subsolo 1">Sesmt subsolo 1</option>
+                            <option value="Banheiro masc subsolo 1">Banheiro masc subsolo 1</option>
+                            <option value="Banheiro fem subsolo 1">Banheiro fem subsolo 1</option>
+                            <option value="Divisão de infraestrutura">Divisão de infraestrutura</option>
+                            <option value="Supervisão geral de campus">Supervisão geral de campus</option>
+                            <option value="Estacionamento subsolo 2">Estacionamento subsolo 2</option>
+                        </select>
+                    </div>
+                    <div id="opcoesBloco3" style="display: none;">
+                        <label for="opcoes_sala_bloco3"></label>
+                        <select id="opcoes_sala_bloco3" name="sala_bloco3">
+                            <option value="Multiespaco">Multiespaco</option>
+                            <option value="Auditorio">Auditorio</option>
+                            <option value="Elevador">Elevador</option>
+                            <option value="Area lazer terreo">Area lazer terreo</option>
+                            <option value="Banheiro masculino terreo">Banheiro masculino terreo</option>
+                            <option value="Banheiro feminino terreo">Banheiro feminino terreo</option>
+                            <option value="ICPD- Inst. Ceub de Pesquisa e Desenv.">ICPD- Inst. Ceub de Pesquisa e Desenv.</option>
+                            <option value="Secretaria de Apoio da Pos - Grad.">Secretaria de Apoio da Pos - Grad.</option>
+                            <option value="Coord. FAJS Direito / Rel. Internacionais">Coord. FAJS Direito / Rel. Internacionais</option>
+                            <option value="Nucleo de Pratica Juridica - NPJ">Nucleo de Pratica Juridica - NPJ</option>
+                            <option value="NPJ - atendimento a comunidade">NPJ - atendimento a comunidade</option>
+                            <option value="Nucleo de Pesquisa">Nucleo de Pesquisa</option>
+                            <option value="Sala 3001-3009">Sala 3001-3009</option>
+                            <option value="Sala 3010: Sala dos professores">Sala 3010: Sala dos professores</option>
+                            <option value="Sala 3011-3020">Sala 3011-3020</option>
+                            <option value="Sala 3101-3118">Sala 3101-3118</option>
+                            <option value="Banheiro masculino 1 pavimento">Banheiro masculino 1 pavimento</option>
+                            <option value="Banheiro feminino 1 pavimento">Banheiro feminino 1 pavimento</option>
+                            <option value="Sala 3201-3224">Sala 3201-3224</option>
+                            <option value="Area de lazer 1 pavimento">Area de lazer 1 pavimento</option>
+                            <option value="Banheiro masculino 2 pavimento">Banheiro masculino 2 pavimento</option>
+                            <option value="Banheiro feminino 2 pavimento">Banheiro feminino 2 pavimento</option>
+                            <option value="Sala 3301-3325">Sala 3301-3325</option>
+                            <option value="Banheiro masculino 3 pavimento">Banheiro masculino 3 pavimento</option>
+                            <option value="Banheiro feminino 3 pavimento">Banheiro feminino 3 pavimento</option>
+                        </select>
+                    </div>
+                    
+                    <div class="inputbox" id="icon2">
+                        <ion-icon name="attach-outline"></ion-icon>
+                        <input type="file" id="anexar_arquivo" name="anexo" accept="image/*,video/*">
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const Depoimentos = [];
+        const Enviar = () => {
+            const depoimentoInputValue = document.getElementById("depoimento_input").value;
+
+            if (depoimentoInputValue) {
+                Depoimentos.push({ Depoimento: depoimentoInputValue });
+                console.log(Depoimentos);
+            } else {
+                alert("Preencha o campo de depoimento antes de enviar.");
+            }
+        }
+        function pop() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+        function Escolha() {
+            var selectBox = document.getElementById("select_box1");
+            var selectedValue = selectBox.value;
+            if (selectedValue === "Bloco 1") {
+                alert("Escolheu Bloco 1");
+                document.getElementById("opcoesBloco1").style.display = "block"; // Mostra as opções do Bloco 1
+                document.getElementById("opcoesBloco2").style.display = "none"; // Oculta as opções do Bloco 2
+                document.getElementById("opcoesBloco3").style.display = "none"; // Oculta as opções do Bloco 2
+    }   else if (selectedValue === "Bloco 2") {
+            alert("Escolheu Bloco 2");
+            document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
+            document.getElementById("opcoesBloco2").style.display = "block"; // Mostra as opções do Bloco 2
+            document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 2
+    } 
+    else if(selectedValue=== "Bloco 3"){
+        document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
+        document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
+        document.getElementById("opcoesBloco3").style.display = "block"; // Mostra as opções do Bloco 2
+    }
+    else {
+        document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
+        document.getElementById("opcoesBloco2").style.display = "none"; // Oculta as opções do Bloco 2
+        document.getElementById("opcoesBloco3").style.display = "none"; // Oculta as opções do Bloco 2
+    }
+}
+    </script>
+</body>
+</html>
