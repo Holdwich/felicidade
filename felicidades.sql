@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS tb_lugar (
 CREATE TABLE IF NOT EXISTS tb_sub_lugar (
     id_sub_lugar INT AUTO_INCREMENT PRIMARY KEY,
     id_lugar_fk INT NOT NULL,
-    sub_lugar_nome VARCHAR(90),
+    sub_lugar_nome VARCHAR(90) NOT NULL,
     foreign key (id_lugar_fk) REFERENCES tb_lugar (id_lugar)
 );
 
@@ -55,9 +55,9 @@ CREATE TABLE IF NOT EXISTS tb_ocorrencia (
 
 CREATE TABLE IF NOT EXISTS tb_midia (
     id_midia INT AUTO_INCREMENT PRIMARY KEY,
-    id_ocorrencia_fk INT,
+    id_ocorrencia_fk INT NOT NULL,
     midia_descricao text,
-    midia longblob,
+    midia longblob NOT NULL,
     FOREIGN KEY (id_ocorrencia_fk) REFERENCES tb_ocorrencia(id_ocorrencia)
 );
 
