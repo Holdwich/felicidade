@@ -25,7 +25,7 @@ def upload_file():
             return jsonify({'message': 'sem arquivo'}), 400
 
         if imagem and allowed_file(imagem.filename):
-            novo_nome = f'ocorrencia_1.' + imagem.filename.rsplit('.', 1)[1].lower()
+            novo_nome = f'ocorencia_num.' + imagem.filename.rsplit('.', 1)[1].lower()
             imagem.save(os.path.join(app.config['UPLOAD_FOLDER'], novo_nome))
             insert_image(os.getcwd() + rf'\ocorrencias\{novo_nome}', novo_nome)
             os.remove(os.getcwd() + rf'\ocorrencias\{novo_nome}')
