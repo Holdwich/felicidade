@@ -1,43 +1,31 @@
-from mysql.connector import connect
 from mysql.connector import Error
+from sqlalchemy import create_engine, func
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.automap import automap_base
+
 
 def insert_image(file_path, image_name):
     try:
-        connection = connect(
-            host='localhost',
-            database='banco',
-            user='user',
-            password='password'
-        )
-        if connection.is_connected():
-            cursor = connection.cursor()
+        engine = create_engine("mysql+mysqlconnector://root:Gatitcha1@localhost/teste?charset=utf8mb4")
 
-            # le a imagem em formato de binario
-            with open(file_path, 'rb') as file:
-                image_binario = file.read()
+        DB = automap_base()
+        DB.prepare(autoload_with=engine)
+        tb_imagens = DB.classes.tabela_imagens
+        session_factory = sessionmaker(bind=engine)
+        ses = session_factory()
+        max_id = ses.query(func.max(tb_imagens.id)).scalar()
+        obj = tb_imagens()
+        image_name = image_name.replace('num', str(max_id + 1))
 
-            # pega o id na tabela tabela_imagens
-            cursor.execute("SELECT MAX(id) FROM tabela_imagens")
-            result = cursor.fetchone()
-            max_id = result[0] if result[0] is not None else 0
-            image_name = image_name.replace('num', str(max_id + 1))
-            # inserir a imagem no banco
-            query = "INSERT INTO tabela_imagens (nome, imagem) VALUES (%s, %s)"
-            values = (image_name, image_binario)
-            cursor.execute(query, values)
-
-            # commit para salvar as alterações
-            connection.commit()
-
-            print("Imagem inserida com sucesso!")
+        with open(file_path, 'rb') as file:
+            image_binario = file.read()
 
     except Error as e:
-        print(f"Erro: {e}")
+        print(f"erro: {e}")
 
     finally:
-        # fechar a conexão
-        if connection.is_connected():
-            cursor.close()
-            connection.close()
-
-
+        obj.nome = image_name
+        obj.imagem = image_binario
+        ses.add(obj)
+        # commit para salvar as alterações
+        ses.commit()
