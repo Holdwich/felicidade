@@ -10,10 +10,10 @@ def insert_image(file_path, image_name):
 
         DB = automap_base()
         DB.prepare(autoload_with=engine)
-        tb_imagens = DB.classes.tabela_imagens
+        tb_imagens = DB.classes.tb_midia
         session_factory = sessionmaker(bind=engine)
         ses = session_factory()
-        max_id = ses.query(func.max(tb_imagens.id)).scalar()
+        max_id = ses.query(func.max(tb_imagens.id_midia)).scalar()
         obj = tb_imagens()
         image_name = image_name.replace('num', str(max_id + 1))
 
@@ -24,8 +24,7 @@ def insert_image(file_path, image_name):
         print(f"erro: {e}")
 
     finally:
-        obj.nome = image_name
-        obj.imagem = image_binario
+        obj.midia = image_binario
         ses.add(obj)
         # commit para salvar as alterações
         ses.commit()

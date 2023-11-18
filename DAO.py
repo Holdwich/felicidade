@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import sessionmaker
 
@@ -13,15 +13,15 @@ class DAO:
         # Mapeamento Objeto Relacional com o SQLAlchemy
         db = automap_base()
         db.prepare(autoload_with=engine)
-        self.lugar = db.classes.lugar
-        self.midia = db.classes.midia
-        self.ocorrencia = db.classes.ocorrencia
-        self.pessoa = db.classes.pessoa
-        self.setor = db.classes.setor
-        self.sublugar = db.classes.sublugar
-        self.tipo_ocorrencia = db.classes.tipo_ocorrencia
+        self.lugar = db.classes.tb_lugar
+        self.midia = db.classes.tb_midia
+        self.ocorrencia = db.classes.tb_ocorrencia
+        self.pessoa = db.classes.tb_pessoa
+        self.setor = db.classes.tb_setor
+        self.sublugar = db.classes.tb_sub_lugar
+        self.tipo_ocorrencia = db.classes.tb_tipo_ocorrencia
 
-        self.tabela = eval("db.classes." + tab)
+        self.tabela = eval("db.classes.tb_" + tab)
         self.tabelaStr = tab
 
         self.id = "id_" + tab

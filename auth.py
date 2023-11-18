@@ -30,8 +30,9 @@ def login_post():
     # se logar...
 
     session["loggedin"] = True
-    session["id"] = DAO.selectFromWhere(bd, "email", email, "id_pessoa")[0]
-    session["nome"] = DAO.selectFromWhere(bd, "email", email, "nome")[0]
+    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[0]
+    session["nome"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_nome")[0]
+    session["pessoa_permissao"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_permissao")[0]
     session["email"] = email
 
     return redirect(url_for("main.home"))
@@ -72,9 +73,9 @@ def registro_post():
     else:
         # adicionar ao banco
         objBD = bd.tabela
-        objBD.email = email
-        objBD.senha = hashlib.sha1(str.encode(senha)).hexdigest
-        objBD.nome = nome
+        objBD.pessoa_email = email
+        objBD.pessoa_senha = hashlib.sha1(str.encode(senha)).hexdigest
+        objBD.pessoa_nome = nome
 
         bd.create(objBD)
 

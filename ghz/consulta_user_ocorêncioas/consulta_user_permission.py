@@ -19,27 +19,31 @@ ses = session_factory()
 
 
 def user_permissao(user):
-    permissao = ses.query(user_table).filter(user_table.nome.ilike(user))
-    for c in permissao:
-        permissao = c.permissao
+    pessoa_permissao = ses.query(user_table).filter(user_table.nome.ilike(user))
+    for c in pessoa_permissao:
+        pessoa_permissao = c.permissao
         id = c.id
-    return permissao, id
+    return pessoa_permissao
 
+
+
+#pre ...
 def consultar(permissao, id):
-    pt = PrettyTable(["Identificador", "Uso"])
-    if permissao:
+    if permissao:#ADM
         lst = ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id)
-    else:
+    else:#COMUM
         lst = ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id).filter(ocorridos_relacionados.users_table_id == id)
     if lst.first():
+        stable = "<table>"
+
         for obj in lst:
             pt.add_row([obj.id, obj.local1])
-        return pt.get_html_string()
+        return pt.get_html_string() #stable
     else:
-        return "Uso não encontrado"
+        return "<p>Uso não encontrado</p>"
 
 
-
+'''
 @app.route('/', methods=['GET', 'POST'])
 def index():
     resultado = ""
@@ -51,3 +55,4 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+'''
