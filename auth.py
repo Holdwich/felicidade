@@ -30,9 +30,13 @@ def login_post():
     # se logar...
 
     session["loggedin"] = True
-    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[0]
+    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[
+        0
+    ]
     session["nome"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_nome")[0]
-    session["pessoa_permissao"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_permissao")[0]
+    session["pessoa_permissao"] = DAO.selectFromWhere(
+        bd, "pessoa_email", email, "pessoa_permissao"
+    )[0]
     session["email"] = email
 
     return redirect(url_for("main.home"))
@@ -47,17 +51,30 @@ def registro():
 def registro_post():
     email = request.form.get("email")
     senha = request.form.get("senha")
+    confSenha = request.form.get("confirmaSenha")
     nome = request.form.get("nome")
+    cpf = request.form.get("cpf")
+    ra = request.form.get("numRegistro")
+    telefone = request.form.get("telefone")
+    dataNasc = request.form.get("dataNascimento")
 
     # check de existência
 
     bd = DAO("pessoa")
 
-    checkCount = bd.selectCount("email", email)
+    checkCount = bd.selectCount("pessoa_email", email)
+    checkRA = bd.selectCount("pessoa_RA", ra)
+    checkCPF = bd.selectCount("pessoa_CPF", cpf)
 
     # se falhar...
     if checkCount >= 1:
-        flash("Email já cadastrado")
+        flash("Email já cadastrado!")
+        return redirect(url_for("auth.registro"))
+    elif checkRA >= 1:
+        flash("RA já cadastrado!")
+        return redirect(url_for("auth.registro"))
+    elif checkCPF >= 1:
+        flash("CPF já cadastrado!")
         return redirect(url_for("auth.registro"))
     elif not re.match(r"[^@]+@[^@]+\.[^@]+", email):
         flash("Email inválido!")
@@ -65,7 +82,24 @@ def registro_post():
     elif not re.match(r"[A-Za-z]+", nome):
         flash("Nome deve conter apenas letras!")
         return redirect(url_for("auth.registro"))
-    elif not nome or not email or not senha:
+    elif not confSenha or confSenha != senha:
+        flash("Senhas não conferem!")
+        return redirect(url_for("auth.registro"))
+    elif not re.match(
+        r"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
+        cpf,
+    ):
+        flash("CPF inválido!")
+        return redirect(url_for("auth.registro"))
+    elif (
+        not nome
+        or not email
+        or not senha
+        or not cpf
+        or not ra
+        or not telefone
+        or not dataNasc
+    ):
         flash("Preencha o formulário todo!")
         return redirect(url_for("auth.registro"))
 
@@ -76,6 +110,11 @@ def registro_post():
         objBD.pessoa_email = email
         objBD.pessoa_senha = hashlib.sha1(str.encode(senha)).hexdigest
         objBD.pessoa_nome = nome
+        objBD.pessoa_CPF = cpf
+        objBD.pessoa_data_nasc = dataNasc
+        objBD.pessoa_telefone = telefone
+        objBD.pessoa_RA = ra
+        objBD.pessoa_permissao = 0
 
         bd.create(objBD)
 
@@ -89,5 +128,6 @@ def logout():
     session.pop("id", None)
     session.pop("nome", None)
     session.pop("email", None)
+    session.pop("pessoa_permissao", None)
 
     return redirect(url_for("auth.login"))

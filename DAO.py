@@ -33,9 +33,9 @@ class DAO:
 
     def checkLogin(self, email, senha):
         query = (
-            "SELECT COUNT(*) FROM pessoa WHERE email = "
+            "SELECT COUNT(*) FROM pessoa WHERE pessoa_email = "
             + email
-            + " AND senha = SHA1("
+            + " AND pessoa_senha = SHA1("
             + senha
             + ")"
         )
