@@ -95,6 +95,7 @@ def registro_post():
         not nome
         or not email
         or not senha
+        or not confSenha
         or not cpf
         or not ra
         or not telefone
