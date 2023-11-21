@@ -5,7 +5,7 @@ from sqlalchemy.ext.automap import automap_base
 
 app = Flask(__name__)
 
-engine = create_engine("mysql+mysqlconnector://root:Gatitcha1@localhost/teste?charset=utf8mb4")
+engine = create_engine("mysql+mysqlconnector://root:Gatitcha1!@localhost/teste?charset=utf8mb4")
 
 DB = automap_base()
 DB.prepare(autoload_with=engine)
@@ -36,7 +36,7 @@ def consultar_ocorrencias(permissao, id):
     if lst.first():
         result_html = '<ul>'
         for obj in lst:
-            result_html += f'<li><a href="#">{obj.id} - {obj.local1}</a></li>'
+            result_html += f'<li><a href="#">{obj.local1}</a></li>'
 
         result_html += '</ul>'
         return result_html
@@ -50,7 +50,7 @@ def index():
     resultado = ""
     if request.method == 'POST':
         user = 'Usuário 2'
-        resultado = consultar(user[0], user[1])
+        resultado = consultar_ocorrencias(user[0], user[1])
 
     return render_template('Templatedic.html', resultado=resultado)
 
