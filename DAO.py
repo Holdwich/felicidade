@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, select
+from sqlalchemy import create_engine, text
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import sessionmaker
 
@@ -7,7 +7,7 @@ class DAO:
     def __init__(self, tab):
         # Ligação com o esquema de banco de dados
         engine = create_engine(
-            "mysql+mysqlconnector://root:Gatitcha1@localhost/felicidade?charset=utf8mb4"
+            "mysql+mysqlconnector://root:Gatitcha1!@localhost/felicidade?charset=utf8mb4"
         )
 
         # Mapeamento Objeto Relacional com o SQLAlchemy
@@ -22,7 +22,7 @@ class DAO:
         self.tipo_ocorrencia = db.classes.tb_tipo_ocorrencia
 
         self.tabela = eval("db.classes.tb_" + tab)
-        self.tabelaStr = tab
+        self.tabelaStr = "tb_" + tab
 
         self.id = "id_" + tab
 
@@ -33,14 +33,14 @@ class DAO:
 
     def checkLogin(self, email, senha):
         query = (
-            "SELECT COUNT(*) FROM pessoa WHERE pessoa_email = "
+            "SELECT COUNT(*) FROM tb_pessoa WHERE pessoa_email = '"
             + email
-            + " AND pessoa_senha = SHA1("
+            + "' AND pessoa_senha = '"
             + senha
-            + ")"
+            + "'"
         )
 
-        resultado = self.ses.execute(query)
+        resultado = self.ses.execute(text(query))
 
         count = resultado.scalar()
 
@@ -58,15 +58,11 @@ class DAO:
         return count
 
     def selectFromWhere(self, campoReferencia, valor, campoBuscado="*"):
-        if campoBuscado == "*":
-            stmt = select([self.tabela]).where(self.tabela.c[campoReferencia] == valor)
+        query = (
+            f"SELECT {campoBuscado} FROM {self.tabelaStr} WHERE {campoReferencia} = '{valor}'"
+        )
 
-        else:
-            stmt = select([self.tabela.c[campoBuscado]]).where(
-                self.tabela.c[campoReferencia] == valor
-            )
-
-        resultado = self.ses.execute(stmt)
+        resultado = self.ses.execute(text(query))
 
         linhas = resultado.fetchall()
 
