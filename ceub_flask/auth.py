@@ -1,10 +1,11 @@
 from flask import *
+from flask import render_template, request, Flask
 import re
 from DAO import DAO
 import hashlib
 
 auth = Blueprint("auth", __name__, template_folder="templates")
-
+app = Flask(__name__)
 
 @auth.route("/login")
 def login():
@@ -42,9 +43,36 @@ def login_post():
     return redirect(url_for("main.home"))
 
 
+def consultar_ocorrencias(permissao, id):
+    bd = DAO("tipo_ocorrencia")
+    if permissao:
+        lst = DAO.selectFromWhere(bd, "*", "ocorrencia_data_registro")
+        #ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id)
+    else:
+        "p"
+        #lst = ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id).filter(ocorridos_relacionados.users_table_id == id)
+
+    if lst.first():
+        result_html = '<ul>'
+        for obj in lst:
+            result_html += f'<li><a href="#">{obj.id} - {obj.local1}</a></li>'
+
+        result_html += '</ul>'
+        return result_html
+    else:
+        return "Uso não encontrado"
+
+
+@app.route("/")
+def index():
+    user = 'Usuário 2'
+    resultado = consultar_ocorrencias(user, 1)
+
+    return render_template('Templatedic.html', resultado=resultado)
+
 @auth.route("/login/registro")
 def registro():
-    return render_template("registro.html")
+    return render_template("CriarUser.html")
 
 
 @auth.route("/login/registro", methods=["POST"])
@@ -132,3 +160,6 @@ def logout():
     session.pop("pessoa_permissao", None)
 
     return redirect(url_for("auth.login"))
+
+if __name__ == '__main__':
+    app.run()

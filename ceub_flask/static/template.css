@@ -4,6 +4,11 @@ body{
     background: linear-gradient(#44044C 5%,#A486A6,#A486A6,#A486A6 , #A486A6 ,#A486A6 80%, #44044C );
 }
 
+ul li a {
+    font-size: 14px;
+}
+
+
 #conteiner_principal{
     width: 1300px;
     margin: 0px auto 0px;

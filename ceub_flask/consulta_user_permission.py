@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.automap import automap_base
-from prettytable import PrettyTable
 
 app = Flask(__name__)
 
@@ -28,31 +27,32 @@ def user_permissao(user):
 
 
 #pre ...
-def consultar(permissao, id):
-    if permissao:#ADM
+def consultar_ocorrencias(permissao, id):
+    if permissao:
         lst = ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id)
-    else:#COMUM
-        lst = ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id).filter(ocorridos_relacionados.users_table_id == id)
-    if lst.first():
-        stable = "<table>"
-
-        for obj in lst:
-            pt.add_row([obj.id, obj.local1])
-        return pt.get_html_string() #stable
     else:
-        return "<p>Uso não encontrado</p>"
+        lst = ses.query(ocorrencias).join(ocorridos_relacionados, ocorrencias.id == ocorridos_relacionados.ocorrencias_id).filter(ocorridos_relacionados.users_table_id == id)
+
+    if lst.first():
+        result_html = '<ul>'
+        for obj in lst:
+            result_html += f'<li><a href="#">{obj.id} - {obj.local1}</a></li>'
+
+        result_html += '</ul>'
+        return result_html
+    else:
+        return "Uso não encontrado"
 
 
-'''
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     resultado = ""
     if request.method == 'POST':
-        user = user_permissao(request.form['nome'])
+        user = 'Usuário 2'
         resultado = consultar(user[0], user[1])
 
-    return render_template('index.html', resultado=resultado)
+    return render_template('Templatedic.html', resultado=resultado)
 
 if __name__ == '__main__':
     app.run()
-'''

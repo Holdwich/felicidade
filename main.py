@@ -1,5 +1,5 @@
 from flask import *
-from auth import auth
+from ceub_flask.auth import auth
 
 app = Flask(__name__)
 app.register_blueprint(auth)
