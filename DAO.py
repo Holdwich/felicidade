@@ -35,9 +35,9 @@ class DAO:
         query = (
             "SELECT COUNT(*) FROM tb_pessoa WHERE pessoa_email = '"
             + email
-            + "' AND pessoa_senha = '"
+            + "' AND pessoa_senha = SHA1('"
             + senha
-            + "'"
+            + "')"
         )
 
         resultado = self.ses.execute(text(query))
