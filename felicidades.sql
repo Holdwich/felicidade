@@ -62,26 +62,27 @@ CREATE TABLE IF NOT EXISTS tb_midia (
 );
 
 INSERT INTO tb_pessoa(pessoa_permissao,pessoa_CPF,pessoa_nome,pessoa_data_nasc,pessoa_email,pessoa_senha,pessoa_telefone,pessoa_RA) VALUES 
-    (true,'14375943859','Arthur Arash Heidari','1997-05-24','arthur.arash@sempreceub.com','arthur123','61986241548','22209170'),
-    (false,'14375943857','Guilherme Nobrega Gomes Dantas','2003-09-16','guilherme.nobrega@sempreceub.com','998877','61982453661','22201381'),
-    (false,'14375943856','Lucas David Carvalho Vieira De Matos','2003-09-15','lucas.david@sempreceub.com','lucas123','61982454947','22255032'),
-    (true,'14375943858','Vinicius Gurgel Serrao','2003-05-01','vinicius.gurgel@sempreceub.com','vinicius123','61981479944','22207295'),
-    (false,'14375943855','Guilherme Claudio','2003-09-25','gui.clau09@sempreceub.com','gui123','61948123433','22203662'),
-    (false,'14375943854','Humberto Nascimento Santos Junior','2004-06-16','humberto.nj@sempreceub.com','humberto123','79991135630','22264943'),
-    (true,'14375943853','Guilherme Paes','2003-08-28','guilhermehzf@sempreceub.com','guilherme123','61998072040','22250592'),
-    (false,'14375943852','Raul Erick Cordeiro Alves','2003-06-28','raulerick@sempreceub.com','raul123','61983545388','22207984'),
-    (false,'14375943851','Felipe Soares Alencar Trindade','2003-06-28','damnbruh@sempreceub.com','damn123','61983546388','22212059'),
-    (false,'14375943850','Giovanni Leles Nogueira','2003-05-02','hexadem@sempreceub.com','hexa123','61945546388','22287954'),
-    (false, '12345678901', 'Ana Silva Santos', '1995-03-18', 'ana@sempreceub.com', 'ana123', '9876543210','22287955'),
-    (false, '23456789012', 'Bruno Oliveira Lima', '1990-08-22', 'bruno@sempreceub.com', 'bruno123', '1234567890','22287956'),
-    (false, '34567890123', 'Catarina Pereira Costa', '1988-12-05', 'catarina@sempreceub.com', 'catarina123', '5555444433', '22201923'),
-    (false, '45678901234', 'Daniel Santos Souza', '1992-05-27', 'daniel@sempreceub.com', 'daniel123', '9999888877', '22203960'),
-    (false, '56789012345', 'Eva Oliveira Lima', '1997-11-14', 'eva@sempreceub.com', 'eva123', '1111222233', '22204295'),
-    (false, '67890123456', 'Felipe Pereira Santos', '1984-06-10', 'felipe@sempreceub.com', 'felipe123', '4444555566', '22207859'),
-    (false, '78901234567', 'Gabriela Lima Oliveira', '1989-09-25', 'gabriela@sempreceub.com', 'gabriela123', '6666777788', '22201235'),
-    (false, '89012345678', 'Hugo Costa Pereira', '1993-02-18', 'hugo@sempreceub.com', 'hugo123', '2222333344', '22209604'),
-    (false, '90123456789', 'Isabela Oliveira Lima', '1996-07-03', 'isabela@sempreceub.com', 'isabela123', '7777666655', '22204532'),
-    (false, '12345678909', 'João Silva Santos', '1987-10-08', 'joao@sempreceub.com', 'joao123', '8888999911', '22200295');
+    (true,'14375943859','Arthur Arash Heidari','1997-05-24','arthur.arash@sempreceub.com','3c5ea4769c6160dfca95af6c4ddd1c5714360137','61986241548','22209170'),
+    (false,'14375943857','Guilherme Nobrega Gomes Dantas','2003-09-16','guilherme.nobrega@sempreceub.com','d3203512b024f45dd11b0c4087c4aebba1b64263','61982453661','22201381'),
+    (false,'14375943856','Lucas David Carvalho Vieira De Matos','2003-09-15','lucas.david@sempreceub.com','480079dc8b61724ac80d0d08988f6aaf53966750','61982454947','22255032'),
+    (true,'14375943858','Vinicius Gurgel Serrao','2003-05-01','vinicius.gurgel@sempreceub.com','6643029389643fe4f9225b402a2d66dc1abb4b50','61981479944','22207295'),
+    (false,'14375943855','Guilherme Claudio','2003-09-25','gui.clau09@sempreceub.com','5ff04542276e15c9e941963a7ca2d74b33b25afc','61948123433','22203662'),
+    (false,'14375943854','Humberto Nascimento Santos Junior','2004-06-16','humberto.nj@sempreceub.com','5f1a7be72de2a8324c9bc977d432325ed3a4adc7','79991135630','22264943'),
+    (true,'14375943853','Guilherme Paes','2003-08-28','guilhermehzf@sempreceub.com','0fece84f4e944ede78c9824d7c9d7d9d58285007','61998072040','22250592'),
+    (false,'14375943852','Raul Erick Cordeiro Alves','2003-06-28','raulerick@sempreceub.com','1c536b62b034b260d4b1fa2a6d638c5174a0f0d5','61983545388','22207984'),
+    (false,'14375943851','Felipe Soares Alencar Trindade','2003-06-28','damnbruh@sempreceub.com','adbea3f929d0e9a6e4f2d7959ec95e9f5d2f6c9c','61983546388','22212059'),
+    (false,'14375943850','Giovanni Leles Nogueira','2003-05-02','hexadem@sempreceub.com','bc1871e408dcd6310bce6c641c74d656d292d897','61945546388','22287954'),
+    (false, '12345678901', 'Ana Silva Santos', '1995-03-18', 'ana@sempreceub.com', 'beec983e1d29e81bde7148cec004bbbc9e1034f5', '9876543210','22287955'),
+    (false, '23456789012', 'Bruno Oliveira Lima', '1990-08-22', 'bruno@sempreceub.com', '04556b581f269b79f4ed5801f8532331c7cffaf5', '1234567890','22287956'),
+    (false, '34567890123', 'Catarina Pereira Costa', '1988-12-05', 'catarina@sempreceub.com', '0b94fdf8dfa620dd1f2b0147e94ad71f9697ac25', '5555444433', '22201923'),
+    (false, '45678901234', 'Daniel Santos Souza', '1992-05-27', 'daniel@sempreceub.com', 'f700a6934e78cd908cb5665cd84f89318bfa2d43', '9999888877', '22203960'),
+    (false, '56789012345', 'Eva Oliveira Lima', '1997-11-14', 'eva@sempreceub.com', '0050a3a1ab3d2530b34577213a85f11e8add3b42', '1111222233', '22204295'),
+    (false, '67890123456', 'Felipe Pereira Santos', '1984-06-10', 'felipe@sempreceub.com', '0234e2fb0e1bde2fb56bd4687a2ec97ffc1fd25a', '4444555566', '22207859'),
+    (false, '78901234567', 'Gabriela Lima Oliveira', '1989-09-25', 'gabriela@sempreceub.com', '598c1713e8190ce0ddc064f6f01a117ab818f34a', '6666777788', '22201235'),
+    (false, '89012345678', 'Hugo Costa Pereira', '1993-02-18', 'hugo@sempreceub.com', '74ce7fcefd5b3f91ffb54157247c9902e0e44c72', '2222333344', '22209604'),
+    (false, '90123456789', 'Isabela Oliveira Lima', '1996-07-03', 'isabela@sempreceub.com', '75900329206de39a67e738d34755609835640bb3', '7777666655', '22204532'),
+    (false, '12345678909', 'João Silva Santos', '1987-10-08', 'joao@sempreceub.com', 'fdf079fa33e55fd158c6bfbf01b9852e5d5513a8', '8888999911', '22200295');
+
 
 INSERT INTO tb_setor(setor_nome) VALUES
     ('Coordenacao de campo'),
