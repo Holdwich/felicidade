@@ -35,9 +35,9 @@ class DAO:
         query = (
             "SELECT COUNT(*) FROM tb_pessoa WHERE pessoa_email = '"
             + email
-            + "' AND pessoa_senha = SHA1('"
+            + "' AND pessoa_senha = '"
             + senha
-            + "')"
+            + "'"
         )
 
         resultado = self.ses.execute(text(query))
@@ -48,19 +48,23 @@ class DAO:
 
     def selectCount(self, campo, valor):
         query = (
-            "SELECT COUNT(*) FROM " + self.tabelaStr + " WHERE " + campo + " = " + valor
+            "SELECT COUNT(*) FROM "
+            + self.tabelaStr
+            + " WHERE "
+            + campo
+            + " = '"
+            + valor
+            + "'"
         )
 
-        resultado = self.ses.execute(query)
+        resultado = self.ses.execute(text(query))
 
         count = resultado.scalar()
 
         return count
 
     def selectFromWhere(self, campoReferencia, valor, campoBuscado="*"):
-        query = (
-            f"SELECT {campoBuscado} FROM {self.tabelaStr} WHERE {campoReferencia} = '{valor}'"
-        )
+        query = f"SELECT {campoBuscado} FROM {self.tabelaStr} WHERE {campoReferencia} = '{valor}'"
 
         resultado = self.ses.execute(text(query))
 
