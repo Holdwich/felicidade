@@ -7,7 +7,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('image/background.png');
+            background: url('/static/image/background.png');
             background-size: cover;
             color: #fff;
         }
