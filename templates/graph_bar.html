@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Graph</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+    <canvas id="lineChart" width="900" height="400"></canvas>
+    <script>
+        var barColors = ["red", "green", "blue", "orange", "brown", "purple", "pink", "cyan", "yellow", "gray", "magenta", "teal"];
+        var lineChart = new Chart("lineChart", {
+            type: "bar",
+            data: {
+                labels: {{ labels | safe }},
+                datasets: [
+                    {
+                        label: "Ocorrencias",
+                        data: {{ values | safe }},
+                        backgroundColor: barColors
+                    }
+                ]
+            },
+            options: {
+                responsive: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            suggestedMin: 0
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
