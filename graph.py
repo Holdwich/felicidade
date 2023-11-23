@@ -24,7 +24,3 @@ def home():
     values = [row.total for row in result]
 
     return render_template("graph_bar.html", labels=labels, values=values)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
