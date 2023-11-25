@@ -7,7 +7,7 @@ class DAO:
     def __init__(self, tab):
         # Ligação com o esquema de banco de dados
         engine = create_engine(
-            "mysql+mysqlconnector://root:Gatitcha1!@localhost/felicidade?charset=utf8mb4"
+            "mysql+mysqlconnector://root:passworld@localhost/felicidade?charset=utf8mb4"
         )
 
         # Mapeamento Objeto Relacional com o SQLAlchemy
@@ -64,7 +64,7 @@ class DAO:
         return count
 
     def selectFromWhere(self, campoReferencia, valor, campoBuscado="*"):
-        query = f"SELECT {campoBuscado} FROM {self.tabelaStr} WHERE {campoReferencia} = '{valor}'"
+        query = (f"SELECT {campoBuscado} FROM {self.tabelaStr} WHERE {campoReferencia} = '{valor}'")
 
         resultado = self.ses.execute(text(query))
 
@@ -75,7 +75,11 @@ class DAO:
     def create(self, obj):
         self.ses.add(obj)
         self.ses.commit()
-
+    def insert_tb_pessoa(self, pessoa_cpf, pessoa_nome, pessoa_data_nasc, pessoa_email, pessoa_senha, pessoa_telefone, pessoa_RA, pessoa_permissao = 0):
+        query =(
+        f"INSERT INTO tb_pessoa (pessoa_permissao, pessoa_CPF, pessoa_nome, pessoa_data_nasc, pessoa_email, pessoa_senha, pessoa_telefone, pessoa_RA) VALUES ({pessoa_permissao}, '{pessoa_cpf}', '{pessoa_nome}', '{pessoa_data_nasc}', '{pessoa_email}', '{pessoa_senha}', '{pessoa_telefone}', '{pessoa_RA}');")
+        self.ses.execute(text(query))
+        self.ses.commit()
     def readAll(self):
         lista = self.ses.query(self.tabela).all()
         return lista
