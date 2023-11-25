@@ -16,11 +16,14 @@
                 <div>
                     <a href="https://www.uniceub.br" class="links">CEUB</a>
                     <a href="{{ url_for('home') }}" class="links">Serviços</a>
-                    <a href="{{ url_for('auth.depoimento') }}" class="links">Depoimento</a>
+                    <a href="{{ url_for('depoimento') }}" class="links">Depoimento</a>
                     <a href="#contatos" class="links">Contato</a>
                     <a href="{{ url_for('auth.logout') }}" class="links" id="sair">Sair-Conta</a>
                 </div>
             </div> 
+            {% with messages = get_flashed_messages() %} {% if messages %}
+                <div class="notification">{{ messages[0] }}</div>
+            {% endif %} {% endwith %}
         </div>
         <div id="midedle">
             <div id="left">
@@ -48,7 +51,7 @@
                                 <p id="text_quadrados">Acidente de Transito</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros1">
@@ -61,7 +64,7 @@
                                     <p id="text_quadrados">Assédio</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -73,7 +76,7 @@
                                     <p id="text_quadrados">Desaparecimento de Pessoa</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                         
@@ -91,7 +94,7 @@
                                 <p id="text_quadrados">Extravio / Perdao</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros2">
@@ -104,7 +107,7 @@
                                     <p id="text_quadrados">Fraudes e Apropriaçoes</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -116,7 +119,7 @@
                                     <p id="text_quadrados">Furtos</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                     </nav>
@@ -133,7 +136,7 @@
                                 <p id="text_quadrados">Lesão Corporal</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros2">
@@ -146,7 +149,7 @@
                                     <p id="text_quadrados">Brigas ou Ameaças</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -158,7 +161,7 @@
                                     <p id="text_quadrados">Equipamentos Eletrônicos</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                     </nav>
@@ -175,7 +178,7 @@
                                 <p id="text_quadrados">Instalações</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros2">
@@ -188,7 +191,7 @@
                                     <p id="text_quadrados">Infraestrutura</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -200,7 +203,7 @@
                                     <p id="text_quadrados">Outros</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                     </nav>

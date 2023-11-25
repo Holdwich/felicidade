@@ -26,7 +26,7 @@ def login_post():
 
     # se não logar...
     if checkCount == 0:
-        flash("Senha ou Email incorretos, tente novamente!")
+        flash("Senha e/ou Email incorretos")
         return redirect(url_for("auth.login"))
 
     # se logar...
@@ -143,34 +143,3 @@ def logout():
     session.pop("pessoa_permissao", None)
 
     return redirect(url_for("index"))
-
-
-@auth.route("/depoimento")
-def depoimento():
-    return render_template("Depoimento.html")
-
-
-@auth.route("/depoimento", methods=["POST"])
-def depoimento_post():
-    bd = DAO("ocorrencia")
-    objDB = bd.ocorrencia()
-
-    ocorrencia_descricao = request.form.get("depoimento")
-    id_tipo_ocorrencia_fk = request.form.get("id_tipo_ocorrencia_fk")
-    id_sub_lugar_fk = request.form.get("id_sub_lugar_fk")
-    id_pessoa_fk = session["id"]
-    ocorrencia_status = 0
-    ocorrencia_data_registro = date.today()
-    ocorrencia_data = "não sei oq por"
-
-    objDB.ocorrencia_descricao = ocorrencia_descricao
-    objDB.id_tipo_ocorrencia_fk = id_tipo_ocorrencia_fk
-    objDB.id_sub_lugar_fk = id_sub_lugar_fk
-    objDB.id_pessoa_fk = id_pessoa_fk
-    objDB.ocorrencia_status = ocorrencia_status
-    objDB.ocorrencia_data_registro = ocorrencia_data_registro
-    objDB.ocorrencia_data = ocorrencia_data
-    bd.create(objDB)
-
-    flash("Ocorrência registrada com sucesso!")
-    return redirect(url_for("home"))
