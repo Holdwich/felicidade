@@ -32,15 +32,9 @@ def login_post():
     # se logar...
 
     session["loggedin"] = True
-    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[
-        0
-    ][0]
-    session["nome"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_nome")[0][
-        0
-    ]
-    session["pessoa_permissao"] = DAO.selectFromWhere(
-        bd, "pessoa_email", email, "pessoa_permissao"
-    )[0][0]
+    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[0][0]
+    session["nome"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_nome")[0][0]
+    session["pessoa_permissao"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_permissao")[0][0]
     session["email"] = email
 
     return redirect(url_for("home"))
