@@ -14,7 +14,7 @@ def home():
     if "loggedin" in session and session["loggedin"] is True:
         return render_template("Templatedic.html", nome=session["nome"])
     else:
-        flash("O usuário precisa estar logado para acessar esta página.")
+        flash("Logue para acessar esta página.")
         return redirect(url_for("auth.login"))
 
 
@@ -28,7 +28,7 @@ def depoimento():
     if "loggedin" in session and session["loggedin"] is True:
         return render_template("Depoimento.html")
     else:
-        flash("O usuário precisa estar logado para acessar esta página.")
+        flash("Logue para acessar esta página.")
         return redirect(url_for("auth.login"))
 
 
