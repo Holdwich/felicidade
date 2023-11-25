@@ -2,7 +2,11 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png" />
+    <link
+      rel="shortcut icon"
+      type="x-icon"
+      href="../static/image/iconceub.png"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -10,7 +14,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../static/css/login.css" />
-    <title>Login</title>
+    <title>Login - CEUB Serviços</title>
   </head>
   <body>
     <main>
@@ -20,12 +24,17 @@
             <h2>login</h2>
             <div class="inputbox">
               <ion-icon name="mail-outline"></ion-icon>
-              <input type="text" id="name_input" required />
+              <input name="email" type="text" id="name_input" required />
               <label for="">Email</label>
             </div>
             <div class="inputbox">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input type="password" id="password_input" required />
+              <input
+                name="senha"
+                type="password"
+                id="password_input"
+                required
+              />
               <label for="password">Senha</label>
             </div>
             <div class="forget">
@@ -43,7 +52,7 @@
             <div class="register">
               <p>
                 Não tem uma conta ?
-                <a href="CriarUser.html">Criar conta</a>
+                <a href="{{ url_for('auth.registro') }}">Criar conta</a>
               </p>
             </div>
           </form>

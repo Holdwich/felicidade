@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Home</title>
+    <title>Home - CEUB Serviços</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.50">
     <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png">
@@ -14,24 +14,23 @@
                 <img id="image-ceub" src="../static/image/iconceub.png" alt="Ceub-logo">
                 <div id="text-servicos">Serviços</div>
                 <div>
-                    <a href="https://www.uniceub.br" class="links">Ceub</a>
-                    <a href="Templatedic.html" class="links">Serviços</a>
-                    <a href="Depoimento.html" class="links">Depoimento</a>
+                    <a href="https://www.uniceub.br" class="links">CEUB</a>
+                    <a href="{{ url_for('home') }}" class="links">Serviços</a>
+                    <a href="{{ url_for('auth.depoimento') }}" class="links">Depoimento</a>
                     <a href="#contatos" class="links">Contato</a>
-                    <a href="index.html" class="links" id="sair">Sair-Conta</a>
+                    <a href="{{ url_for('auth.logout') }}" class="links" id="sair">Sair-Conta</a>
                 </div>
             </div> 
         </div>
         <div id="midedle">
             <div id="left">
                 <div class="fixar">
-                    <div id="nomeDoUsuario">Bem Vindo {arthur}</div>
+                    <div id="nomeDoUsuario">Bem Vindo {{nome | safe}}</div>
                 <div id="tiposDeServicos">
                     <ul>
-                        <li><a href="#">SELECT 1</a></li>
-                        <li><a href="#">SELECT 2</a></li>
-                        <li><a href="#">SELECT 3</a></li>
-                        <li><a href="#">SELECT 4</a></li>
+                        <li><a href="#">Registrar Ocorrência</a></li>
+                        <li><a href="#">Listar Ocorrência</a></li>
+                        <li><a href="#">Estatísticas</a></li>
                     </ul>
                 </div>
                 </div>
@@ -49,7 +48,7 @@
                                 <p id="text_quadrados">Acidente de Transito</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros1">
@@ -62,7 +61,7 @@
                                     <p id="text_quadrados">Assédio</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -74,7 +73,7 @@
                                     <p id="text_quadrados">Desaparecimento de Pessoa</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                         
@@ -92,7 +91,7 @@
                                 <p id="text_quadrados">Extravio / Perdao</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros2">
@@ -105,7 +104,7 @@
                                     <p id="text_quadrados">Fraudes e Apropriaçoes</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -117,7 +116,7 @@
                                     <p id="text_quadrados">Furtos</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                     </nav>
@@ -134,7 +133,7 @@
                                 <p id="text_quadrados">Lesão Corporal</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros2">
@@ -147,7 +146,7 @@
                                     <p id="text_quadrados">Brigas ou Ameaças</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -159,7 +158,7 @@
                                     <p id="text_quadrados">Equipamentos Eletrônicos</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                     </nav>
@@ -176,7 +175,7 @@
                                 <p id="text_quadrados">Instalações</p>
                             </div>
                             <div class="botaoQuadro">
-                                <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
+                                <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button id="buttons_quadrados">REGISTRAR OCORRÊNCIA</button></a> 
                             </div>
                         </div>
                         <nav class="quadros2">
@@ -189,7 +188,7 @@
                                     <p id="text_quadrados">Infraestrutura</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                             <div id="quadro_denuncia">
@@ -201,7 +200,7 @@
                                     <p id="text_quadrados">Outros</p>
                                 </div>
                                 <div class="botaoQuadro">
-                                    <a class="buttonLink" href="Depoimento.html" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
+                                    <a class="buttonLink" href="{{ url_for('auth.depoimento') }}" style="font-size: medium;"><button class="buttons_quadrados2">REGISTRAR OCORRÊNCIA</button></a>
                                 </div>
                             </div>
                     </nav>

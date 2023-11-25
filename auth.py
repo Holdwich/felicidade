@@ -3,9 +3,11 @@ from flask import render_template, request, Flask
 import re
 from DAO import DAO
 import hashlib
+from datetime import date
 
 auth = Blueprint("auth", __name__, template_folder="templates")
 app = Flask(__name__)
+
 
 @auth.route("/login")
 def login():
@@ -15,9 +17,9 @@ def login():
 @auth.route("/login", methods=["POST"])
 def login_post():
     email = request.form.get("email")
-    senha = hashlib.sha1(request.form.get("senha").encode('utf-8')).hexdigest()
+    senha = hashlib.sha1(request.form.get("senha").encode("utf-8")).hexdigest()
     # checagem de login aqui
-    
+
     bd = DAO("pessoa")
 
     checkCount = bd.checkLogin(email, senha)
@@ -30,28 +32,33 @@ def login_post():
     # se logar...
 
     session["loggedin"] = True
-    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[0][0]
-    session["nome"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_nome")[0][0]
-    session["pessoa_permissao"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_permissao")[0][0]
+    session["id"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_id_pessoa")[
+        0
+    ][0]
+    session["nome"] = DAO.selectFromWhere(bd, "pessoa_email", email, "pessoa_nome")[0][
+        0
+    ]
+    session["pessoa_permissao"] = DAO.selectFromWhere(
+        bd, "pessoa_email", email, "pessoa_permissao"
+    )[0][0]
     session["email"] = email
 
     return redirect(url_for("home"))
 
 
-
-
-'''@app.route("/Tempplatedic")
+"""@app.route("/Tempplatedic")
 def index():
     resultado = consultar_ocorrencias(session["pessoa_permissao"], session['id'])
 
-    return render_template('Templatedic.html', resultado=resultado)'''
+    return render_template('Templatedic.html', resultado=resultado)"""
+
 
 @auth.route("/registro")
 def registro():
     return render_template("CriarUser.html")
 
 
-@auth.route("/registro", methods=['POST'])
+@auth.route("/registro", methods=["POST"])
 def registro_post():
     email = request.form.get("email")
     senha = request.form.get("senha")
@@ -61,8 +68,6 @@ def registro_post():
     ra = request.form.get("numRegistro")
     telefone = request.form.get("telefone")
     dataNasc = request.form.get("dataNascimento")
-
-
 
     # check de existência
     bd = DAO("pessoa")
@@ -90,7 +95,10 @@ def registro_post():
     elif not confSenha or confSenha != senha:
         flash("Senhas não conferem!")
         return redirect(url_for("auth.registro"))
-    elif not re.match(r"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",cpf,):
+    elif not re.match(
+        r"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
+        cpf,
+    ):
         flash("CPF inválido!")
         return redirect(url_for("auth.registro"))
     elif (
@@ -111,7 +119,7 @@ def registro_post():
         # adicionar ao banco
         objBD = bd.pessoa()
         objBD.pessoa_email = email
-        objBD.pessoa_senha = hashlib.sha1(senha.encode('utf-8')).hexdigest()
+        objBD.pessoa_senha = hashlib.sha1(senha.encode("utf-8")).hexdigest()
         objBD.pessoa_nome = nome
         objBD.pessoa_CPF = cpf
         objBD.pessoa_data_nasc = dataNasc
@@ -136,11 +144,13 @@ def logout():
 
     return redirect(url_for("index"))
 
+
 @auth.route("/depoimento")
 def depoimento():
     return render_template("Depoimento.html")
 
-@auth.route("/depoimento", methods=['POST'])
+
+@auth.route("/depoimento", methods=["POST"])
 def depoimento_post():
     bd = DAO("ocorrencia")
     objDB = bd.ocorrencia()
@@ -162,4 +172,5 @@ def depoimento_post():
     objDB.ocorrencia_data = ocorrencia_data
     bd.create(objDB)
 
+    flash("Ocorrência registrada com sucesso!")
     return redirect(url_for("home"))
