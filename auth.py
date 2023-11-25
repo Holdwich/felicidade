@@ -109,7 +109,7 @@ def registro_post():
     # se não...
     else:
         # adicionar ao banco
-        '''objBD = bd.pessoa
+        objBD = bd.pessoa()
         objBD.pessoa_email = email
         objBD.pessoa_senha = hashlib.sha1(senha.encode('utf-8')).hexdigest()
         objBD.pessoa_nome = nome
@@ -118,7 +118,7 @@ def registro_post():
         objBD.pessoa_telefone = telefone
         objBD.pessoa_RA = ra
         objBD.pessoa_permissao = 0
-        bd.create(objBD)'''
+        bd.create(objBD)
         print()
         bd.insert_tb_pessoa(cpf, nome, dataNasc, email, senha)
 
