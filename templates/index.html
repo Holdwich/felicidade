@@ -9,6 +9,17 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CEUB Serviços</title>
+    <!-- <script>
+      window.addEventListener('load', function() {
+          // Simulate Ctrl + - keypress
+          var event = new KeyboardEvent('keydown', {
+              key: '-',
+              ctrlKey: true
+          });
+
+          window.dispatchEvent(event);
+      });
+  </script> -->
     <style>
       header {
         text-align: center;
@@ -29,6 +40,7 @@
     <header>
       <img src="../static/image/Ceub.v2.1.svg" usemap="#site" alt="CEUBsvg" />
       <map name="site">
+        
         <area
           shape="rect"
           coords="35,2,175,75"
@@ -36,29 +48,20 @@
           alt="CEUB"
           href="https://www.uniceub.br/"
         />
-        <area
-          shape="rect"
-          coords="764,18,863,66"
-          title="Ceub"
-          href="https://www.uniceub.br/"
+        <area shape="rect" 
+        coords="1027,13,1138,69" 
+        title="Ceub"
+        alt="CEUB"
+        href="https://www.uniceub.br/"
         />
-        <area
-          shape="rect"
-          coords="923,25,1032,58"
-          title="Login"
-          alt="Login"
-          href="{{ url_for('auth.login') }}"
+        <!-- Ceub -->
+        <area shape="rect" 
+        coords="1190,16,1308,66" 
+        title="Login"
+        alt="Login"
+        href="{{ url_for('auth.login') }}"
         />
-        <!-- Login -->
-        <area
-          shape="rect"
-          coords="1088,17,1311,65"
-          title="Depoimento"
-          alt="Depoimento"
-          href="Depoimento.html"
-        />
-        <!-- FRONT, REMOVER DEPOIMENTO, E AJUSTAR IMAGEM P/ REMOVER DEPOIMENTO -->
-        <!-- Depoimento -->
+        <!-- Login -->      
         <area
           shape="rect"
           coords="1371,13,1551,69"
@@ -67,7 +70,6 @@
           href="{{ url_for('auth.registro') }}"
         />
         <!-- Inscreve se -->
-
         <area
           shape="rect"
           coords="3,713,359,1103"
