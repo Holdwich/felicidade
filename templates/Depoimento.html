@@ -28,17 +28,10 @@
                 id="depoimento_input"
                 name="depoimento"
                 rows="3"
-                required
-                placeholder="Insira seu depoimento"
+                placeholder="Insira sua descrição de depoimento"
               ></textarea>
             </div>
             <!-- LEMBRETE COM DICAS PARA DEPOIMENTO -->
-            <button class="popup" onclick="pop()">
-              Deseja dicas para depoimento?
-              <span class="popuptext" id="myPopup"
-                >Insira localização, bloco, número sala, etc</span
-              >
-            </button>
             <div class="inputbox">
               <select name="" id="select_box">
                 <option value="Acidente de Trânsito">
@@ -783,7 +776,7 @@
                 accept="image/*,video/*"
               />
             </div>
-            <button type="submit">Enviar</button>
+            <button type="button" onclick="Enviar()">Enviar</button>
           </form>
         </div>
       </div>
@@ -793,7 +786,7 @@
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
     ></script>
-    <script
+    <scriptFe
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
@@ -810,10 +803,7 @@
           alert("Preencha o campo de depoimento antes de enviar.");
         }
       };
-      function pop() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-      }
+
       function Escolha() {
         var selectBox = document.getElementById("select_box1");
         var selectedValue = selectBox.value;
