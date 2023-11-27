@@ -25,6 +25,8 @@
           {% endif %} {% endwith %}
           <h2>login</h2>
           <form action="/login" method="post">
+            <div id="hi">
+            <div>
             <div class="inputbox">
               <ion-icon name="mail-outline"></ion-icon>
               <input name="email" type="text" id="name_input" required />
@@ -52,12 +54,14 @@
               </label>
             </div>
             <button onclick="Enviar()">Login</button>
+
             <div class="register">
               <p>
-                Não tem uma conta ?
+                <b><i>Não tem uma conta ? </i></b>&nbsp;
                 <a href="{{ url_for('auth.registro') }}">Criar conta</a>
               </p>
             </div>
+          </div>
           </form>
         </div>
       </div>
