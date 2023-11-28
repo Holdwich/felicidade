@@ -17,12 +17,7 @@ session_factory = sessionmaker(bind=engine)
 ses = session_factory()
 
 
-def user_permissao(user):
-    pessoa_permissao = ses.query(user_table).filter(user_table.nome.ilike(user))
-    for c in pessoa_permissao:
-        pessoa_permissao = c.permissao
-        id = c.id
-    return pessoa_permissao
+
 
 
 
@@ -36,7 +31,7 @@ def consultar_ocorrencias(permissao, id):
     if lst.first():
         result_html = '<ul>'
         for obj in lst:
-            result_html += f'<li><a href="#">{obj.local1}</a></li>'
+            result_html += f'<li><a href="#">{obj}</a></li>'
 
         result_html += '</ul>'
         return result_html

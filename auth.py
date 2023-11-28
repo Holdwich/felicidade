@@ -19,7 +19,7 @@ def login_post():
     email = request.form.get("email")
     senha = hashlib.sha1(request.form.get("senha").encode("utf-8")).hexdigest()
     # checagem de login aqui
-
+    senha = request.form.get("senha")
     bd = DAO("pessoa")
 
     checkCount = bd.checkLogin(email, senha)
@@ -50,6 +50,24 @@ def index():
 @auth.route("/registro")
 def registro():
     return render_template("CriarUser.html")
+
+@auth.route("/ocorrencias_lista")
+def ocorrencias_lista():
+    bd = DAO("ocorrencia")
+
+    if session['pessoa_permissao']:
+        lst = bd.readAll()
+    else:
+        lst = bd.selectFromWhere("id_pessoa_fk", session['id'])
+
+
+    result_html = '<ul>'
+    for obj in lst:
+        result_html += f'<li><a href="#">{obj.ocorrencia_descricao}</a></li>'
+    result_html += '</ul>'
+    return render_template("ocorrencias.html", result_html=result_html)
+
+
 
 
 @auth.route("/registro", methods=["POST"])

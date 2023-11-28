@@ -7,7 +7,7 @@ class DAO:
     def __init__(self, tab):
         # Ligação com o esquema de banco de dados
         engine = create_engine(
-            "mysql+mysqlconnector://root:passworld@localhost/felicidade?charset=utf8mb4"
+            "mysql+mysqlconnector://root:Gatitcha1@localhost/felicidade?charset=utf8mb4"
         )
 
         # Mapeamento Objeto Relacional com o SQLAlchemy
@@ -21,7 +21,7 @@ class DAO:
         self.sublugar = db.classes.tb_sub_lugar
         self.tipo_ocorrencia = db.classes.tb_tipo_ocorrencia
 
-        self.tabela = eval("db.classes.tb_" + tab)
+        self.tabela = eval("db.classes.tb_" + str(tab))
         self.tabelaStr = "tb_" + tab
 
         self.id = "id_" + tab
