@@ -99,18 +99,29 @@ ul{
     backdrop-filter: blur(5px);
     padding: 20px;
     padding-left: 40px;
+    list-style-type: none;
+    /* background-color: crimson; */
+}
+li{
+    padding-top:    8px;
+    padding-bottom: 8px;
+    
 }
 li a{
-    margin-left: 20px;
+    margin-left: -15px;
     margin-top: 5px;
-    font-size: large;
+    font-size:medium;
     color: #FAF9FA;
     font-family: sans-serif;
     text-decoration: none;
+    /* background-color: burlywood; */
+    /* padding-left: 0; */
+    margin:100px 0px 40px -15px;
+    
 }
 li a:hover {
-
-    color: rgb(227, 177, 239) ;
+    
+    color: #a2d2ff ;
     text-decoration: underline ;
 }
 #content{
