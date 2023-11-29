@@ -1,5 +1,5 @@
 from flask import *
-from flask import render_template, request, Flask
+from flask import render_template, request, Flask, make_response
 import re
 from DAO import DAO
 import hashlib
@@ -8,7 +8,7 @@ from datetime import date
 auth = Blueprint("auth", __name__, template_folder="templates")
 app = Flask(__name__)
 
-
+    
 @auth.route("/login")
 def login():
     return render_template("login.html")
@@ -145,3 +145,5 @@ def logout():
     session.pop("pessoa_permissao", None)
 
     return redirect(url_for("index"))
+
+
