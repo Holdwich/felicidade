@@ -264,6 +264,16 @@ li a:hover {
     /* float: left; */
     clear: both;
 }
+#up_icon{
+    filter: invert(100%);
+    /* filter: invert(100%) sepia(100%) saturate(500%) hue-rotate(90deg); */
+    width: 5%;
+    position: relative;
+    /* background-color:aqua; */
+    left: 90%;
+    top: 65%;
+    
+}
 #final-bar {
     color: #fff;
     /* position: absolute;
