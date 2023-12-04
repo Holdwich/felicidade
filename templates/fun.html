@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>Home - CEUB Serviços</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.50">
     <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png">
     <link rel="stylesheet" href="../static/css/template.css">
+    <!---->
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+    <style>
+        body {
+            margin: 0px;
+            /* background-color: rgb(201, 198, 198) */
+            background: linear-gradient(#44044C 7%, #A486A6, #A486A6 60%, #A486A6 20%, #44044C);
+        }
+
+        .col-sm-12 col-md-5 {
+            margin-left: 0px;
+        }
+
+        .pagination {
+            position: relative;
+            top: -100px;
+            left: -200px;
+            background-color: transparent;
+            border: none;
+            align-items: center;
+            backdrop-filter: blur(0px);
+
+        }
+    </style>
 </head>
+
 <body>
     <a name="cima"></a>
     <div id="conteiner_principal">
@@ -21,28 +56,68 @@
                     <a href="#contatos" class="links"> Contato </a>
                     <a href="{{ url_for('auth.logout') }}" class="links" id="sair"> Sair-Conta </a>
                 </div>
-            </div> 
+            </div>
             {% with messages = get_flashed_messages() %} {% if messages %}
-                <div class="notification">{{ messages[0] }}</div>
+            <div class="notification">{{ messages[0] }}</div>
             {% endif %} {% endwith %}
         </div>
         <div id="midedle">
-            <div id="left">
+            <div id="left" style=" width: 20%; height: 700px;">
                 <div class="fixar">
-                    <div id="nomeDoUsuario">Bem Vindo {{nome | safe}}</div>
-                <div id="tiposDeServicos">
-                    <ul>
-                        <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
-                        <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
-                        <li><a href="#">Estatísticas</a></li>
-                    </ul>
-                </div>
+                    <div id="nomeDoUsuario" style="width: 90%; margin-bottom: 10px;">Bem Vindo {{nome | safe}}</div>
+                    <div id="tiposDeServicos" style="width: 100%; ">
+                        <ul style="width: 90%;">
+                            <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
+                            <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
+                            <li><a href="#">Estatísticas</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div id="content">
-               <div class="novaClasse">
-                    
-               </div>
+            <div id="content" style=" width: 80%; margin-top: 40px; height: 900px;">
+                <div class="novaClasse" style="color: white;">
+                    <div class="container" style="width:90%">
+                        <table class="table table-striped table-bordered" id="sortTable" style="color: white;">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Ocorrencia</th>
+                                    <th>Lugar</th>
+                                    <th>Email</th>
+                                    <th>Data</th>
+                                    <th>Usuario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Assédio</td>
+                                    <td>Bloco 3</td>
+                                    <td>vini@yahoo.com</td>
+                                    <td>09/08/2022</td>
+                                    <td>Vinicius Serrao</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Lesão Corporal</td>
+                                    <td>Bloco 2</td>
+                                    <td>amelia@sempreceub.com</td>
+                                    <td>05/08/2023</td>
+                                    <td>Amelia</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Equipamentos Eletrônicos</td>
+                                    <td>Bloco 12</td>
+                                    <td>zee@gmail.com</td>
+                                    <td>05/07/1990</td>
+                                    <td>Arthur</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        $('#sortTable').DataTable();
+                    </script>
+                </div>
             </div>
         </div>
         <div id="footer">
@@ -52,12 +127,13 @@
                 </a>
                 <p id="text_final"><br> De Atendimento: (61) 3966-1201 - central.atendimento@uniceub.br</p>
                 <p id="text_final">Unidades:<br>
-                Campus da Asa Norte: SEPN 707/907 - Campus Universitário<br>
-                Campus II de Taguatinga: QS 1, Lote 1/17, Rua 214<br>
-                Centro de Atendimento à Comunidade: Setor Comercial Sul, Quadra 1 - Edifício União, Brasília-DF</p>
+                    Campus da Asa Norte: SEPN 707/907 - Campus Universitário<br>
+                    Campus II de Taguatinga: QS 1, Lote 1/17, Rua 214<br>
+                    Centro de Atendimento à Comunidade: Setor Comercial Sul, Quadra 1 - Edifício União, Brasília-DF</p>
             </div>
             <a name="contatos"></a>
         </div>
     </div>
 </body>
+
 </html>
