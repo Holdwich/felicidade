@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Home - CEUB Serviços</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.50">
+    <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png">
+    <link rel="stylesheet" href="../static/css/template.css">
+</head>
+<body>
+    <a name="cima"></a>
+    <div id="conteiner_principal">
+        <div id="header">
+            <div id="user-bar1">
+                <img id="image-ceub" src="../static/image/iconceub.png" alt="Ceub-logo">
+                <div id="text-servicos">Serviços</div>
+                <div>
+                    <a href="https://www.uniceub.br" class="links">CEUB </a>
+                    <a href="{{ url_for('home') }}" class="links"> Serviços </a>
+                    <a href="{{ url_for('depoimento') }}" class="links"> Depoimento </a>
+                    <a href="#contatos" class="links"> Contato </a>
+                    <a href="{{ url_for('auth.logout') }}" class="links" id="sair"> Sair-Conta </a>
+                </div>
+            </div> 
+            {% with messages = get_flashed_messages() %} {% if messages %}
+                <div class="notification">{{ messages[0] }}</div>
+            {% endif %} {% endwith %}
+        </div>
+        <div id="midedle">
+            <div id="left">
+                <div class="fixar">
+                    <div id="nomeDoUsuario">Bem Vindo {{nome | safe}}</div>
+                <div id="tiposDeServicos">
+                    <ul>
+                        <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
+                        <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
+                        <li><a href="#">Estatísticas</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div id="content">
+               <div class="novaClasse">
+                    
+               </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="final-bar">
+                <a href="#cima">
+                    <img src="../static/image/upicon.png" id="up_icon" title="Vai Para Cima">
+                </a>
+                <p id="text_final"><br> de Atendimento: (61) 3966-1201 - central.atendimento@uniceub.br</p>
+                <p id="text_final">Unidades:<br>
+                Campus da Asa Norte: SEPN 707/907 - Campus Universitário<br>
+                Campus II de Taguatinga: QS 1, Lote 1/17, Rua 214<br>
+                Centro de Atendimento à Comunidade: Setor Comercial Sul, Quadra 1 - Edifício União, Brasília-DF</p>
+            </div>
+            <a name="contatos"></a>
+        </div>
+    </div>
+</body>
+</html>
