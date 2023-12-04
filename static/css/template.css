@@ -125,11 +125,12 @@ li a{
     /* background-color: burlywood; */
     /* padding-left: 0; */
     margin:100px 0px 40px -15px;
+    transition-duration: 1600ms;
     
 }
 li a:hover {
     
-    color: #a2d2ff ;
+    color: #6411ad ;
     text-decoration: underline ;
 }
 #content{
@@ -154,6 +155,7 @@ li a:hover {
     width: 350px;
     height: 360px;
     position: relative;
+    /* background-color: yellow; */
     
 } 
 .himage{
@@ -200,6 +202,7 @@ li a:hover {
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: large;
+    transition-duration: 1700ms;
     /* display: flex;
     justify-content: center; 
     align-items: center; */
@@ -221,6 +224,7 @@ li a:hover {
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: large;
+    transition-duration: 1700ms;
     /* display: flex;
     justify-content: center; 
     align-items: center; */
@@ -230,10 +234,10 @@ li a:hover {
     /* flex: 1; */
 }
 #buttons_quadrados:hover {
-    background-color: #551c3d;
+    background-color: #6411ad;
 }
 .buttons_quadrados2:hover{
-    background-color: #551c3d;
+    background-color: #6411ad;
 }
 .buttonLink{
     color: #FAF9FA;
