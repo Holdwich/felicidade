@@ -42,18 +42,26 @@ nav{
 
 .links{
     position: relative;
-    left: 85%;
+    left: 55%;
     top: 6px;
     margin-left: 10px; 
     font-size: x-large;
     color: #FAF9FA;
     font-family: sans-serif;
     text-decoration: none;
-}
+    padding: 10px;
+    /* background-color: #a2d2ff; */
+    border-radius: 6px;
+    transition-property: all;
+    transition-duration: 1s;
+    }
 .links:hover {
 
-    color: rgb(227, 177, 239) ;
+    /* color: rgb(227, 177, 239) ; */
     text-decoration: underline ;
+    background-color: rgb(234, 4, 138);
+    border-radius: 6px;
+    
 }
 #left{
     display: flex;
