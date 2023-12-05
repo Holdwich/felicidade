@@ -129,8 +129,6 @@ def registro_post():
         objBD.pessoa_RA = ra
         objBD.pessoa_permissao = 0
         bd.create(objBD)
-        print()
-        bd.insert_tb_pessoa(cpf, nome, dataNasc, email, senha)
 
         flash("Cadastrado com sucesso!")
         return redirect(url_for("auth.login"))
