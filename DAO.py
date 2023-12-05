@@ -31,6 +31,27 @@ class DAO:
         self.ses = session_factory()
         # -------------------------------------------------------------------------------------------------
 
+    def consultarEstatisticastipo(self):
+        result = self.ses.query(self.tipo_ocorrencia.tipo_ocorrencia_nome, func.count(self.ocorrencia.id_ocorrencia).label('total')). \
+            join(self.ocorrencia, self.ocorrencia.id_tipo_ocorrencia_fk == self.tipo_ocorrencia.id_tipo_ocorrencia). \
+            group_by(self.tipo_ocorrencia.tipo_ocorrencia_nome).all()
+
+        return result
+    
+    def consultarEstatisticaslugar(self): 
+        result = self.ses.query(self.lugar.lugar_nome, func.count(self.ocorrencia.id_ocorrencia).label('total')). \
+            join(self.sublugar,self.lugar.id_lugar == self.sublugar.id_lugar_fk). \
+            join(self.ocorrencia, self.ocorrencia.id_sub_lugar_fk == self.sublugar.id_sub_lugar). \
+            group_by(self.lugar.lugar_nome).all()
+        return result
+
+    def consultarEstatisticasdata(self):
+        result = self.ses.query(func.MONTH(self.ocorrencia.ocorrencia_data_registro).label('mes'),
+                        func.count(self.ocorrencia.id_ocorrencia).label('total')) \
+            .group_by('mes') \
+            .order_by('mes').all()
+        return result
+
     def checkLogin(self, email, senha):
         query = (
             "SELECT COUNT(*) FROM tb_pessoa WHERE pessoa_email = '"
