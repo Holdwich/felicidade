@@ -1,39 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Graph</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.50">
+    <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png">
+    <link rel="stylesheet" href="../static/css/template.css">
+    <title>Estatísticas</title>
+    <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(#44044C 7%, #A486A6, #A486A6 80%, #A486A6 0%, #44044C);
+
+        }
+
+        header {
+            /* background-color: rgb(114, 27, 114); */
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            /* border-radius: 10px; */
+            background-color:rgba(234, 4, 138, 0.753);
+            /* background-color: red; */
+            backdrop-filter: blur(0px);
+            /* Define a cor de fundo como vermelho */
+            /* padding: 10px; */
+            text-align: center;
+            border-bottom: 2px solid white;
+            width: 79%;
+            /* height: 1500px; */
+            /* background-color: pink; */
+            /* float: left; */
+            margin-left: 21%;
+            margin-bottom: 0;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+
+        }
+
+        #mensagem {
+            margin-top: 30px;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        /* Adicione estilos CSS diretamente ou no arquivo graph_bar.css */
+        #chart-container {
+            display: flex;
+            /* Alteração para exibir as barras na horizontal */
+        }
+
+        .bar {
+            margin: 0 30px;
+            background-color: #3498db;
+            /* Cor de fundo azul, pode ser ajustada conforme necessário */
+            color: white;
+        }
+
+        #meuGrafico {
+            margin-left: 7%;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            /* border-radius: 20px; */
+            background-color: rgba(249, 241, 246, 0.753);
+            /* background: linear-gradient(#ffa2d8, #c8ccfa); */
+            /* background-color: red; */
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            margin-top: 0;
+            padding-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <canvas id="lineChart" width="900" height="400"></canvas>
-    <script>
-        var barColors = ["red", "green", "blue", "orange", "brown", "purple", "pink", "cyan", "yellow", "gray", "magenta", "teal"];
-        var lineChart = new Chart("lineChart", {
-            type: "bar",
-            data: {
-                labels: {{ labels | safe }},
-                datasets: [
-                    {
-                        label: "Ocorrencias",
-                        data: {{ values | safe }},
-                        backgroundColor: barColors
+    <a name="cima"></a>
+    <div id="conteiner_principal">
+        <div id="header">
+            <div id="user-bar1">
+                <img id="image-ceub" src="../static/image/iconceub.png" alt="Ceub-logo">
+                <div id="text-servicos">Serviços</div>
+                <div>
+                    <a href="https://www.uniceub.br" class="links">CEUB</a>
+                    <a href="{{ url_for('home') }}" class="links">Serviços</a>
+                    <a href="{{ url_for('depoimento') }}" class="links">Depoimento</a>
+                    <a href="#contatos" class="links">Contato</a>
+                    <a href="{{ url_for('auth.logout') }}" class="links" id="sair">Sair-Conta</a>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div class="notification">{{ messages[0] }}</div>
+            {% endif %} {% endwith %}
+        </div>
+        <div id="midedle" style="height: 700px;">
+            <div id="left" style="height: 600px;">
+                <div class="fixar">
+                    <div id="nomeDoUsuario">Bem Vindo {{nome | safe}}</div>
+                    <div id="tiposDeServicos">
+                        <ul>
+                            <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
+                            <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
+                            <li><a href="#">Estatísticas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="grafo">
+                <header>
+                    <h1>Estatísticas</h1>
+                    <button onclick="mostrarGrafico('Pessoa')">Pessoa</button>
+                    <button onclick="mostrarGrafico('Data')">Data</button>
+                    <button onclick="mostrarGrafico('Lugar')">Lugar</button>
+                </header>
+
+                <div id="mensagem"></div>
+                <div id="chart-container"></div>
+
+                <script>
+                    const data = {
+                        Pessoa: [5, 3, 5, 8, 4, 5, 6, 7],
+                        Data: [2, 4, 6, 8, 1],
+                        Lugar: [3, 6, 2, 4, 8, 33, 44, 3, 53, 23, 23, 11, 22],
+                    };
+
+                    let currentCategoria = 'Pessoa';
+                    let meuGrafico; // Variável para armazenar a instância do gráfico Chart.js
+
+                    function createChart() {
+                        const chartContainer = document.getElementById('chart-container');
+                        chartContainer.innerHTML = '';
+
+                        const canvas = document.createElement('canvas');
+                        canvas.id = 'meuGrafico';
+                        chartContainer.appendChild(canvas);
+
+                        const ctx = canvas.getContext('2d');
+
+                        meuGrafico = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: Array.from({ length: data[currentCategoria].length }, (_, i) => `Label ${i + 1}`),
+                                datasets: [{
+                                    label: `Número de Ocorrências por ${currentCategoria}`,
+                                    data: data[currentCategoria],
+                                    backgroundColor: 'steelblue',
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
                     }
-                ]
-            },
-            options: {
-                responsive: false,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            suggestedMin: 0
+
+                    function mostrarGrafico(categoria) {
+
+                        currentCategoria = categoria;
+
+                        if (meuGrafico) {
+                            meuGrafico.destroy(); // Destruir a instância anterior do gráfico para criar uma nova
                         }
-                    }]
-                }
-            }
-        });
-    </script>
+
+                        createChart();
+                    }
+                    createChart();
+                </script>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="final-bar">
+                <a href="#cima">
+                    <img src="../static/image/upicon.png" id="up_icon" title="Vai Para Cima">
+                </a>
+                <p id="text_final"><br> De Atendimento: (61) 3966-1201 - central.atendimento@uniceub.br</p>
+                <p id="text_final">Unidades:<br>
+                    Campus da Asa Norte: SEPN 707/907 - Campus Universitário<br>
+                    Campus II de Taguatinga: QS 1, Lote 1/17, Rua 214<br>
+                    Centro de Atendimento à Comunidade: Setor Comercial Sul, Quadra 1 - Edifício União, Brasília-DF
+                </p>
+            </div>
+            <a name="contatos"></a>
+        </div>
+    </div>
+
 </body>
+
 </html>
