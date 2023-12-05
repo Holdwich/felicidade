@@ -2,6 +2,9 @@ from flask import *
 from auth import auth
 from DAO import DAO
 from datetime import date
+from sqlalchemy import create_engine, func
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.automap import automap_base
 
 app = Flask(__name__)
 app.register_blueprint(auth)
@@ -57,14 +60,33 @@ def depoimento_post():
     flash("Ocorrência registrada com sucesso!")
     return redirect(url_for("home"))
 
+@app.route("/estatisticas")
+def estatisticas():
+
+    Ocorrencias = DAO("ocorrencia")
+
+    result = Ocorrencias.consultarEstatisticastipo()
+    tipo_labels = [row.tipo_ocorrencia_nome for row in result]
+    tipo_values = [row.total for row in result]
+
+    lugar_result = Ocorrencias.consultarEstatisticaslugar()
+    lugar_labels = [row.lugar_nome for row in lugar_result]
+    lugar_values = [row.total for row in lugar_result]
+
+    data_result = Ocorrencias.consultarEstatisticasdata()
+    data_labels = [row.mes for row in data_result]
+    data_values = [row.total for row in data_result]
+
+    return render_template("graph_bar.html", tipo_labels=tipo_labels, tipo_values=tipo_values,lugar_values=lugar_values,data_values=data_values)
+
 #rotas de erro
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html')
 
-@app.errorhandler(Exception)
+'''@app.errorhandler(Exception)
 def internal_server_error(error):
-    return render_template('500_error.html')
+    return render_template('500_error.html')'''
 
 
 
