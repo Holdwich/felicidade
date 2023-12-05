@@ -1,0 +1,43 @@
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background-color: #e7048a; */
+	background: linear-gradient(#8a079c 5%,#caa6cc );
+	perspective: 200px;
+}
+/* .loading{
+	width: 100px;
+	height: 100px;
+	background-color: white;
+
+	border-radius: 12px;
+	animation: loading 2s linear infinite;
+} */
+.loading {
+	width: 170px;
+	height: 170px;
+	background-color: white;
+	border-radius: 12px;
+	animation: loading 2s linear infinite;
+	/* background-image: url('iconceub.png'); */
+	/* background-size: 25%;  */
+  }
+  
+@keyframes loading{
+	0%{
+		transform: rotateX(0) rotateY(0);
+	}
+	50%{
+		transform: rotateX(0) rotateY(180deg);
+	}
+	100%{
+		transform: rotateX(180deg) rotateY(180deg);
+	}
+}
+
+
+/* e7048a */
+/* 6411ad */
+/* FAF9FA */

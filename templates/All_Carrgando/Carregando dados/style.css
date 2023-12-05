@@ -1,0 +1,25 @@
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Lato', sans-serif;
+	/* background-color: #e7048a; */
+	/* background: linear-gradient(#ffd6ff 5%,#bbd0ff ); */
+	background: linear-gradient(#a480f2 5%,#4cc9f0 );
+}
+h1{
+	font-size: 180px;
+	text-align: center;
+	text-transform: uppercase;
+	background: url(iconceub.png);
+	background-size: 3%; 
+	-webkit-background-clip: text;
+	color: transparent;
+	animation: textbackground 20s linear infinite;
+}
+
+@keyframes textbackground{
+	from{background-position: 0 0;}
+	to{background-position: 100% 100%;}
+}
