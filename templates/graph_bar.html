@@ -112,7 +112,7 @@
                         <ul>
                             <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
                             <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
-                            <li><a href="#">Estatísticas</a></li>
+                            <li><a href="{{ url_for('estatisticas')}}">Estatísticas</a></li>
                         </ul>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
             <div id="grafo">
                 <header>
                     <h1>Estatísticas</h1>
-                    <button onclick="mostrarGrafico('Pessoa')">Pessoa</button>
+                    <button onclick="mostrarGrafico('Tipo')">Tipo</button>
                     <button onclick="mostrarGrafico('Data')">Data</button>
                     <button onclick="mostrarGrafico('Lugar')">Lugar</button>
                 </header>
@@ -130,12 +130,12 @@
 
                 <script>
                     const data = {
-                        Pessoa: [5, 3, 5, 8, 4, 5, 6, 7],
-                        Data: [2, 4, 6, 8, 1],
-                        Lugar: [3, 6, 2, 4, 8, 33, 44, 3, 53, 23, 23, 11, 22],
+                        Tipo: {{ tipo_values | safe}},
+                        Data: {{ data_values | safe}},
+                        Lugar: {{ lugar_values | safe}},
                     };
 
-                    let currentCategoria = 'Pessoa';
+                    let currentCategoria = 'Tipo';
                     let meuGrafico; // Variável para armazenar a instância do gráfico Chart.js
 
                     function createChart() {
@@ -151,7 +151,7 @@
                         meuGrafico = new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: Array.from({ length: data[currentCategoria].length }, (_, i) => `Label ${i + 1}`),
+                                labels: {{ tipo_labels | safe}},
                                 datasets: [{
                                     label: `Número de Ocorrências por ${currentCategoria}`,
                                     data: data[currentCategoria],
