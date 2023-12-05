@@ -69,15 +69,17 @@ ul li:nth-child(9){
 ul li:nth-child(10){
   animation-delay: 1.8s;
 }
-ul li:nth-child(11){
+
+/* ul li:nth-child(11){
   animation-delay: 2s;
 }
-/* ul li:nth-child(11){
-  animation-delay: 2.2s;
-}
 ul li:nth-child(11){
+  animation-delay: 2.2s; 
+}*/
+
+/* ul li:nth-child(11){
   animation-delay: 2.4s;
 }
 ul li:nth-child(11){
-  animation-delay: 2.6s;
-} */
+  animation-delay: 2.6s; 
+}*/
