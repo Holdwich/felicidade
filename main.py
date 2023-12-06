@@ -84,9 +84,9 @@ def estatisticas():
 def page_not_found(error):
     return render_template('page_not_found.html')
 
-'''@app.errorhandler(Exception)
+@app.errorhandler(Exception)
 def internal_server_error(error):
-    return render_template('500_error.html')'''
+    return render_template('500_error.html')
 
 
 
