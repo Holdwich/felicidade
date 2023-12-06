@@ -121,7 +121,7 @@
                 <header>
                     <h1>Estatísticas</h1>
                     <button onclick="mostrarGrafico('Tipo')">Tipo</button>
-                    <button onclick="mostrarGrafico('Data')">Data</button>
+                    <button onclick="mostrarGrafico('Mês')">Mês</button>
                     <button onclick="mostrarGrafico('Lugar')">Lugar</button>
                 </header>
 
@@ -131,12 +131,12 @@
                 <script>
                     const data = {
                         Tipo: {{ tipo_values | safe}},
-                        Data: {{ data_values | safe}},
+                        Mês: {{ mes_values | safe}},
                         Lugar: {{ lugar_values | safe}},
                     };
 
                     let currentCategoria = 'Tipo';
-                    let meuGrafico; // Variável para armazenar a instância do gráfico Chart.js
+                    let meuGrafico;
 
                     function createChart() {
                         const chartContainer = document.getElementById('chart-container');
@@ -148,10 +148,12 @@
 
                         const ctx = canvas.getContext('2d');
 
+                        const labels = getLabelsdaCategoria(currentCategoria);
+
                         meuGrafico = new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: {{ tipo_labels | safe}},
+                                labels: labels,
                                 datasets: [{
                                     label: `Número de Ocorrências por ${currentCategoria}`,
                                     data: data[currentCategoria],
@@ -168,12 +170,23 @@
                         });
                     }
 
+                    function getLabelsdaCategoria(categoria) {
+                        switch (categoria) {
+                            case 'Tipo':
+                                return {{ tipo_labels | safe}};
+                            case 'Mês':
+                                return {{ mes_labels | safe}};
+                            case 'Lugar':
+                                return {{ lugar_labels | safe}};
+                        }
+                    }
+
                     function mostrarGrafico(categoria) {
 
                         currentCategoria = categoria;
 
                         if (meuGrafico) {
-                            meuGrafico.destroy(); // Destruir a instância anterior do gráfico para criar uma nova
+                            meuGrafico.destroy();
                         }
 
                         createChart();
