@@ -91,7 +91,7 @@ INSERT INTO tb_setor(setor_nome) VALUES
     ('Setor de infraestrutura');
 
 INSERT INTO tb_tipo_ocorrencia(id_setor_fk,tipo_ocorrencia_nome) VALUES
-    (1,'Acidente de trabalho'),
+    (1,'Acidente de transito'),
     (1,'Assedio'),
     (1,'Desaparecimento de pessoa'),
     (1,'Extravio/Perda'),
