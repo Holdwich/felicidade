@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    
 
     <style>
         .links:hover {
@@ -53,11 +54,13 @@
 </head>
 
 <body>
+    
     <a name="cima"></a>
     <div id="conteiner_principal">
         <div id="header">
             <div id="user-bar1">
                 <img id="image-ceub" src="../static/image/iconceub.png" alt="Ceub-logo">
+                
                 <div id="text-servicos">Serviços</div>
                 <div>
                     <a href="https://www.uniceub.br" class="links">CEUB </a>
@@ -80,6 +83,7 @@
                             <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
                             <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
                             <li><a href="{{ url_for('estatisticas') }}">Estatísticas</a></li>
+                            <li><a href="{{ url_for('exportar_excel') }}">Exportar Excel</a></li>
                         </ul>
                     </div>
                 </div>

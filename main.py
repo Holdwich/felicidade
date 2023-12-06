@@ -80,7 +80,7 @@ def estatisticas():
 
     return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values)
 
-@app.route("/exportar_excel", methods=["POST"])
+@app.route("/exportar_excel")
 def exportar_excel():
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -93,13 +93,14 @@ def exportar_excel():
     ocorrencia_data_list = [row.DATA_OCORRIDO for row in result]
     ocorrencia_data_registro_list = [row.DATA_REGISTRO for row in result]
     ocorrencia_status_list = [row.OCORRENCIA_STATUS for row in result]
+    status_legivel_list = ['Em Aberto' if status == 0 else 'Resolvido' for status in ocorrencia_status_list]
     lugar_nome_list = [row.LOCAL for row in result]
     sublugar_nome_list = [row.SUB_LOCAL for row in result]
     headers = ["SETOR", "TIPO_OCORRENCIA", "NOME", "DESCRICAO", "DATA_OCORRIDO", "DATA_REGISTRO", "OCORRENCIA_STATUS", "LOCAL", "SUB_LOCAL"]
     for col_num, header in enumerate(headers, 1):
         ws.cell(row=1, column=col_num, value=header)
     for row_num, data in enumerate(zip(setor_list, tipo_ocorrencia_list, pessoa_nome_list, ocorrencia_descricao_list, 
-                        ocorrencia_data_list, ocorrencia_data_registro_list, ocorrencia_status_list, lugar_nome_list, sublugar_nome_list), 2):
+                        ocorrencia_data_list, ocorrencia_data_registro_list, status_legivel_list, lugar_nome_list, sublugar_nome_list), 2):
         for col_num, value in enumerate(data, 1):
             ws.cell(row=row_num, column=col_num, value=value)
     wb.save("Ocorrencias.xlsx")
@@ -111,10 +112,10 @@ def exportar_excel():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html')
-
+'''
 @app.errorhandler(Exception)
 def internal_server_error(error):
-    return render_template('500_error.html')
+    return render_template('500_error.html')'''
 
 
 
