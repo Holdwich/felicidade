@@ -79,6 +79,33 @@ def estatisticas():
 
     return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values)
 
+@app.route("/exportar_excel", methods=["POST"])
+def exportar_excel():
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    Excel = DAO("ocorrencia")
+    result = Excel.consultarOcorrencias()
+    setor_list = [row.SETOR for row in result]
+    tipo_ocorrencia_list = [row.TIPO_OCORRENCIA for row in result]
+    pessoa_nome_list = [row.NOME for row in result]
+    ocorrencia_descricao_list = [row.DESCRICAO for row in result]
+    ocorrencia_data_list = [row.DATA_OCORRIDO for row in result]
+    ocorrencia_data_registro_list = [row.DATA_REGISTRO for row in result]
+    ocorrencia_status_list = [row.OCORRENCIA_STATUS for row in result]
+    lugar_nome_list = [row.LOCAL for row in result]
+    sublugar_nome_list = [row.SUB_LOCAL for row in result]
+    headers = ["SETOR", "TIPO_OCORRENCIA", "NOME", "DESCRICAO", "DATA_OCORRIDO", "DATA_REGISTRO", "OCORRENCIA_STATUS", "LOCAL", "SUB_LOCAL"]
+    for col_num, header in enumerate(headers, 1):
+        ws.cell(row=1, column=col_num, value=header)
+    for row_num, data in enumerate(zip(setor_list, tipo_ocorrencia_list, pessoa_nome_list, ocorrencia_descricao_list, 
+                        ocorrencia_data_list, ocorrencia_data_registro_list, ocorrencia_status_list, lugar_nome_list, sublugar_nome_list), 2):
+        for col_num, value in enumerate(data, 1):
+            ws.cell(row=row_num, column=col_num, value=value)
+    wb.save("Ocorrencias.xlsx")
+    wb.close()
+
+    return send_file("Ocorrencias.xlsx",as_attachment=True)
+
 #rotas de erro
 @app.errorhandler(404)
 def page_not_found(error):
