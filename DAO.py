@@ -47,9 +47,27 @@ class DAO:
 
     def consultarEstatisticasdata(self):
         result = self.ses.query(func.MONTH(self.ocorrencia.ocorrencia_data_registro).label('mes'),
-                        func.count(self.ocorrencia.id_ocorrencia).label('total')) \
-            .group_by('mes') \
-            .order_by('mes').all()
+                        func.count(self.ocorrencia.id_ocorrencia).label('total')). \
+            group_by('mes').order_by('mes').all()
+        return result
+        
+    def consultarOcorrencias(self):
+        result = self.ses.query(
+            self.setor.setor_nome.label('SETOR'),
+            self.tipo_ocorrencia.tipo_ocorrencia_nome.label('TIPO_OCORRENCIA'),
+            self.pessoa.pessoa_nome.label('NOME'),
+            self.ocorrencia.ocorrencia_descricao.label('DESCRICAO'),
+            self.ocorrencia.ocorrencia_data.label('DATA_OCORRIDO'),
+            self.ocorrencia.ocorrencia_data_registro.label('DATA_REGISTRO'),
+            self.ocorrencia.ocorrencia_status.label('OCORRENCIA_STATUS'),
+            self.lugar.lugar_nome.label('LOCAL'),
+            self.sublugar.sub_lugar_nome.label('SUB_LOCAL')). \
+        join(self.tipo_ocorrencia,self.ocorrencia.id_tipo_ocorrencia_fk == self.tipo_ocorrencia.id_tipo_ocorrencia). \
+        join(self.setor,self.tipo_ocorrencia.id_setor_fk == self.setor.id_setor). \
+        join(self.pessoa,self.ocorrencia.id_pessoa_fk == self.pessoa.pessoa_id_pessoa). \
+        join(self.sublugar,self.ocorrencia.id_sub_lugar_fk == self.sublugar.id_sub_lugar). \
+        join(self.lugar,self.sublugar.id_lugar_fk == self.lugar.id_lugar).order_by(self.setor.setor_nome).all()
+
         return result
 
     def checkLogin(self, email, senha):
