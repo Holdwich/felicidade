@@ -73,11 +73,11 @@ def estatisticas():
     lugar_labels = [row.lugar_nome for row in lugar_result]
     lugar_values = [row.total for row in lugar_result]
 
-    data_result = Ocorrencias.consultarEstatisticasdata()
-    data_labels = [row.mes for row in data_result]
-    data_values = [row.total for row in data_result]
+    mes_result = Ocorrencias.consultarEstatisticasdata()
+    mes_labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+    mes_values = [row.total for row in mes_result]
 
-    return render_template("graph_bar.html", tipo_labels=tipo_labels, tipo_values=tipo_values,lugar_values=lugar_values,data_values=data_values)
+    return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values)
 
 #rotas de erro
 @app.errorhandler(404)
