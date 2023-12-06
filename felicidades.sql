@@ -90,7 +90,7 @@ INSERT INTO tb_setor(setor_nome) VALUES
     ('Setor de infraestrutura');
 
 INSERT INTO tb_tipo_ocorrencia(id_setor_fk,tipo_ocorrencia_nome) VALUES
-    (1,'Acidente de trabalho'),
+    (1,'Acidente de transito'),
     (1,'Assedio'),
     (1,'Desaparecimento de pessoa'),
     (1,'Extravio/Perda'),
@@ -492,22 +492,21 @@ INSERT INTO tb_sub_lugar(id_lugar_fk, sub_lugar_nome) VALUES
 	(20, 'Area verde');
 
 INSERT INTO tb_ocorrencia(id_tipo_ocorrencia_fk,id_pessoa_fk,id_sub_lugar_fk,ocorrencia_descricao,ocorrencia_data,ocorrencia_data_registro,ocorrencia_status) VALUES
-	(1,2,1,'Teste','2023-05-01','2023-01-06',false),(2,2,21,'Teste','2023-05-01','2023-01-06',false),(2,2,41,'Teste','2023-05-01','2023-01-06',false),(1,2,61,'Teste','2023-01-01','2023-12-06',false),
+	(1,2,1,'Teste','2023-05-01','2023-01-06',true),(2,2,21,'Teste','2023-05-01','2023-01-06',false),(2,2,41,'Teste','2023-05-01','2023-01-06',false),(1,2,61,'Teste','2023-01-01','2023-12-06',false),
     (1,2,81,'Teste','2023-05-01','2023-02-06',false),(3,2,101,'Teste','2023-05-01','2023-02-06',false),(3,2,121,'Teste','2023-05-01','2023-02-06',false),(3,2,141,'Teste','2023-02-01','2023-12-06',false),
-    (4,2,161,'Teste','2023-05-01','2023-03-06',false),(4,2,181,'Teste','2023-05-01','2023-05-06',false),(4,2,201,'Teste','2023-05-01','2023-05-06',false),(5,2,221,'Teste','2023-05-01','2023-12-06',false),
-    (5,2,241,'Teste','2023-05-01','2023-03-06',false),(5,2,261,'Teste','2023-05-01','2023-03-06',false),(5,2,281,'Teste','2023-05-01','2023-05-06',false),(5,2,301,'Teste','2023-05-01','2023-12-06',false),
+    (4,2,161,'Teste','2023-05-01','2023-03-06',false),(4,2,181,'Teste','2023-05-01','2023-05-06',true),(4,2,201,'Teste','2023-05-01','2023-05-06',false),(5,2,221,'Teste','2023-05-01','2023-12-06',false),
+    (5,2,241,'Teste','2023-05-01','2023-03-06',false),(5,2,261,'Teste','2023-05-01','2023-03-06',false),(5,2,281,'Teste','2023-05-01','2023-05-06',false),(5,2,301,'Teste','2023-05-01','2023-12-06',true),
     (5,2,321,'Teste','2023-05-01','2023-04-06',false),(5,2,328,'Teste','2023-05-01','2023-04-06',false),(6,2,22,'Teste','2023-05-01','2023-09-06',false),(6,2,21,'Teste','2023-05-01','2023-12-06',false),
-    (6,2,7,'Teste','2023-05-01','2023-04-06',false),(6,2,23,'Teste','2023-05-01','2023-05-06',false),(6,2,103,'Teste','2023-05-01','2023-09-06',false),(6,2,29,'Teste','2023-05-01','2023-11-06',false),
+    (6,2,7,'Teste','2023-05-01','2023-04-06',false),(6,2,23,'Teste','2023-05-01','2023-05-06',false),(6,2,103,'Teste','2023-05-01','2023-09-06',true),(6,2,29,'Teste','2023-05-01','2023-11-06',false),
     (6,2,5,'Teste','2023-05-01','2023-04-06',false),(6,2,73,'Teste','2023-05-01','2023-06-06',false),(6,2,143,'Teste','2023-05-01','2023-09-06',false),(7,2,76,'Teste','2023-05-01','2023-01-06',false), 
     (7,2,19,'Teste','2023-05-01','2023-04-06',false),(7,2,83,'Teste','2023-05-01','2023-07-06',false),(7,2,113,'Teste','2023-05-01','2023-09-06',false),(7,2,102,'Teste','2023-05-01','2023-02-06',false),
     (7,2,12,'Teste','2023-05-01','2023-05-06',false),(7,2,93,'Teste','2023-05-01','2023-08-06',false),(7,2,293,'Teste','2023-05-01','2023-10-06',false),(8,2,223,'Teste','2023-05-01','2023-04-06',false),
-    (8,2,65,'Teste','2023-05-01','2023-05-06',false),(8,2,33,'Teste','2023-05-01','2023-08-06',false),(8,2,123,'Teste','2023-05-01','2023-10-06',false),(8,2,213,'Teste','2023-05-01','2023-03-06',false),
+    (8,2,65,'Teste','2023-05-01','2023-05-06',false),(8,2,33,'Teste','2023-05-01','2023-08-06',true),(8,2,123,'Teste','2023-05-01','2023-10-06',false),(8,2,213,'Teste','2023-05-01','2023-03-06',false),
     (8,2,94,'Teste','2023-05-01','2023-06-06',false),(8,2,33,'Teste','2023-05-01','2023-08-06',false),(8,2,23,'Teste','2023-05-01','2023-10-06',false),(9,2,323,'Teste','2023-05-01','2023-05-06',false),
-    (9,2,83,'Teste','2023-05-01','2023-06-06',false),(9,2,43,'Teste','2023-05-01','2023-07-06',false),(9,2,223,'Teste','2023-05-01','2023-10-06',false),(9,2,232,'Teste','2023-05-01','2023-07-06',false),
+    (9,2,83,'Teste','2023-05-01','2023-06-06',false),(9,2,43,'Teste','2023-05-01','2023-07-06',false),(9,2,223,'Teste','2023-05-01','2023-10-06',true),(9,2,232,'Teste','2023-05-01','2023-07-06',false),
     (9,2,73,'Teste','2023-05-01','2023-07-06',false),(9,2,43,'Teste','2023-05-01','2023-07-06',false),(9,2,213,'Teste','2023-05-01','2023-10-06',false),(9,2,236,'Teste','2023-05-01','2023-08-06',false),
     (9,2,63,'Teste','2023-05-01','2023-07-06',false),(10,2,53,'Teste','2023-05-01','2023-07-06',false),(10,2,233,'Teste','2023-05-01','2023-11-06',false),(10,2,273,'Teste','2023-05-01','2023-05-06',false),
     (11,2,63,'Teste','2023-05-01','2023-08-06',false),(12,2,243,'Teste','2023-05-01','2023-09-06',false),(12,2,319,'Teste','2023-05-01','2023-11-06',false);
-
 
 SELECT sl.*,l.lugar_nome
 FROM tb_sub_lugar sl
@@ -518,3 +517,24 @@ SELECT * FROM tb_lugar ORDER BY id_lugar;
 SELECT sl.*,l.setor_nome
 FROM tb_tipo_ocorrencia sl
 JOIN tb_setor l ON sl.id_setor_fk = l.id_setor ORDER BY id_setor;
+
+
+SELECT
+    s.setor_nome AS SETOR,
+    tipo.tipo_ocorrencia_nome AS TIPO_OCORRENCIA,
+    p.pessoa_nome AS NOME,
+    o.ocorrencia_descricao AS DESCRICAO,
+    o.ocorrencia_data AS DATA_OCORRIDO,
+    o.ocorrencia_data_registro AS DATA_REGISTRO,
+    o.ocorrencia_status AS OCORRENCIA_STATUS,
+    l.lugar_nome AS LOCAL,
+    sub.sub_lugar_nome AS SUB_LOCAL
+FROM
+    tb_ocorrencia o
+    JOIN tb_tipo_ocorrencia tipo ON o.id_tipo_ocorrencia_fk = tipo.id_tipo_ocorrencia
+    JOIN tb_setor s ON tipo.id_setor_fk = s.id_setor
+    JOIN tb_pessoa p ON o.id_pessoa_fk = p.pessoa_id_pessoa
+    JOIN tb_sub_lugar sub ON o.id_sub_lugar_fk = sub.id_sub_lugar
+    JOIN tb_lugar l ON sub.id_lugar_fk = l.id_lugar
+    ORDER BY s.setor_nome;
+
