@@ -5,6 +5,7 @@ from datetime import date
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.automap import automap_base
+import openpyxl
 
 app = Flask(__name__)
 app.register_blueprint(auth)
