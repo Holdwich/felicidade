@@ -56,7 +56,7 @@ def ocorrencias_lista():
     for obj in lst:
         result_html += f'<li><a href="#">{obj.id_ocorrencia}:{obj.ocorrencia_descricao}</a></li>'
     result_html += '</ul>'
-    return render_template("ocorrencias.html", result_html=result_html)
+    return render_template("ocorrencias.html", data=result_html)
 
 
 
