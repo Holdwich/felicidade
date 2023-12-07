@@ -57,6 +57,7 @@ class DAO:
             self.tipo_ocorrencia.tipo_ocorrencia_nome.label('TIPO_OCORRENCIA'),
             self.pessoa.pessoa_nome.label('NOME'),
             self.ocorrencia.ocorrencia_descricao.label('DESCRICAO'),
+            self.ocorrencia.id_ocorrencia.label('ID_OCORRENCIA'),
             self.ocorrencia.ocorrencia_data.label('DATA_OCORRIDO'),
             self.ocorrencia.ocorrencia_data_registro.label('DATA_REGISTRO'),
             self.ocorrencia.ocorrencia_status.label('OCORRENCIA_STATUS'),
