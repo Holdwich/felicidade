@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Hind:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/css/login.css" />
+  <title>Login - CEUB Serviços</title>
+  <style>
+    /* body {
+          margin: 0;
+          font-family: sans-serif;
+      } */
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(#ffd6ff 5%, #bbd0ff);
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    ul li {
+      list-style-type: none;
+      font-size: 140px;
+      letter-spacing: 20px;
+      animation: loading 3s linear infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        color: #e7048a;
+        transform: translateX(-50px);
+        letter-spacing: 20px;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      50% {
+        letter-spacing: -20px;
+        opacity: 1;
+      }
+
+      100% {
+        color: #6411ad;
+        transform: translateX(50px);
+        letter-spacing: 20px;
+        opacity: 0;
+      }
+    }
+
+    ul li:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    ul li:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    ul li:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    ul li:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    ul li:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+
+    ul li:nth-child(6) {
+      animation-delay: 1s;
+    }
+
+    ul li:nth-child(7) {
+      animation-delay: 1.2s;
+    }
+
+    ul li:nth-child(8) {
+      animation-delay: 1.4s;
+    }
+
+    ul li:nth-child(9) {
+      animation-delay: 1.6s;
+    }
+
+    ul li:nth-child(10) {
+      animation-delay: 1.8s;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav id="loadingMessage" style="display:none;">
+    <ul>
+      <li>C</li>
+      <li>A</li>
+      <li>R</li>
+      <li>R</li>
+      <li>E</li>
+      <li>G</li>
+      <li>A</li>
+      <li>N</li>
+      <li>D</li>
+      <LI>O</LI>
+    </ul>
+  </nav>
+  <main id="total">
+    <div class="form-box">
+      <div class="form-value">
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <div class="notification">{{ messages[0] }}</div>
+        {% endif %} {% endwith %}
+        <h2>login</h2>
+        <form id="loginForm" action="/login" method="post">
+
+
+          <div id="hi">
+            <div>
+              <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input name="email" type="text" id="name_input" required />
+                <label for="">Email</label>
+              </div>
+              <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input name="senha" type="password" id="password_input" required />
+                <label for="password">Senha</label>
+              </div>
+              <div class="forget">
+                <label for="habi">
+                  <input type="checkbox" id="habi" />
+                  <label for="smt"> Eu li e aceito os</label>
+                  <a href="https://www.frenet.com.br/wp-content/uploads/2022/01/politica-de-privacidade.png">
+                    Termos de Uso
+                  </a>
+                </label>
+              </div>
+              <button onclick="Enviar()">Login</button>
+
+              <div class="register">
+                <p>
+                  <b><i>Não tem uma conta ? </i></b>&nbsp;
+                  <a href="{{ url_for('auth.registro') }}">Criar conta</a>
+                </p>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+    const nomes_login = [];
+    const Enviar = () => {
+      const nameInputValue = document.getElementById("name_input").value;
+      const passwordInputValue = document.getElementById("password_input").value;
+      const Aceitar = document.getElementById("habi").checked;
+
+      if (!Aceitar) {
+        alert("Você deve aceitar os termos de uso antes de prosseguir.");
+      } else if (nameInputValue && passwordInputValue) {
+        // Simulate data submission to the server
+        console.log({ Nome: nameInputValue, Senha: passwordInputValue });
+
+        // Hide the body content, including the form
+        document.getElementById('total').style.display = 'none';
+
+        // Display loading message or spinner
+        document.getElementById('loadingMessage').style.display = 'flex';
+
+        // Simulate data submission to the server (replace with actual submission logic)
+        setTimeout(function () {
+          // Submit the form (replace 'yourFormId' with the actual form ID)
+          document.getElementById('loginForm').submit();
+        }, 3000);
+      } else {
+        alert("Preencha os campos de nome e senha antes de enviar.");
+      }
+    }
+  </script>
+
+</body>
+
+</html>
