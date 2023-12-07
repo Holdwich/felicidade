@@ -86,6 +86,7 @@ def exportar_excel():
     ws = wb.active
     Excel = DAO("ocorrencia")
     result = Excel.consultarOcorrencias()
+    id_ocorrencia = [row.ID_OCORRENCIA for row in result]
     setor_list = [row.SETOR for row in result]
     tipo_ocorrencia_list = [row.TIPO_OCORRENCIA for row in result]
     pessoa_nome_list = [row.NOME for row in result]
@@ -96,10 +97,10 @@ def exportar_excel():
     status_legivel_list = ['Em Aberto' if status == 0 else 'Resolvido' for status in ocorrencia_status_list]
     lugar_nome_list = [row.LOCAL for row in result]
     sublugar_nome_list = [row.SUB_LOCAL for row in result]
-    headers = ["SETOR", "TIPO_OCORRENCIA", "NOME", "DESCRICAO", "DATA_OCORRIDO", "DATA_REGISTRO", "OCORRENCIA_STATUS", "LOCAL", "SUB_LOCAL"]
+    headers = ["ID_OCORRENCIA","SETOR", "TIPO_OCORRENCIA", "NOME", "DESCRICAO", "DATA_OCORRIDO", "DATA_REGISTRO", "OCORRENCIA_STATUS", "LOCAL", "SUB_LOCAL"]
     for col_num, header in enumerate(headers, 1):
         ws.cell(row=1, column=col_num, value=header)
-    for row_num, data in enumerate(zip(setor_list, tipo_ocorrencia_list, pessoa_nome_list, ocorrencia_descricao_list, 
+    for row_num, data in enumerate(zip(id_ocorrencia,setor_list, tipo_ocorrencia_list, pessoa_nome_list, ocorrencia_descricao_list, 
                         ocorrencia_data_list, ocorrencia_data_registro_list, status_legivel_list, lugar_nome_list, sublugar_nome_list), 2):
         for col_num, value in enumerate(data, 1):
             ws.cell(row=row_num, column=col_num, value=value)
