@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Home - CEUB Serviços</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.50">
+    <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png">
+    <link rel="stylesheet" href="../static/css/template.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+    @media (min-width: 576px) {
+      .jumbotron {
+        padding: 1rem 2rem;
+      }
+    }
+
+    .tdaction {
+      width: 15%;
+    }
+
+    .tdSr {
+      width: 7%;
+    }
+
+    strong {
+    font-size: 24px !important;
+}
+
+    input.largerCheckbox {
+      width: 20px;
+      height: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <a name="cima"></a>
+    <div id="conteiner_principal">
+        <div id="header">
+            <div id="user-bar1">
+                <img id="image-ceub" src="../static/image/iconceub.png" alt="Ceub-logo">
+                <div id="text-servicos">Serviços</div>
+                <div>
+                    <a href="https://www.uniceub.br" class="links">CEUB</a>
+                    <a href="{{ url_for('home') }}" class="links">Serviços</a>
+                    <a href="{{ url_for('depoimento') }}" class="links">Depoimento</a>
+                    <a href="#contatos" class="links">Contato</a>
+                    <a href="{{ url_for('auth.logout') }}" class="links" id="sair">Sair-Conta</a>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div class="notification">{{ messages[0] }}</div>
+            {% endif %} {% endwith %}
+        </div>
+        <div id="midedle" style="height: 700px;">
+            <div id="left"  style="height: 600px; margin-top: -25px;  width: 24%">
+                <div class="fixar">
+                    <div id="nomeDoUsuario" style=" width: 70%; margin-bottom: 10px;">Bem Vindo {{nome | safe}}</div>
+                    <div id="tiposDeServicos" style="width: 100%;">
+                        <ul>
+                            <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
+                            <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
+                            <li><a href="#">Estatísticas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="content" style=" width: 70%">
+                <div class="container">
+                    <div class="jumbotron text-center bg-light text-secondary">
+                      <h2>Lista de ocorrencias abertas</h2>
+                      <!-- <h4> Select All / De-Select All - Get Checked records ids</h4> -->
+                    </div>
+                    
+                    <div class="row pt-3">
+                      <div class="col-md-12 col-sm-12 col-12 p-2 ">
+                        <table id="tblData" class="table table-bordered table-hover table-striped">
+                          <thead>
+                            <tr>
+                              <th>
+                                <input type="checkbox" class="largerCheckbox" id="chkAll" />
+                              </th>
+                              <th>Name</th>
+                              <th>User Name</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                              <th>Website</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="6" id="trLoader">
+                                <div class="text-center">
+                                  Loading
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <h3>Selected Record ids: => </h3>
+                    </div>
+                    <div class="col-md-8 selectedDiv">
+                    </div>
+                  </div>
+                  <script>
+                
+                    $(document).ready(function () {
+                      loadGridData();
+                      $('#tblData').on('change', '.tblChk', function () {
+                        debugger;
+                        if ($('.tblChk:checked').length == $('.tblChk').length) {
+                          $('#chkAll').prop('checked', true);
+                        } else {
+                          $('#chkAll').prop('checked', false);
+                        }
+                        getCheckRecords();
+                      });
+                
+                      $("#chkAll").change(function () {
+                        debugger;
+                        if ($(this).prop('checked')) {
+                          $('.tblChk').not(this).prop('checked', true);
+                        } else {
+                          $('.tblChk').not(this).prop('checked', false);
+                        }
+                        getCheckRecords();
+                      })
+                    });
+                    function getCheckRecords() {
+                      debugger;
+                      $(".selectedDiv").html("");
+                      $('.tblChk:checked').each(function () {
+                        debugger;
+                        if ($(this).prop('checked')) {
+                          if ($(".selectedDiv").children().length == 0) {
+                            const rec = "<strong>" + $(this).attr("data-id") + " </strong>";
+                            $(".selectedDiv").append(rec);
+                          } else {
+                            const rec = ", <strong>" + $(this).attr("data-id") + " </strong>";
+                            $(".selectedDiv").append(rec);
+                          }
+                        }
+                        console.log(this.value);
+                      });
+                    }
+                
+                    function loadGridData() {
+                      $.ajax({
+                        type: "GET",
+                        url: "https://jsonplaceholder.typicode.com/users",
+                        contentType: false,
+                        processData: false,
+                        data: "",
+                        beforeSend: function () {
+                          $("#trLoader").show();
+                        },
+                        success: function (results) {
+                          $("#trLoader").remove();
+                          let index = 0;
+                          results.forEach(element => {
+                            let dynamicTR = "<tr>";
+                            dynamicTR = dynamicTR + "<td> <input type='checkbox' data-id=" + element.id + " class='largerCheckbox tblChk chk" + index + "' /></td>";
+                            dynamicTR = dynamicTR + "<td>" + element.name + "</td>";
+                            dynamicTR = dynamicTR + "<td>" + element.username + "</td>";
+                            dynamicTR = dynamicTR + "<td>" + element.email + "</td>";
+                            dynamicTR = dynamicTR + "<td>" + element.phone + "</td>";
+                            dynamicTR = dynamicTR + "<td>" + element.website + "</td>";
+                            dynamicTR = dynamicTR + " </tr>";
+                            $("#tblData tbody").append(dynamicTR);
+                            index++;
+                          });
+                        }
+                      });
+                    }
+                
+                  </script>
+            </div>
+            <!-- <div id="right"></div> -->
+        </div>
+        <div id="footer">
+            <div id="final-bar">
+                <a href="#cima">
+                    <img src="../static/image/upicon.png" id="up_icon" title="Vai Para Cima">
+                </a>
+                <p id="text_final"><br> De Atendimento: (61) 3966-1201 - central.atendimento@uniceub.br</p>
+                <p id="text_final">Unidades:<br>
+                    Campus da Asa Norte: SEPN 707/907 - Campus Universitário<br>
+                    Campus II de Taguatinga: QS 1, Lote 1/17, Rua 214<br>
+                    Centro de Atendimento à Comunidade: Setor Comercial Sul, Quadra 1 - Edifício União, Brasília-DF</p>
+            </div>
+            <a name="contatos"></a>
+        </div>
+    </div>
+
+</body>
+
+</html>
