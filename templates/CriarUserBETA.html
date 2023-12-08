@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" type="x-icon" href="../static/image/iconceub.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Usuário - CEUB Serviços</title>
+  <link rel="stylesheet" href="../static/css/CriarUser.css" />
+  <style>
+    nav {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(#8a079c 5%, #caa6cc);
+      perspective: 200px;
+    }
+
+    #loading {
+      width: 170px;
+      height: 170px;
+      background-color: white;
+      border-radius: 12px;
+      animation: loading 2s linear infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        transform: rotateX(0) rotateY(0);
+      }
+
+      50% {
+        transform: rotateX(0) rotateY(180deg);
+      }
+
+      100% {
+        transform: rotateX(180deg) rotateY(180deg);
+      }
+    }
+  </style>
+  <script>
+    function submitData() {
+      // Hide the body content, including the button
+      document.getElementById('total').style.display = 'none';
+
+      // Display loading message or spinner
+      document.getElementById('navi').style.display = 'flex';
+      document.getElementById('loading').style.display = 'flex';
+
+      // Simulate data submission to the server (replace with actual submission logic)
+      setTimeout(function () {
+        // Submit the form (replace 'yourFormId' with the actual form ID)
+        document.getElementById('userForm').submit();
+      }, 4000);
+    }
+  </script>
+</head>
+
+<body>
+  <nav id="navi" style="width: 100%; display:none;">
+    <div id="loading" style="display:none;"></div>
+  </nav>
+  <main id="total">
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="notification">{{ messages[0] }}</div>
+    {% endif %} {% endwith %}
+    <form id="userForm" action="/registro" method="post">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required />
+
+      <label for="confirmaSenha">Confirme a Senha:</label>
+      <input type="password" id="confirmaSenha" name="confirmaSenha" required />
+
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" name="cpf" required />
+
+      <label for="numRegistro">Número de RA:</label>
+      <input type="text" id="numRegistro" name="numRegistro" required />
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required />
+
+      <label for="dataNascimento">Data de Nascimento:</label>
+      <input type="date" id="dataNascimento" name="dataNascimento" required />
+
+      <div class="termos">
+        <input id="check" type="checkbox" required />
+        <label for="check">
+          Eu li e aceito os
+          <a href="https://www.frenet.com.br/wp-content/uploads/2022/01/politica-de-privacidade.png"
+            target="_blank">Termos de Uso</a></label>
+        
+      </div>
+
+      <button type="button" onclick="submitData()">Cadastrar</button>
+    </form>
+  </main>
+</body>
+
+</html>
