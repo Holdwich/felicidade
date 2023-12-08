@@ -41,6 +41,22 @@
   </style>
   <script>
     function submitData() {
+      // Check if all required fields are filled
+      var email = document.getElementById('email').value;
+      var senha = document.getElementById('senha').value;
+      var confirmaSenha = document.getElementById('confirmaSenha').value;
+      var nome = document.getElementById('nome').value;
+      var cpf = document.getElementById('cpf').value;
+      var numRegistro = document.getElementById('numRegistro').value;
+      var telefone = document.getElementById('telefone').value;
+      var dataNascimento = document.getElementById('dataNascimento').value;
+      var check = document.getElementById('check').checked;
+
+      if (!email || !senha || !confirmaSenha || !nome || !cpf || !numRegistro || !telefone || !dataNascimento || !check) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+
       // Hide the body content, including the button
       document.getElementById('total').style.display = 'none';
 
@@ -50,7 +66,7 @@
 
       // Simulate data submission to the server (replace with actual submission logic)
       setTimeout(function () {
-        // Submit the form (replace 'yourFormId' with the actual form ID)
+        // Submit the form (replace 'userForm' with the actual form ID)
         document.getElementById('userForm').submit();
       }, 4000);
     }
@@ -96,7 +112,6 @@
           Eu li e aceito os
           <a href="https://www.frenet.com.br/wp-content/uploads/2022/01/politica-de-privacidade.png"
             target="_blank">Termos de Uso</a></label>
-        
       </div>
 
       <button type="button" onclick="submitData()">Cadastrar</button>
