@@ -41,6 +41,7 @@ def depoimento_post():
     bd = DAO("ocorrencia")
     objDB = bd.ocorrencia()
 
+
     ocorrencia_descricao = request.form.get("depoimento")
     id_tipo_ocorrencia_fk = request.form.get("id_tipo_ocorrencia_fk")
     id_sub_lugar_fk = request.form.get("id_sub_lugar_fk")
@@ -48,6 +49,21 @@ def depoimento_post():
     ocorrencia_status = 0
     ocorrencia_data_registro = date.today()
     ocorrencia_data = "PLACEHOLDER"
+
+    #captura a imagem da rota
+    if 'imagem' not in request.files:
+        return flash('message sem arquivo')
+
+    imagem = request.files.get('imagem')
+
+    if imagem and allowed_file(imagem.filename):
+        novo_nome = f'ocorencia_num.' + imagem.filename.rsplit('.', 1)[1].lower()
+        imagem.save(os.path.join(app.config['UPLOAD_FOLDER'], novo_nome))
+        insert_image(os.getcwd() + rf'\ocorrencias\{novo_nome}', novo_nome)
+        os.remove(os.getcwd() + rf'\ocorrencias\{novo_nome}')
+    else:
+        return flash('message use somente PNG, JPG ou WEBP')
+    #------------------------------------------------------------------------
 
     objDB.ocorrencia_descricao = ocorrencia_descricao
     objDB.id_tipo_ocorrencia_fk = id_tipo_ocorrencia_fk
@@ -59,6 +75,9 @@ def depoimento_post():
     bd.create(objDB)
 
     flash("Ocorrência registrada com sucesso!")
+
+
+
     return redirect(url_for("home"))
 
 @app.route("/estatisticas")
