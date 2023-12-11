@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-    
 
     <style>
         .links:hover {
@@ -54,13 +53,11 @@
 </head>
 
 <body>
-    
     <a name="cima"></a>
     <div id="conteiner_principal">
         <div id="header">
             <div id="user-bar1">
                 <img id="image-ceub" src="../static/image/iconceub.png" alt="Ceub-logo">
-                
                 <div id="text-servicos">Serviços</div>
                 <div>
                     <a href="https://www.uniceub.br" class="links">CEUB </a>
@@ -82,8 +79,7 @@
                         <ul style="width: 90%;">
                             <li><a href="{{ url_for('depoimento') }}">Registrar Ocorrência</a></li>
                             <li><a href="{{ url_for('auth.ocorrencias_lista') }}">Listar Ocorrência</a></li>
-                            <li><a href="{{ url_for('estatisticas') }}">Estatísticas</a></li>
-                            <li><a href="{{ url_for('exportar_excel') }}">Exportar Excel</a></li>
+                            <li><a href="#">Estatísticas</a></li>
                         </ul>
                     </div>
                 </div>
@@ -101,31 +97,7 @@
                                     <th>Usuario</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Assédio</td>
-                                    <td>Bloco 3</td>
-                                    <td>vini@yahoo.com</td>
-                                    <td>09/08/2022</td>
-                                    <td>Vinicius Serrao</td>
-
-                                </tr>
-                                <tr>
-                                    <td>Lesão Corporal</td>
-                                    <td>Bloco 2</td>
-                                    <td>amelia@sempreceub.com</td>
-                                    <td>05/08/2023</td>
-                                    <td>Amelia</td>
-
-                                </tr>
-                                <tr>
-                                    <td>Equipamentos Eletrônicos</td>
-                                    <td>Bloco 12</td>
-                                    <td>zee@gmail.com</td>
-                                    <td>05/07/1990</td>
-                                    <td>Arthur</td>
-                                </tr>
-                            </tbody>
+                                {{result_html | safe}}
                         </table>
                     </div>
                     <script>
