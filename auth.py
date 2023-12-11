@@ -50,13 +50,13 @@ def ocorrencias_lista():
         lst = bd.readAll()
     else:
         lst = bd.selectFromWhere("id_pessoa_fk", session['id'])
-
-
-    result_html = '<ul>'
+    result_html = '<tbody>' 
     for obj in lst:
-        result_html += f'<li><a href="#">{obj.id_ocorrencia}:{obj.ocorrencia_descricao}</a></li>'
-    result_html += '</ul>'
-    return render_template("ocorrencias.html", data=result_html)
+        result_html += '<tr>'
+        result_html += f'<td>{obj.id_tipo_ocorrencia_fk}</td><td>{obj.id_sub_lugar_fk}</td><td>{session["email"]}</td><td>{obj.ocorrencia_data_registro}</td><td>{session["nome"]}</td>'
+        result_html += '</tr>'
+    result_html += '</tbody>'
+    return render_template("fun.html", result_html=result_html, nome=session['nome'])
 
 
 
