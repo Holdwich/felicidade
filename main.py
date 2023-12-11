@@ -16,7 +16,11 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 @app.route("/home")
 def home():
     if "loggedin" in session and session["loggedin"] is True:
-        return render_template("Templatedic.html", nome=session["nome"].split()[0])
+        if session["pessoa_permissao"]:
+            exportar_excel = '<li><a href="/exportar_excel">Exportar Excel</a></li>'
+            return render_template("Templatedic.html", nome=session["nome"].split()[0], execel_export = exportar_excel)
+        else:
+            return render_template("Templatedic.html", nome=session["nome"].split()[0])
     else:
         flash("Logue para acessar esta página.")
         return redirect(url_for("auth.login"))
