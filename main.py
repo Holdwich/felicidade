@@ -91,6 +91,9 @@ def depoimento_post():
 @app.route("/estatisticas")
 def estatisticas():
 
+    if session["pessoa_permissao"]:
+            exportar_excel = '<li><a href="/exportar_excel">Exportar Excel</a></li>'
+    
     Ocorrencias = DAO("ocorrencia")
 
     result = Ocorrencias.consultarEstatisticastipo()
@@ -105,7 +108,7 @@ def estatisticas():
     mes_labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     mes_values = [row.total for row in mes_result]
 
-    return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values, nome=session['nome'].split()[0])
+    return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values, nome=session['nome'].split()[0], execel_export = exportar_excel)
 
 @app.route("/exportar_excel")
 def exportar_excel():
