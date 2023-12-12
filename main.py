@@ -2,16 +2,20 @@ from flask import *
 from auth import auth
 from DAO import DAO
 from datetime import date
-from sqlalchemy import create_engine, func
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.automap import automap_base
+from imagens_connection import insert_image
 import openpyxl
+import os
 
 app = Flask(__name__)
 app.register_blueprint(auth)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+def allowed_file(filename):
+    UPLOAD_FOLDER = 'ocorrencias'
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'webp'}
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route("/home")
 def home():
@@ -53,21 +57,8 @@ def depoimento_post():
     ocorrencia_status = 0
     ocorrencia_data_registro = date.today()
     ocorrencia_data = "PLACEHOLDER"
+    imagem = request.files['imagem']
 
-    #captura a imagem da rota
-    if 'imagem' not in request.files:
-        return flash('message sem arquivo')
-
-    imagem = request.files.get('imagem')
-
-    if imagem and allowed_file(imagem.filename):
-        novo_nome = f'ocorencia_num.' + imagem.filename.rsplit('.', 1)[1].lower()
-        imagem.save(os.path.join(app.config['UPLOAD_FOLDER'], novo_nome))
-        insert_image(os.getcwd() + rf'\ocorrencias\{novo_nome}', novo_nome)
-        os.remove(os.getcwd() + rf'\ocorrencias\{novo_nome}')
-    else:
-        return flash('message use somente PNG, JPG ou WEBP')
-    #------------------------------------------------------------------------
 
     objDB.ocorrencia_descricao = ocorrencia_descricao
     objDB.id_tipo_ocorrencia_fk = id_tipo_ocorrencia_fk
@@ -77,6 +68,19 @@ def depoimento_post():
     objDB.ocorrencia_data_registro = ocorrencia_data_registro
     objDB.ocorrencia_data = ocorrencia_data
     bd.create(objDB)
+
+    # captura a imagem da rota
+    if imagem == None:
+        return flash('message sem arquivo')
+
+    if imagem and allowed_file(imagem.filename):
+        novo_nome = f'ocorencia_num.' + imagem.filename.rsplit('.', 1)[1].lower()
+        imagem.save(os.path.join(app.config['UPLOAD_FOLDER'], novo_nome))
+        insert_image(os.getcwd() + rf'\ocorrencias\{novo_nome}', novo_nome)
+        os.remove(os.getcwd() + rf'\ocorrencias\{novo_nome}')
+    else:
+        return flash('message use somente PNG, JPG ou WEBP')
+    # ------------------------------------------------------------------------
 
     flash("Ocorrência registrada com sucesso!")
 
@@ -101,7 +105,7 @@ def estatisticas():
     mes_labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     mes_values = [row.total for row in mes_result]
 
-    return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values)
+    return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values, nome=session['nome'].split()[0])
 
 @app.route("/exportar_excel")
 def exportar_excel():
@@ -123,7 +127,7 @@ def exportar_excel():
     headers = ["ID_OCORRENCIA","SETOR", "TIPO_OCORRENCIA", "NOME", "DESCRICAO", "DATA_OCORRIDO", "DATA_REGISTRO", "OCORRENCIA_STATUS", "LOCAL", "SUB_LOCAL"]
     for col_num, header in enumerate(headers, 1):
         ws.cell(row=1, column=col_num, value=header)
-    for row_num, data in enumerate(zip(id_ocorrencia,setor_list, tipo_ocorrencia_list, pessoa_nome_list, ocorrencia_descricao_list, 
+    for row_num, data in enumerate(zip(id_ocorrencia,setor_list, tipo_ocorrencia_list, pessoa_nome_list, ocorrencia_descricao_list,
                         ocorrencia_data_list, ocorrencia_data_registro_list, status_legivel_list, lugar_nome_list, sublugar_nome_list), 2):
         for col_num, value in enumerate(data, 1):
             ws.cell(row=row_num, column=col_num, value=value)
