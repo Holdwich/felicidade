@@ -56,7 +56,7 @@ def depoimento_post():
     id_pessoa_fk = session["id"]
     ocorrencia_status = 0
     ocorrencia_data_registro = date.today()
-    ocorrencia_data = "PLACEHOLDER"
+    ocorrencia_data = request.form.get("ocorrencia_data")
     imagem = request.files['imagem']
 
 

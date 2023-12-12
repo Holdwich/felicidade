@@ -12,6 +12,10 @@ textarea{
     font-size: 18px;
     color:azure;
 }
+
+#ocorrencia_data_css{
+    color: #ffff;
+}
 #icon1 ion-icon {
     margin-right: 10px;
     font-size: 30px;
