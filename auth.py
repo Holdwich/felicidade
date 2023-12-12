@@ -1,14 +1,14 @@
 from flask import *
-from flask import render_template, request, Flask, make_response
+from flask import render_template, request, Flask
 import re
 from DAO import DAO
 import hashlib
-from datetime import date
+
 
 auth = Blueprint("auth", __name__, template_folder="templates")
 app = Flask(__name__)
 
-    
+
 @auth.route("/login")
 def login():
     return render_template("login.html")
@@ -37,27 +37,27 @@ def login_post():
 
     return redirect(url_for("home"))
 
+
 @auth.route("/registro")
 def registro():
     return render_template("CriarUser.html")
+
 
 @auth.route("/ocorrencias_lista")
 def ocorrencias_lista():
     bd = DAO("ocorrencia")
 
-
     if session['pessoa_permissao']:
         lst = bd.readAll()
     else:
         lst = bd.selectFromWhere("id_pessoa_fk", session['id'])
-    result_html = '<tbody>' 
+    result_html = '<tbody>'
     for obj in lst:
         result_html += '<tr>'
         result_html += f'<td>{obj.id_tipo_ocorrencia_fk}</td><td>{obj.id_sub_lugar_fk}</td><td>{session["email"]}</td><td>{obj.ocorrencia_data_registro}</td><td>{session["nome"]}</td>'
         result_html += '</tr>'
     result_html += '</tbody>'
-    return render_template("fun.html", result_html=result_html, nome=session['nome'])
-
+    return render_template("fun.html", result_html=result_html, nome=session['nome'].split()[0])
 
 
 @auth.route("/registro", methods=["POST"])
@@ -98,20 +98,20 @@ def registro_post():
         flash("Senhas não conferem!")
         return redirect(url_for("auth.registro"))
     elif not re.match(
-        r"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
-        cpf,
+            r"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})",
+            cpf,
     ):
         flash("CPF inválido!")
         return redirect(url_for("auth.registro"))
     elif (
-        not nome
-        or not email
-        or not senha
-        or not confSenha
-        or not cpf
-        or not ra
-        or not telefone
-        or not dataNasc
+            not nome
+            or not email
+            or not senha
+            or not confSenha
+            or not cpf
+            or not ra
+            or not telefone
+            or not dataNasc
     ):
         flash("Preencha o formulário todo!")
         return redirect(url_for("auth.registro"))
@@ -143,5 +143,3 @@ def logout():
     session.pop("pessoa_permissao", None)
 
     return redirect(url_for("index"))
-
-
