@@ -49,6 +49,7 @@ def ocorrencias_lista():
 
     if session['pessoa_permissao']:
         lst = bd.readAll()
+        exportar_excel = '<li><a href="/exportar_excel">Exportar Excel</a></li>'
     else:
         lst = bd.selectFromWhere("id_pessoa_fk", session['id'])
     result_html = '<tbody>'
@@ -57,7 +58,7 @@ def ocorrencias_lista():
         result_html += f'<td>{obj.id_tipo_ocorrencia_fk}</td><td>{obj.id_sub_lugar_fk}</td><td>{session["email"]}</td><td>{obj.ocorrencia_data_registro}</td><td>{session["nome"]}</td>'
         result_html += '</tr>'
     result_html += '</tbody>'
-    return render_template("fun.html", result_html=result_html, nome=session['nome'].split()[0])
+    return render_template("fun.html", result_html=result_html, nome=session['nome'].split()[0], execel_export = exportar_excel)
 
 
 @auth.route("/registro", methods=["POST"])
