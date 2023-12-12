@@ -20,7 +20,7 @@
     <main>
       <div class="form-box">
         <div class="form-value">
-          <form action="/depoimento" method="post">
+          <form action="/depoimento" method="post" enctype="multipart/form-data">
             <h2>Depoimento</h2>
             <div class="inputbox" id="icon1">
               <ion-icon name="create-outline"></ion-icon>
@@ -33,30 +33,30 @@
             </div>
             <div class="inputbox">
               <select name="tipo_ocorrencia" id="tipo_ocorrencia">
-                <option value="Acidente de Trânsito">
+                <option value="1">
                   Acidente de Trânsito
                 </option>
-                <option value="Assédio">Assédio</option>
-                <option value="Desaparecimento de Pessoa">
+                <option value="2">Assédio</option>
+                <option value="3">
                   Desaparecimento de Pessoa
                 </option>
-                <option value="Extravio / Perda">Extravio / Perda</option>
-                <option value="Fraudes e Apropriações">
+                <option value="4">Extravio / Perda</option>
+                <option value="5">
                   Fraudes e Apropriações
                 </option>
-                <option value="Furtos">Furtos</option>
-                <option value="Lesão Corporal">Lesão Corporal</option>
-                <option value="Brigas ou Ameaças">Brigas ou Ameaças</option>
-                <option value="Manutenção de Equipamentos Eletrônicos">
+                <option value="6">Furtos</option>
+                <option value="7">Lesão Corporal</option>
+                <option value="8">Brigas ou Ameaças</option>
+                <option value="9">
                   Manutenção de Equipamentos Eletrônicos
                 </option>
-                <option value="Danos às Instalações">
+                <option value="10">
                   Danos às Instalações
                 </option>
-                <option value="Problema de Infraestrutura">
+                <option value="11">
                   Problema de Infraestrutura
                 </option>
-                <option value="Outros">Outros</option>
+                <option value="12">Outros</option>
               </select>
             </div>
             <select id="lugar" name="blocos" onchange="Escolha()">
@@ -83,7 +83,7 @@
 
             <div id="sub_lugar" name="opcoesBloco1" style="display: none">
               <label for="opcoes_sala_bloco1"></label>
-              <select id="opcoes_sala_bloco1" name="sala_bloco1">
+              <select id="opcoes_sala_bloco1" name="sub_lugar">
                 <option value="1">Externo</option>
                 <option value="2">Elevador</option>
                 <option value="3">Corredores térreo</option>
@@ -156,7 +156,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco2" style="display: none">
               <label for="opcoes_sala_bloco2"></label>
-              <select id="opcoes_sala_bloco2" name="sala_bloco2">
+              <select id="opcoes_sala_bloco2" name="sub_lugar">
                 <option value="Bloco 2 subsolo">Bloco 2 subsolo</option>
                 <option value="34">2301-2338</option>
                 <option value="35">Seminário</option>
@@ -216,7 +216,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco3" style="display: none">
               <label for="opcoes_sala_bloco3"></label>
-              <select id="opcoes_sala_bloco3" name="sala_bloco3">
+              <select id="opcoes_sala_bloco3" name="sub_lugar">
                 <option value="56">Multiespaco</option>
                 <option value="57">Auditorio</option>
                 <option value="58">Elevador</option>
@@ -276,7 +276,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco5" style="display: none">
               <label for="opcoes_sala_bloco5"></label>
-              <select id="opcoes_sala_bloco5" name="sala_bloco5">
+              <select id="opcoes_sala_bloco5" name="sub_lugar">
                 <option value="91">Sala 5000</option>
                 <option value="92">Sala 5001</option>
                 <option value="93">
@@ -301,7 +301,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco4" style="display: none">
               <label for="opcoes_sala_bloco4"></label>
-              <select id="opcoes_sala_bloco4" name="sala_bloco4">
+              <select id="opcoes_sala_bloco4" name="sub_lugar">
                 <option value="81">Sala 4001</option>
                 <option value="82">Sala 4002</option>
                 <option value="83">Sala 4101</option>
@@ -322,7 +322,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco6" style="display: none">
               <label for="opcoes_sala_bloco6"></label>
-              <select id="opcoes_sala_bloco6" name="sala_bloco6">
+              <select id="opcoes_sala_bloco6" name="sub_lugar">
                 <option value="101">
                   Laboratorio de habilidades cirurgicas
                 </option>
@@ -403,7 +403,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco7" style="display: none">
               <label for="opcoes_sala_bloco7"></label>
-              <select id="opcoes_sala_bloco7" name="sala_bloco7">
+              <select id="opcoes_sala_bloco7" name="sub_lugar">
                 <option value="131">Sala de emergencia</option>
                 <option value="132">
                   Sala de monitoramento
@@ -457,7 +457,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco8" style="display: none">
               <label for="opcoes_sala_bloco8"></label>
-              <select id="opcoes_sala_bloco8" name="sala_bloco8">
+              <select id="opcoes_sala_bloco8" name="sub_lugar">
                 <option value="158">Externo</option>
                 <option value="159">Elevador</option>
                 <option value="160">Escadas</option>
@@ -520,7 +520,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco9" style="display: none">
               <label for="opcoes_sala_bloco9"></label>
-              <select id="opcoes_sala_bloco9" name="sala_bloco9">
+              <select id="opcoes_sala_bloco9" name="sub_lugar">
                 <option value="194">Elevador</option>
                 <option value="195">Escada de Incendio</option>
                 <option value="196">
@@ -609,7 +609,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco10" style="display: none">
               <label for="228"></label>
-              <select id="229" name="sala_bloco10">
+              <select id="229" name="sub_lugar">
                 <option value="230">
                   Laboratorio multidisciplinar maquete
                 </option>
@@ -641,7 +641,7 @@
             </div>
             <div id="sub_lugar" name="opcoesBloco12" style="display: none">
               <label for="247"></label>
-              <select id="248" name="sala_bloco12">
+              <select id="248" name="sub_lugar">
                 <option value="249">Marketing Ceub</option>
                 <option value="250">
                   12028: Laboratorio de multimedia
@@ -671,7 +671,7 @@
             </div>
             <div id="sub_lugar" name="cantina3" style="display: none">
               <label for="cantina_3"></label>
-              <select id="cantina3" name="lanches">
+              <select id="cantina3" name="sub_lugar">
                 <option value="264">Ricardo sushi</option>
                 <option value="265">Suco & tal</option>
                 <option value="266">Fast grill</option>
@@ -688,7 +688,7 @@
             </div>
             <div id="sub_lugar" name="cantina8" style="display: none">
               <label for="cantina_8"></label>
-              <select id="cantina_8" name="cantina_8">
+              <select id="cantina_8" name="sub_lugar">
                 <option value="276">Aprovados lanches</option>
                 <option value="277">Apetits</option>
                 <option value="278">Creparia</option>
@@ -702,7 +702,7 @@
             </div>
             <div id="sub_lugar" name="acessos" style="display: none">
               <label for="acessos"></label>
-              <select id="acessos" name="acessos">
+              <select id="acessos" name="sub_lugar">
                 <option value="283">Acesso Principal</option>
                 <option value="284">Acesso C</option>
                 <option value="285">Acesso D</option>
@@ -714,7 +714,7 @@
             </div>
             <div id="sub_lugar" name="Biblioteca" style="display: none">
               <label for="Biblioteca"></label>
-              <select id="Biblioteca" name="Biblioteca">
+              <select id="Biblioteca" name="sub_lugar">
                 <option value="290">Entradas</option>
                 <option value="291">Auditorio</option>
                 <option value="292">Sala de espera</option>
@@ -783,11 +783,11 @@
               <input
                 type="file"
                 id="anexar_arquivo"
-                name="anexo"
-                accept="image/*,video/*"
+                name="imagem"
+                accept=".png, .jpg, .mp4, wepg "
               />
             </div>
-            <button type="button" onclick="Enviar()">Enviar</button>
+            <button type="submit" onclick="Enviar()">Enviar</button>
           </form>
         </div>
       </div>

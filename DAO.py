@@ -7,7 +7,7 @@ class DAO:
     def __init__(self, tab):
         # Ligação com o esquema de banco de dados
         engine = create_engine(
-            "mysql+mysqlconnector://root:uniceub@localhost/felicidade?charset=utf8mb4"
+            "mysql+mysqlconnector://root:Gatitcha1@localhost/felicidade?charset=utf8mb4"
         )
 
         # Mapeamento Objeto Relacional com o SQLAlchemy
@@ -144,6 +144,15 @@ class DAO:
 
     def getSes(self):
         return self.ses
+
+    def get_max_id(self, id_max):
+        query = f"SELECT MAX({id_max}) FROM {self.tabelaStr}"
+
+        resultado = self.ses.execute(text(query))
+
+        max_id = resultado.fetchone()[0]
+
+        return max_id if max_id is not None else 0
 
     def __del__(self):
         self.ses.close()

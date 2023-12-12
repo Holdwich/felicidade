@@ -58,7 +58,10 @@ def ocorrencias_lista():
         result_html += f'<td>{obj.id_tipo_ocorrencia_fk}</td><td>{obj.id_sub_lugar_fk}</td><td>{session["email"]}</td><td>{obj.ocorrencia_data_registro}</td><td>{session["nome"]}</td>'
         result_html += '</tr>'
     result_html += '</tbody>'
-    return render_template("fun.html", result_html=result_html, nome=session['nome'].split()[0], execel_export = exportar_excel)
+    if session['pessoa_permissao']:
+        return render_template("fun.html", result_html=result_html, nome=session['nome'].split()[0], execel_export = exportar_excel)
+    else:
+        return render_template("fun.html", result_html=result_html, nome=session['nome'].split()[0])
 
 
 @auth.route("/registro", methods=["POST"])

@@ -3,7 +3,7 @@ from DAO import DAO
 def insert_image(file_path, image_name):
     try:
         bd = DAO("midia")
-        max_id = bd.get_max_id()
+        max_id = bd.get_max_id('id_midia')
         image_name = image_name.replace('num', str(max_id + 1))
 
         with open(file_path, 'rb') as file:
@@ -16,7 +16,7 @@ def insert_image(file_path, image_name):
         bd2 = DAO("ocorrencia")
         bd = DAO("midia")
         objBD = bd.midia()
-        objBD.id_ocorrencia_fk = bd.get_max_id()
+        objBD.id_ocorrencia_fk = bd2.get_max_id('id_ocorrencia')
         objBD.midia_descricao = image_name
         objBD.midia = image_binario
         bd.create(objBD)

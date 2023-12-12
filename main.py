@@ -24,7 +24,8 @@ def home():
             exportar_excel = '<li><a href="/exportar_excel">Exportar Excel</a></li>'
             return render_template("Templatedic.html", nome=session["nome"].split()[0], execel_export = exportar_excel)
         else:
-            return render_template("Templatedic.html", nome=session["nome"].split()[0])
+            exportar_excel = '<li><a href="/exportar_excel"></a></li>'
+            return render_template("Templatedic.html", nome=session["nome"].split()[0], execel_export = exportar_excel)
     else:
         flash("Logue para acessar esta página.")
         return redirect(url_for("auth.login"))
@@ -51,8 +52,8 @@ def depoimento_post():
 
 
     ocorrencia_descricao = request.form.get("depoimento")
-    id_tipo_ocorrencia_fk = request.form.get("id_tipo_ocorrencia_fk")
-    id_sub_lugar_fk = request.form.get("id_sub_lugar_fk")
+    id_tipo_ocorrencia_fk = request.form.get("tipo_ocorrencia")
+    id_sub_lugar_fk = request.form.get("sub_lugar")
     id_pessoa_fk = session["id"]
     ocorrencia_status = 0
     ocorrencia_data_registro = date.today()
@@ -107,8 +108,10 @@ def estatisticas():
     mes_result = Ocorrencias.consultarEstatisticasdata()
     mes_labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     mes_values = [row.total for row in mes_result]
-
-    return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values, nome=session['nome'].split()[0], execel_export = exportar_excel)
+    if session["pessoa_permissao"]:
+        return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels, mes_labels=mes_labels, tipo_values=tipo_values,lugar_values=lugar_values,mes_values=mes_values, nome=session['nome'].split()[0], exportar_excel=exportar_excel)
+    else:
+        return render_template("graph_bar.html", tipo_labels=tipo_labels, lugar_labels=lugar_labels,mes_labels=mes_labels, tipo_values=tipo_values, lugar_values=lugar_values,mes_values=mes_values, nome=session['nome'].split()[0])
 
 @app.route("/exportar_excel")
 def exportar_excel():
@@ -147,9 +150,9 @@ def exportar_excel():
 def page_not_found(error):
     return render_template('page_not_found.html')
 
-@app.errorhandler(Exception)
+'''@app.errorhandler(Exception)
 def internal_server_error(error):
-    return render_template('500_error.html')
+    return render_template('500_error.html')'''
 
 
 
