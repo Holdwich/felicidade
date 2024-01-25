@@ -20,7 +20,7 @@
     <main>
       <div class="form-box">
         <div class="form-value">
-          <form action="/depoimento" method="post">
+          <form action="/depoimento" method="post" enctype="multipart/form-data">
             <h2>Depoimento</h2>
             <div class="inputbox" id="icon1">
               <ion-icon name="create-outline"></ion-icon>
@@ -32,34 +32,34 @@
               ></textarea>
             </div>
             <div class="inputbox">
-              <select name="" id="select_box">
-                <option value="Acidente de Trânsito">
+              <select name="tipo_ocorrencia" id="tipo_ocorrencia">
+                <option value="1">
                   Acidente de Trânsito
                 </option>
-                <option value="Assédio">Assédio</option>
-                <option value="Desaparecimento de Pessoa">
+                <option value="2">Assédio</option>
+                <option value="3">
                   Desaparecimento de Pessoa
                 </option>
-                <option value="Extravio / Perda">Extravio / Perda</option>
-                <option value="Fraudes e Apropriações">
+                <option value="4">Extravio / Perda</option>
+                <option value="5">
                   Fraudes e Apropriações
                 </option>
-                <option value="Furtos">Furtos</option>
-                <option value="Lesão Corporal">Lesão Corporal</option>
-                <option value="Brigas ou Ameaças">Brigas ou Ameaças</option>
-                <option value="Manutenção de Equipamentos Eletrônicos">
+                <option value="6">Furtos</option>
+                <option value="7">Lesão Corporal</option>
+                <option value="8">Brigas ou Ameaças</option>
+                <option value="9">
                   Manutenção de Equipamentos Eletrônicos
                 </option>
-                <option value="Danos às Instalações">
+                <option value="10">
                   Danos às Instalações
                 </option>
-                <option value="Problema de Infraestrutura">
+                <option value="11">
                   Problema de Infraestrutura
                 </option>
-                <option value="Outros">Outros</option>
+                <option value="12">Outros</option>
               </select>
             </div>
-            <select id="select_box1" name="blocos" onchange="Escolha()">
+            <select id="lugar" name="blocos" onchange="Escolha()">
               <option value="1" id="Bl1">Bloco 1</option>
               <option value="2" id="Bl2">Bloco 2</option>
               <option value="3" id="Bl3">Bloco 3</option>
@@ -81,9 +81,9 @@
               <option value="15" id="Portarias">Portarias</option>
             </select>
 
-            <div id="opcoesBloco1" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco1" style="display: none">
               <label for="opcoes_sala_bloco1"></label>
-              <select id="opcoes_sala_bloco1" name="sala_bloco1">
+              <select id="opcoes_sala_bloco1" name="sub_lugar">
                 <option value="1">Externo</option>
                 <option value="2">Elevador</option>
                 <option value="3">Corredores térreo</option>
@@ -154,9 +154,9 @@
                 <option value="33">NEAD</option>
               </select>
             </div>
-            <div id="opcoesBloco2" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco2" style="display: none">
               <label for="opcoes_sala_bloco2"></label>
-              <select id="opcoes_sala_bloco2" name="sala_bloco2">
+              <select id="opcoes_sala_bloco2" name="sub_lugar">
                 <option value="Bloco 2 subsolo">Bloco 2 subsolo</option>
                 <option value="34">2301-2338</option>
                 <option value="35">Seminário</option>
@@ -214,9 +214,9 @@
                 </option>
               </select>
             </div>
-            <div id="opcoesBloco3" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco3" style="display: none">
               <label for="opcoes_sala_bloco3"></label>
-              <select id="opcoes_sala_bloco3" name="sala_bloco3">
+              <select id="opcoes_sala_bloco3" name="sub_lugar">
                 <option value="56">Multiespaco</option>
                 <option value="57">Auditorio</option>
                 <option value="58">Elevador</option>
@@ -274,9 +274,9 @@
                 </option>
               </select>
             </div>
-            <div id="opcoesBloco5" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco5" style="display: none">
               <label for="opcoes_sala_bloco5"></label>
-              <select id="opcoes_sala_bloco5" name="sala_bloco5">
+              <select id="opcoes_sala_bloco5" name="sub_lugar">
                 <option value="91">Sala 5000</option>
                 <option value="92">Sala 5001</option>
                 <option value="93">
@@ -299,9 +299,9 @@
                 </option>
               </select>
             </div>
-            <div id="opcoesBloco4" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco4" style="display: none">
               <label for="opcoes_sala_bloco4"></label>
-              <select id="opcoes_sala_bloco4" name="sala_bloco4">
+              <select id="opcoes_sala_bloco4" name="sub_lugar">
                 <option value="81">Sala 4001</option>
                 <option value="82">Sala 4002</option>
                 <option value="83">Sala 4101</option>
@@ -320,9 +320,9 @@
                 </option>
               </select>
             </div>
-            <div id="opcoesBloco6" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco6" style="display: none">
               <label for="opcoes_sala_bloco6"></label>
-              <select id="opcoes_sala_bloco6" name="sala_bloco6">
+              <select id="opcoes_sala_bloco6" name="sub_lugar">
                 <option value="101">
                   Laboratorio de habilidades cirurgicas
                 </option>
@@ -401,386 +401,393 @@
                 </option>
               </select>
             </div>
-            <div id="opcoesBloco7" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco7" style="display: none">
               <label for="opcoes_sala_bloco7"></label>
-              <select id="opcoes_sala_bloco7" name="sala_bloco7">
-                <option value="Sala de emergencia">Sala de emergencia</option>
-                <option value="Sala de monitoramento">
+              <select id="opcoes_sala_bloco7" name="sub_lugar">
+                <option value="131">Sala de emergencia</option>
+                <option value="132">
                   Sala de monitoramento
                 </option>
-                <option value="Sala de observacao">Sala de observacao</option>
-                <option value="Sala ultrassom">Sala ultrassom</option>
-                <option value="Sala raio X">Sala raio X</option>
-                <option value="Sala cme">Sala cme</option>
-                <option value="Sala consultorio de infeccao">
+                <option value="133">Sala de observacao</option>
+                <option value="134">Sala ultrassom</option>
+                <option value="135">Sala raio X</option>
+                <option value="136">Sala cme</option>
+                <option value="137">
                   Sala consultorio de infeccao
                 </option>
-                <option value="Sala consultorio de felino">
+                <option value="138">
                   Sala consultorio de felino
                 </option>
-                <option value="Banheiro masculino terreo">
+                <option value="139">
                   Banheiro masculino terreo
                 </option>
-                <option value="Banheiro feminino terreo">
+                <option value="140">
                   Banheiro feminino terreo
                 </option>
-                <option value="Sala laboratorio patologia">
+                <option value="141">
                   Sala laboratorio patologia
                 </option>
-                <option value="Elevador">Elevador</option>
-                <option value="Sala consultorio">Sala consultorio</option>
-                <option value="Banheiro masculino 1 pavimento">
+                <option value="142">Elevador</option>
+                <option value="143">Sala consultorio</option>
+                <option value="144">
                   Banheiro masculino 1 pavimento
                 </option>
-                <option value="Banheiro feminino 1 pavimento">
+                <option value="145">
                   Banheiro feminino 1 pavimento
                 </option>
-                <option value="Sala 7101">Sala 7101</option>
-                <option value="Sala 7102">Sala 7102</option>
-                <option value="Sala 7103">Sala 7103</option>
-                <option value="Sala 7104">Sala 7104</option>
-                <option value="Banheiro masculino 2 pavimento">
+                <option value="146">Sala 7101</option>
+                <option value="147">Sala 7102</option>
+                <option value="148">Sala 7103</option>
+                <option value="149">Sala 7104</option>
+                <option value="150">
                   Banheiro masculino 2 pavimento
                 </option>
-                <option value="Banheiro feminino 2 pavimento">
+                <option value="151">
                   Banheiro feminino 2 pavimento
                 </option>
-                <option value="Sala 7201">Sala 7201</option>
-                <option value="Sala 7202">Sala 7202</option>
-                <option value="Sala 7203">Sala 7203</option>
-                <option value="Sala 7204">Sala 7204</option>
-                <option value="Subsolo: clinica escola de medicina veterinaria">
+                <option value="152">Sala 7201</option>
+                <option value="153">Sala 7202</option>
+                <option value="154">Sala 7203</option>
+                <option value="155">Sala 7204</option>
+                <option value="156">
                   Subsolo: clinica escola de medicina veterinaria
                 </option>
-                <option value="Espaco pet">Espaco pet</option>
+                <option value="157">Espaco pet</option>
               </select>
             </div>
-            <div id="opcoesBloco8" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco8" style="display: none">
               <label for="opcoes_sala_bloco8"></label>
-              <select id="opcoes_sala_bloco8" name="sala_bloco8">
-                <option value="Externo">Externo</option>
-                <option value="Elevador">Elevador</option>
-                <option value="Escadas">Escadas</option>
-                <option value="Sala 8300">Sala 8300</option>
-                <option value="Sala 8301">Sala 8301</option>
-                <option value="Sala 8302: laboratorio de informatica">
+              <select id="opcoes_sala_bloco8" name="sub_lugar">
+                <option value="158">Externo</option>
+                <option value="159">Elevador</option>
+                <option value="160">Escadas</option>
+                <option value="161">Sala 8300</option>
+                <option value="162">Sala 8301</option>
+                <option value="163">
                   Sala 8302: laboratorio de informatica
                 </option>
-                <option value="Sala 8303">Sala 8303</option>
-                <option value="Sala 8304: coord. de mestrado de arquitetura">
+                <option value="164">Sala 8303</option>
+                <option value="165">
                   Sala 8304: coord. de mestrado de arquitetura
                 </option>
-                <option value="Sala 8305: atelie">Sala 8305: atelie</option>
-                <option value="Sala 8306">Sala 8306</option>
-                <option value="Banheiro masculino 3 andar">
+                <option value="166">Sala 8305: atelie</option>
+                <option value="167">Sala 8306</option>
+                <option value="168">
                   Banheiro masculino 3 andar
                 </option>
-                <option value="Banheiro feminino 3 andar">
+                <option value="169">
                   Banheiro feminino 3 andar
                 </option>
-                <option value="Corredor 3 andar">Corredor 3 andar</option>
-                <option value="Sala 8200">Sala 8200</option>
-                <option value="Sala 8201">Sala 8201</option>
-                <option value="Sala 8202: laboratorio de informatica">
+                <option value="170">Corredor 3 andar</option>
+                <option value="171">Sala 8200</option>
+                <option value="172">Sala 8201</option>
+                <option value="173">
                   Sala 8202: laboratorio de informatica
                 </option>
-                <option value="Sala 8203">Sala 8203</option>
-                <option value="Sala 8204">Sala 8204</option>
-                <option value="Sala 8205: atelie">Sala 8205: atelie</option>
-                <option value="Sala 8206">Sala 8206</option>
-                <option value="Banheiro masculino 2 andar">
+                <option value="174">Sala 8203</option>
+                <option value="175">Sala 8204</option>
+                <option value="176">Sala 8205: atelie</option>
+                <option value="177">Sala 8206</option>
+                <option value="178">
                   Banheiro masculino 2 andar
                 </option>
-                <option value="Banheiro feminino 2 andar">
+                <option value="179">
                   Banheiro feminino 2 andar
                 </option>
-                <option value="Corredor 2 andar">Corredor 2 andar</option>
-                <option value="Sala 8100">Sala 8100</option>
-                <option value="Sala 8101">Sala 8101</option>
-                <option value="Sala 8104">Sala 8104</option>
-                <option value="Corredor 1 andar">Corredor 1 andar</option>
-                <option value="Banheiro masculino 1 andar">
+                <option value="180">Corredor 2 andar</option>
+                <option value="181">Sala 8100</option>
+                <option value="182">Sala 8101</option>
+                <option value="183">Sala 8104</option>
+                <option value="184">Corredor 1 andar</option>
+                <option value="185">
                   Banheiro masculino 1 andar
                 </option>
-                <option value="Banheiro feminino 1 andar">
+                <option value="186">
                   Banheiro feminino 1 andar
                 </option>
-                <option value="Seminario">Seminario</option>
-                <option value="Sala 8001: atelie">Sala 8001: atelie</option>
-                <option value="Sala 8002: atelie">Sala 8002: atelie</option>
-                <option value="Sala 8004: atelie">Sala 8004: atelie</option>
-                <option value="Sala 8005: laboratorio de informatica">
+                <option value="187">Seminario</option>
+                <option value="188">Sala 8001: atelie</option>
+                <option value="189">Sala 8002: atelie</option>
+                <option value="190">Sala 8004: atelie</option>
+                <option value="191">
                   Sala 8005: laboratorio de informatica
                 </option>
-                <option value="Sala 8007: sala dos professores">
+                <option value="192">
                   Sala 8007: sala dos professores
                 </option>
-                <option value="Corredor terreo">Corredor terreo</option>
+                <option value="193">Corredor terreo</option>
               </select>
             </div>
-            <div id="opcoesBloco9" style="display: none">
+            <div id="sub_lugar" name="opcoesBloco9" style="display: none">
               <label for="opcoes_sala_bloco9"></label>
-              <select id="opcoes_sala_bloco9" name="sala_bloco9">
-                <option value="Elevador">Elevador</option>
-                <option value="Escada de Incendio">Escada de Incendio</option>
-                <option value="Sala 9513/9514: Laboratorio de habilidades">
+              <select id="opcoes_sala_bloco9" name="sub_lugar">
+                <option value="194">Elevador</option>
+                <option value="195">Escada de Incendio</option>
+                <option value="196">
                   Sala 9513/9514: Laboratorio de habilidades
                 </option>
-                <option value="Sala 9502 - 9511: Laboratorio multidisciplinar">
+                <option value="197">
                   Sala 9502 - 9511: Laboratorio multidisciplinar
                 </option>
-                <option value="Sala 9420: Anatomia Animal">
+                <option value="198">
                   Sala 9420: Anatomia Animal
                 </option>
-                <option value="Bioterio">Bioterio</option>
-                <option value="9414/9415 Laboratorio de Exatas">
+                <option value="199">Bioterio</option>
+                <option value="200">
                   9414/9415 Laboratorio de Exatas
                 </option>
-                <option value="9412: Laboratório de Habilidades Alimentares II">
+                <option value="201">
                   9412: Laboratório de Habilidades Alimentares II
                 </option>
-                <option value="9411: Laboratório de Eletrotermofototerapia">
+                <option value="202">
                   9411: Laboratório de Eletrotermofototerapia
                 </option>
-                <option value="9410: Sala de Apoio Teorico 2">
+                <option value="203">
                   9410: Sala de Apoio Teorico 2
                 </option>
-                <option value="9409: Psicoeducacional 4">
+                <option value="204">
                   9409: Psicoeducacional 4
                 </option>
-                <option value="9407: Laboratório de Pesquisa (Convênio)">
+                <option value="205">
                   9407: Laboratório de Pesquisa (Convênio)
                 </option>
-                <option value="9404: Laboratório de Anatomia">
+                <option value="206">
                   9404: Laboratório de Anatomia
                 </option>
-                <option value="9403: Sala de Apoio Teorico 1">
+                <option value="207">
                   9403: Sala de Apoio Teorico 1
                 </option>
-                <option value="9402: Laboratório de Morfofuncional 3">
+                <option value="208">
                   9402: Laboratório de Morfofuncional 3
                 </option>
-                <option value="9401: Laboratório de Habilidades Alimentares">
+                <option value="209">
                   9401: Laboratório de Habilidades Alimentares
                 </option>
-                <option value="Banheiro Masculino 1 Subsolo">
+                <option value="210">
                   Banheiro Masculino 1 Subsolo
                 </option>
-                <option value="Banheiro Feminino 1 Subsolo">
+                <option value="211">
                   Banheiro Feminino 1 Subsolo
                 </option>
-                <option value="9001: Laboratório de Informática">
+                <option value="212">
                   9001: Laboratório de Informática
                 </option>
-                <option value="9007: Orientação de Monografia">
+                <option value="213">
                   9007: Orientação de Monografia
                 </option>
-                <option value="9008: Sala de Aplicação de Testes Psicológicos">
+                <option value="214">
                   9008: Sala de Aplicação de Testes Psicológicos
                 </option>
-                <option value="9009: Psicoeducacional 2">
+                <option value="215">
                   9009: Psicoeducacional 2
                 </option>
-                <option value="Sala 9000-9006">Sala 9000-9006</option>
-                <option value="Sala 9010">Sala 9010</option>
-                <option value="Sala 9011">Sala 9011</option>
-                <option value="Banheiro Masculino 1 pavimento">
+                <option value="216">Sala 9000-9006</option>
+                <option value="217">Sala 9010</option>
+                <option value="218">Sala 9011</option>
+                <option value="219">
                   Banheiro Masculino 1 pavimento
                 </option>
-                <option value="Banheiro Feminino 1 pavimento">
+                <option value="220">
                   Banheiro Feminino 1 pavimento
                 </option>
-                <option value="Salas 9101-9113">Salas 9101-9113</option>
-                <option value="Banheiro Masculino 2 pavimento">
+                <option value="221">Salas 9101-9113</option>
+                <option value="222">
                   Banheiro Masculino 2 pavimento
                 </option>
-                <option value="Banheiro Feminino 2 pavimento">
+                <option value="223">
                   Banheiro Feminino 2 pavimento
                 </option>
-                <option value="Salas 9201-9213">Salas 9201-9213</option>
-                <option value="Banheiro Masculino 3 pavimento">
+                <option value="224">Salas 9201-9213</option>
+                <option value="225">
                   Banheiro Masculino 3 pavimento
                 </option>
-                <option value="Banheiro Feminino 3 pavimento">
+                <option value="226">
                   Banheiro Feminino 3 pavimento
                 </option>
-                <option value="Salas 9301-313">Salas 9301-313</option>
+                <option value="227">Salas 9301-313</option>
               </select>
             </div>
-            <div id="opcoesBloco10" style="display: none">
-              <label for="opcoes_sala_bloco10"></label>
-              <select id="opcoes_sala_bloco10" name="sala_bloco10">
-                <option value="Laboratorio multidisciplinar maquete">
+            <div id="sub_lugar" name="opcoesBloco10" style="display: none">
+              <label for="228"></label>
+              <select id="229" name="sub_lugar">
+                <option value="230">
                   Laboratorio multidisciplinar maquete
                 </option>
-                <option value="Laboratorio desenho">Laboratorio desenho</option>
-                <option value="Laboratorio instalacoes">
+                <option value="231">Laboratorio desenho</option>
+                <option value="232">
                   Laboratorio instalacoes
                 </option>
-                <option value="Laboratorio confortes">
+                <option value="233">
                   Laboratorio confortes
                 </option>
-                <option value="Copa">Copa</option>
-                <option value="Apoio tecnico administrativo">
+                <option value="234">Copa</option>
+                <option value="235">
                   Apoio tecnico administrativo
                 </option>
-                <option value="Laboratorio canteiro de obras e estruturas">
+                <option value="236">
                   Laboratorio canteiro de obras e estruturas
                 </option>
-                <option value="Campo de futebol">Campo de futebol</option>
-                <option value="Lanchonete">Lanchonete</option>
-                <option value="Banheiro masculino">Banheiro masculino</option>
-                <option value="Banheiro feminino">Banheiro feminino</option>
-                <option value="Vestiario masculino">Vestiario masculino</option>
-                <option value="Vestiario feminino">Vestiario feminino</option>
-                <option value="DCE">DCE</option>
-                <option value="Area de lazer">Area de lazer</option>
-                <option value="Quadra esportiva 1">Quadra esportiva 1</option>
-                <option value="Quadra esportiva 2">Quadra esportiva 2</option>
+                <option value="237">Campo de futebol</option>
+                <option value="238">Lanchonete</option>
+                <option value="239">Banheiro masculino</option>
+                <option value="240">Banheiro feminino</option>
+                <option value="241">Vestiario masculino</option>
+                <option value="242">Vestiario feminino</option>
+                <option value="243">DCE</option>
+                <option value="244">Area de lazer</option>
+                <option value="245">Quadra esportiva 1</option>
+                <option value="246">Quadra esportiva 2</option>
               </select>
             </div>
-            <div id="opcoesBloco12" style="display: none">
-              <label for="opcoes_sala_bloco12"></label>
-              <select id="opcoes_sala_bloco12" name="sala_bloco12">
-                <option value="Marketing Ceub">Marketing Ceub</option>
-                <option value="12028: Laboratorio de multimedia">
+            <div id="sub_lugar" name="opcoesBloco12" style="display: none">
+              <label for="247"></label>
+              <select id="248" name="sub_lugar">
+                <option value="249">Marketing Ceub</option>
+                <option value="250">
                   12028: Laboratorio de multimedia
                 </option>
-                <option value="12022: Laboratorio estudio de radio">
+                <option value="251">
                   12022: Laboratorio estudio de radio
                 </option>
-                <option value="12026: Sala dos professores">
+                <option value="252">
                   12026: Sala dos professores
                 </option>
-                <option value="12025: Coord. comunicacao social">
+                <option value="253">
                   12025: Coord. comunicacao social
                 </option>
-                <option value="12014-12020: Laboratorio jornal esquina">
+                <option value="254">
                   12014-12020: Laboratorio jornal esquina
                 </option>
-                <option value="Sala 12003-12013">Sala 12003-12013</option>
-                <option value="Sala 12021">Sala 12021</option>
-                <option value="Sala 12023">Sala 12023</option>
-                <option value="Sala 12024">Sala 12024</option>
-                <option value="Sala 12027">Sala 12027</option>
-                <option value="Banheiro masculino">Banheiro masculino</option>
-                <option value="Banheiro feminino">Banheiro feminino</option>
-                <option value="Posto Medico">Posto Medico</option>
-                <option value="Piscina">Piscina</option>
+                <option value="255">Sala 12003-12013</option>
+                <option value="256">Sala 12021</option>
+                <option value="257">Sala 12023</option>
+                <option value="258">Sala 12024</option>
+                <option value="259">Sala 12027</option>
+                <option value="260">Banheiro masculino</option>
+                <option value="261">Banheiro feminino</option>
+                <option value="262">Posto Medico</option>
+                <option value="263">Piscina</option>
               </select>
             </div>
-            <div id="cantina3" style="display: none">
+            <div id="sub_lugar" name="cantina3" style="display: none">
               <label for="cantina_3"></label>
-              <select id="cantina3" name="lanches">
-                <option value="Ricardo sushi">Ricardo sushi</option>
-                <option value="Suco & tal">Suco & tal</option>
-                <option value="Fast grill">Fast grill</option>
-                <option value="Geleia hamburguer">Geleia hamburguer</option>
-                <option value="Johns cookies">Johns cookies</option>
-                <option value="Kmart">Kmart</option>
-                <option value="Zei lanches">Zei lanches</option>
-                <option value="Banco Santander">Banco Santander</option>
-                <option value="Bebedouros">Bebedouros</option>
-                <option value="Area dos microondas">Area dos microondas</option>
-                <option value="Banheiro masculino">Banheiro masculino</option>
-                <option value="Banheiro feminino">Banheiro feminino</option>
+              <select id="cantina3" name="sub_lugar">
+                <option value="264">Ricardo sushi</option>
+                <option value="265">Suco & tal</option>
+                <option value="266">Fast grill</option>
+                <option value="267">Geleia hamburguer</option>
+                <option value="268">Johns cookies</option>
+                <option value="269">Kmart</option>
+                <option value="270">Zei lanches</option>
+                <option value="271">Banco Santander</option>
+                <option value="272">Bebedouros</option>
+                <option value="273">Area dos microondas</option>
+                <option value="274">Banheiro masculino</option>
+                <option value="275">Banheiro feminino</option>
               </select>
             </div>
-            <div id="cantina8" style="display: none">
+            <div id="sub_lugar" name="cantina8" style="display: none">
               <label for="cantina_8"></label>
-              <select id="cantina_8" name="cantina_8">
-                <option value="Aprovados lanches">Aprovados lanches</option>
-                <option value="Apetits">Apetits</option>
-                <option value="Creparia">Creparia</option>
-                <option value="Sorveteria">Sorveteria</option>
-                <option value="Area dos microondas">Area dos microondas</option>
-                <option value="Maquina de vendas automaticas">
+              <select id="cantina_8" name="sub_lugar">
+                <option value="276">Aprovados lanches</option>
+                <option value="277">Apetits</option>
+                <option value="278">Creparia</option>
+                <option value="279">Sorveteria</option>
+                <option value="280">Area dos microondas</option>
+                <option value="281">
                   Maquina de vendas automaticas
                 </option>
-                <option value="Mesas">Mesas</option>
+                <option value="282">Mesas</option>
               </select>
             </div>
-            <div id="acessos" style="display: none">
+            <div id="sub_lugar" name="acessos" style="display: none">
               <label for="acessos"></label>
-              <select id="acessos" name="acessos">
-                <option value="Acesso Principal">Acesso Principal</option>
-                <option value="Acesso C">Acesso C</option>
-                <option value="Acesso D">Acesso D</option>
-                <option value="Acesso E">Acesso E</option>
-                <option value="Acesso F">Acesso F</option>
-                <option value="Acesso K">Acesso K</option>
-                <option value="Acesso O">Acesso O</option>
+              <select id="acessos" name="sub_lugar">
+                <option value="283">Acesso Principal</option>
+                <option value="284">Acesso C</option>
+                <option value="285">Acesso D</option>
+                <option value="286">Acesso E</option>
+                <option value="287">Acesso F</option>
+                <option value="288">Acesso K</option>
+                <option value="289">Acesso O</option>
               </select>
             </div>
-            <div id="Biblioteca" style="display: none">
+            <div id="sub_lugar" name="Biblioteca" style="display: none">
               <label for="Biblioteca"></label>
-              <select id="Biblioteca" name="Biblioteca">
-                <option value="Entradas">Entradas</option>
-                <option value="Auditorio">Auditorio</option>
-                <option value="Sala de espera">Sala de espera</option>
-                <option value="Sala de estudos privada">
+              <select id="Biblioteca" name="sub_lugar">
+                <option value="290">Entradas</option>
+                <option value="291">Auditorio</option>
+                <option value="292">Sala de espera</option>
+                <option value="293">
                   Sala de estudos privada
                 </option>
-                <option value="Area dos minerais">Area dos minerais</option>
-                <option value="Area de fotos">Area de fotos</option>
-                <option value="Escadaria norte">Escadaria norte</option>
-                <option value="Escadaria sul">Escadaria sul</option>
-                <option value="Elevadores">Elevadores</option>
-                <option value="Escadaria de emergencia">
+                <option value="294">Area dos minerais</option>
+                <option value="295">Area de fotos</option>
+                <option value="296">Escadaria norte</option>
+                <option value="297">Escadaria sul</option>
+                <option value="298">Elevadores</option>
+                <option value="299">
                   Escadaria de emergencia
                 </option>
-                <option value="Diretoria">Diretoria</option>
-                <option value="Area de estudos norte">
+                <option value="300">Diretoria</option>
+                <option value="301">
                   Area de estudos norte
                 </option>
-                <option value="Area de estudos sul">Area de estudos sul</option>
-                <option value="Escadaria traseira">Escadaria traseira</option>
-                <option value="Secao cinza sul">Secao cinza sul</option>
-                <option value="Secao amarela sul">Secao amarela sul</option>
-                <option value="Secao vermelha sul">Secao vermelha sul</option>
-                <option value="Secao cinza norte">Secao cinza norte</option>
-                <option value="Secao amarela norte">Secao amarela norte</option>
-                <option value="Secao vermelha norte">
+                <option value="302">Area de estudos sul</option>
+                <option value="303">Escadaria traseira</option>
+                <option value="304">Secao cinza sul</option>
+                <option value="305">Secao amarela sul</option>
+                <option value="306">Secao vermelha sul</option>
+                <option value="307">Secao cinza norte</option>
+                <option value="308">Secao amarela norte</option>
+                <option value="309">
                   Secao vermelha norte
                 </option>
-                <option value="Bebedouro 1 pavimento">
+                <option value="310">
                   Bebedouro 1 pavimento
                 </option>
-                <option value="Banheiro masculino 1 pavimento">
+                <option value="311">
                   Banheiro masculino 1 pavimento
                 </option>
-                <option value="Banheiro feminino 1 pavimento">
+                <option value="312">
                   Banheiro feminino 1 pavimento
                 </option>
-                <option value="Area de estudos mesa">
+                <option value="313">
                   Area de estudos mesa
                 </option>
-                <option value="Area de estudos individuais">
+                <option value="314">
                   Area de estudos individuais
                 </option>
-                <option value="Mini patio">Mini patio</option>
-                <option value="Bebedouro 2 pavimento">
+                <option value="315">Mini patio</option>
+                <option value="316">
                   Bebedouro 2 pavimento
                 </option>
-                <option value="Banheiro masculino 2 pavimento">
+                <option value="317">
                   Banheiro masculino 2 pavimento
                 </option>
-                <option value="Banheiro feminino 2 pavimento">
+                <option value="318">
                   Banheiro feminino 2 pavimento
                 </option>
               </select>
             </div>
+            
+            <div>
+              <br>
+              <label id="ocorrencia_data_css" for="ocorrencia_data">Data da ocorrencia:</label>
+              <input type="date" id="ocorrencia_data" name="ocorrencia_data" required />
+            </div>
+            
 
             <div class="inputbox" id="icon2">
               <ion-icon name="attach-outline"></ion-icon>
               <input
                 type="file"
                 id="anexar_arquivo"
-                name="anexo"
-                accept="image/*,video/*"
+                name="imagem"
+                accept=".png, .jpg, .mp4, wepg "
               />
             </div>
-            <button type="button" onclick="Enviar()">Enviar</button>
+            <button type="submit" onclick="Enviar()">Enviar</button>
           </form>
         </div>
       </div>
@@ -798,7 +805,7 @@
       const Depoimentos = [];
       const Enviar = () => {
         const depoimentoInputValue =
-          document.getElementById("depoimento_input").value;
+          document.getElementsByName("depoimento_input")[0].value;
 
         if (depoimentoInputValue) {
           Depoimentos.push({ Depoimento: depoimentoInputValue });
@@ -809,266 +816,266 @@
       };
 
       function Escolha() {
-        var selectBox = document.getElementById("select_box1");
+        var selectBox = document.getElementsByName("blocos")[0];
         var selectedValue = selectBox.value;
         if (selectedValue === "1") {
           //alert("Escolheu Bloco 1");
-          document.getElementById("opcoesBloco1").style.display = "block"; // Mostra as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Oculta as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Oculta as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Oculta as opções do Bloco 2
+          document.getElementsByName("opcoesBloco1")[0].style.display = "block"; // Mostra as opções do Bloco 1
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Oculta as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "2") {
           //alert("Escolheu Bloco 2");
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "block"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "block"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "3") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "block"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "block"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "5") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "block"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "block"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "4") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "block"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "block"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "6") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "block"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "block"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "7") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "block"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "block"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "8") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "block"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "block"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "9") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "block"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "block"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "10") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "block"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "block"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "11") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "block"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "block"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "14") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "block"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "block"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "13") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "block"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "block"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "15") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "block"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "block"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         } else if (selectedValue === "16") {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Mostra as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Mostra as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Mostra as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Mostra as opções do Bloco 4
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "block"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Mostra as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Mostra as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Mostra as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Mostra as opções do Bloco 4
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "block"; // Mostra as opções library
         } else {
-          document.getElementById("opcoesBloco1").style.display = "none"; // Oculta as opções do Bloco 1
-          document.getElementById("opcoesBloco2").style.display = "none"; // Oculta as opções do Bloco 2
-          document.getElementById("opcoesBloco3").style.display = "none"; // Oculta as opções do Bloco 3
-          document.getElementById("opcoesBloco5").style.display = "none"; // Oculta as opções do Bloco 5
-          document.getElementById("opcoesBloco4").style.display = "none"; // Oculta as opções do Bloco 5
-          document.getElementById("opcoesBloco6").style.display = "none"; // Mostra as opções do Bloco 6
-          document.getElementById("opcoesBloco7").style.display = "none"; // Mostra as opções do Bloco 7
-          document.getElementById("opcoesBloco8").style.display = "none"; // Mostra as opções do Bloco 8
-          document.getElementById("opcoesBloco9").style.display = "none"; // Mostra as opções do Bloco 9
-          document.getElementById("opcoesBloco10").style.display = "none"; // Mostra as opções do Bloco 10
-          document.getElementById("opcoesBloco12").style.display = "none"; // Mostra as opções do Bloco 11
-          document.getElementById("cantina3").style.display = "none"; // Mostra as opções cantina3
-          document.getElementById("cantina8").style.display = "none"; // Mostra as opções cantina8
-          document.getElementById("acessos").style.display = "none"; // Mostra as opções acessos
-          document.getElementById("Biblioteca").style.display = "none"; // Mostra as opções library
+          document.getElementsByName("opcoesBloco1")[0].style.display = "none"; // Oculta as opções do Bloco 1
+          document.getElementsByName("opcoesBloco2")[0].style.display = "none"; // Oculta as opções do Bloco 2
+          document.getElementsByName("opcoesBloco3")[0].style.display = "none"; // Oculta as opções do Bloco 3
+          document.getElementsByName("opcoesBloco5")[0].style.display = "none"; // Oculta as opções do Bloco 5
+          document.getElementsByName("opcoesBloco4")[0].style.display = "none"; // Oculta as opções do Bloco 5
+          document.getElementsByName("opcoesBloco6")[0].style.display = "none"; // Mostra as opções do Bloco 6
+          document.getElementsByName("opcoesBloco7")[0].style.display = "none"; // Mostra as opções do Bloco 7
+          document.getElementsByName("opcoesBloco8")[0].style.display = "none"; // Mostra as opções do Bloco 8
+          document.getElementsByName("opcoesBloco9")[0].style.display = "none"; // Mostra as opções do Bloco 9
+          document.getElementsByName("opcoesBloco10")[0].style.display = "none"; // Mostra as opções do Bloco 10
+          document.getElementsByName("opcoesBloco12")[0].style.display = "none"; // Mostra as opções do Bloco 11
+          document.getElementsByName("cantina3")[0].style.display = "none"; // Mostra as opções cantina3
+          document.getElementsByName("cantina8")[0].style.display = "none"; // Mostra as opções cantina8
+          document.getElementsByName("acessos")[0].style.display = "none"; // Mostra as opções acessos
+          document.getElementsByName("Biblioteca")[0].style.display = "none"; // Mostra as opções library
         }
       }
     </script>
