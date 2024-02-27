@@ -7,7 +7,7 @@ class DAO:
     def __init__(self, tab):
         # Ligação com o esquema de banco de dados
         engine = create_engine(
-            "mysql+mysqlconnector://root:Gatitcha1@localhost/felicidade?charset=utf8mb4"
+            "mysql+mysqlconnector://root:Password@localhost/felicidade?charset=utf8mb4"
         )
 
         # Mapeamento Objeto Relacional com o SQLAlchemy
